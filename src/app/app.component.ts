@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import './training' 
 import { Colors } from '../enums/Color';
-import { Collection } from './collection';
+import { Collection, numberCollection, stringCollection } from './collection';
 
 @Component({
   selector: 'app-root',
@@ -10,24 +10,24 @@ import { Collection } from './collection';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  companyName: string = 'румтибет'
-
-  mainColors = [Colors.RED, Colors.BLUE, Colors.GREEN]
 
   constructor() {
     this.saveLastLogin();
-    this.saveQuantityLogin();
-    this.isMainColors(Colors.ORANGE)
+    this.updateLoginCount();
+    this.isMainColors(Colors.ORANGE);
   }
+
+  companyName: string = 'румтибет';
+  mainColors: Colors[] = [Colors.RED, Colors.BLUE, Colors.GREEN];
 
   saveLastLogin(): void {
     const lastLog: string = new Date().toString();
-    localStorage.setItem('lastLoginDate', lastLog);
+    localStorage.setItem('last-login-date', lastLog);
   }
 
-  saveQuantityLogin(): void {
-    let localStorageResult = localStorage.getItem('loginQuantity');
-    let loginCount: number
+  updateLoginCount(): void {
+    const localStorageResult: string | null = localStorage.getItem('login-count');
+    let loginCount: number;
 
     if (localStorageResult === null) {
       loginCount = 1;
@@ -36,8 +36,8 @@ export class AppComponent {
       loginCount++
     }
     
-    const loginCountResult = loginCount.toString();
-    localStorage.setItem('loginQuantity', loginCountResult);
+    const loginCountResult: string = loginCount.toString();
+    localStorage.setItem('login-count', loginCountResult);
   }
 
   isMainColors(color: Colors):boolean {
@@ -45,11 +45,5 @@ export class AppComponent {
   }
 }
 
-const stringCollection = new Collection<string>(['Яблоко', 'Апельсин', 'Виноград']);
 stringCollection.replaceItem(0, 1, 'Мандарин');
-console.log(stringCollection.getAllItems());
-
-
-const numberCollection = new Collection<number>([1, 2, 3, 4, 5]);
 numberCollection.deleteItem(1);
-console.log(numberCollection.getAllItems());

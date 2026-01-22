@@ -18,7 +18,7 @@ export class Collection<T> {
   }
 
   deleteItem(value: T): void {
-    let index = this.items.findIndex(item => item === value);
+    const index: number = this.items.findIndex(item => item === value);
 
     if (index !== -1) {
       this.items.splice(index, 1);
@@ -29,3 +29,6 @@ export class Collection<T> {
     return this.items.splice(replaceIndex, deleteValue, setValue)
   }
 }
+
+export const stringCollection: Collection<string> = new Collection<string>(['Яблоко', 'Апельсин', 'Виноград']);
+export const numberCollection: Collection<number> = new Collection<number>([1, 2, 3, 4, 5]);
