@@ -10,16 +10,16 @@ export class Collection<T> {
     return this.items;
   }
 
-  getItem(value: string | number): T | undefined {
-    return this.items.find(item => item === value);
+  getItem(value: T): T | undefined {
+    return this.items.find((item: T) => item === value);
   }
 
   clearAllItems(): void {
     this.items = [];
   }
 
-  deleteItem(value: number | string): void {
-    let result = this.items.filter(item => item !== value);
+  deleteItem(value: T): void {
+    let result = this.items.filter((item: T) => item !== value);
     this.items = result;
   }
 
