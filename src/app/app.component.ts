@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import './training' 
-import { Colors } from '../enums/Color';
+import { Color } from '../enums/Color';
 import { Collection, numberCollection, stringCollection } from './collection';
 
 @Component({
@@ -13,37 +13,33 @@ export class AppComponent {
 
   constructor() {
     this.saveLastLogin();
-    this.updateLoginCount();
-    this.isMainColors(Colors.ORANGE);
+    this.setVisitCount();
+    this.isPrimaryColor(Color.ORANGE);
   }
 
   companyName: string = 'румтибет';
-  mainColors: Colors[] = [Colors.RED, Colors.BLUE, Colors.GREEN];
 
   saveLastLogin(): void {
     const lastLog: string = new Date().toString();
-    localStorage.setItem('last-login-date', lastLog);
+    localStorage.setItem('last-login', lastLog);
   }
 
-  updateLoginCount(): void {
-    const localStorageResult: string | null = localStorage.getItem('login-count');
-    let loginCount: number;
+  setVisitCount(): void {
+    const loginKey = 'login-count';
+    const storedLoginCount: string | null = localStorage.getItem(loginKey) || '0';
 
-    if (localStorageResult === null) {
-      loginCount = 1;
-    } else {
-      loginCount = JSON.parse(localStorageResult);
-      loginCount++
-    }
-    
-    const loginCountResult: string = loginCount.toString();
-    localStorage.setItem('login-count', loginCountResult);
+    let loginCount = JSON.parse(storedLoginCount) + 1;
+    localStorage.setItem(loginKey, loginCount.toString());
   }
 
-  isMainColors(color: Colors):boolean {
-    return this.mainColors.includes(color);
+  isPrimaryColor(color: Color): boolean {
+    const mainColors: Color[] = [Color.RED, Color.BLUE, Color.GREEN];
+    return mainColors.includes(color);
   }
+
 }
 
 stringCollection.replaceItem(0, 1, 'Мандарин');
+stringCollection.deleteItem('Мандарин');
+stringCollection.getAllItems();
 numberCollection.deleteItem(1);

@@ -1,4 +1,5 @@
 export class Collection<T> {
+
   private items: T[] = [];
 
   constructor(items: T[]) {
@@ -9,25 +10,23 @@ export class Collection<T> {
     return this.items;
   }
 
-  getItem(value: T): T | undefined {
+  getItem(value: string | number): T | undefined {
     return this.items.find(item => item === value);
   }
 
   clearAllItems(): void {
-    this.items.length = 0;
+    this.items = [];
   }
 
-  deleteItem(value: T): void {
-    const index: number = this.items.findIndex(item => item === value);
-
-    if (index !== -1) {
-      this.items.splice(index, 1);
-    }
+  deleteItem(value: number | string): void {
+    let result = this.items.filter(item => item !== value);
+    this.items = result;
   }
 
   replaceItem(replaceIndex: number, deleteValue: number, setValue: T): T[] {
-    return this.items.splice(replaceIndex, deleteValue, setValue)
+    return this.items.splice(replaceIndex, deleteValue, setValue);
   }
+  
 }
 
 export const stringCollection: Collection<string> = new Collection<string>(['Яблоко', 'Апельсин', 'Виноград']);
