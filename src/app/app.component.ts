@@ -10,6 +10,8 @@ import { Collection, numberCollection, stringCollection } from './collection';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
+  
+  companyName: string = 'румтибет';
 
   constructor() {
     this.saveLastLogin();
@@ -17,19 +19,17 @@ export class AppComponent {
     this.isPrimaryColor(Color.ORANGE);
   }
 
-  companyName: string = 'румтибет';
-
   saveLastLogin(): void {
     const lastLog: string = new Date().toString();
     localStorage.setItem('last-login', lastLog);
   }
 
   setVisitCount(): void {
-    const loginKey = 'login-count';
-    const storedLoginCount: string | null = localStorage.getItem(loginKey) || '0';
+    const LOGIN_KEY: string = 'login-count';
+    const storedLoginCount: string = localStorage.getItem(LOGIN_KEY) || '0';
 
-    let loginCount = JSON.parse(storedLoginCount) + 1;
-    localStorage.setItem(loginKey, loginCount.toString());
+    let loginCount: number = JSON.parse(storedLoginCount) + 1;
+    localStorage.setItem(LOGIN_KEY, loginCount.toString());
   }
 
   isPrimaryColor(color: Color): boolean {

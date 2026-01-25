@@ -19,7 +19,7 @@ export class Collection<T> {
   }
 
   deleteItem(value: T): void {
-    let result = this.items.filter((item: T) => item !== value);
+    let result: T[] = this.items.filter((item: T) => item !== value);
     this.items = result;
   }
 
