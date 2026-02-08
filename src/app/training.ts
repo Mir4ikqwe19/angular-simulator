@@ -6,8 +6,6 @@ function sumNumbers(a: number, b: number): number {
   return a + b;
 }
 
-console.log(sumNumbers(15, 20));
-
 // Задание №2: Создать переменную status, которая может быть только: "loading", "success", "error".
 
 export const status: 'loading' | 'success' | 'error' = 'error';
@@ -48,17 +46,11 @@ function formatText(string: string, format: textFormat): string {
   }
 }
 
-console.log(formatText('АМИР', 'uppercase'));
-console.log(formatText('тойота', 'lowercase'));
-console.log(formatText('Mark 2 jzx100', 'capitalize'));
-
 // Задание №7: Создать функцию, которая принимает строку и символ, возвращает строку без переданного символа.
 
 function replaceSymbol(string: string, symbol: string): string {
   return string.replaceAll(symbol, '');
 }
-
-console.log(replaceSymbol('Hellow world', '!'));
 
 // Задание №8: Создать массив объектов на основе интерфейса с задания №4. Отфильтровать его по одному из параметров.
 
@@ -90,4 +82,3 @@ const users: IUser[] = [
 ];
 
 let usersGender = users.filter(user => user.gender === 'man');
-console.log(usersGender);
