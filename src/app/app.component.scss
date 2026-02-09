@@ -70,7 +70,7 @@
       }
 
       button {
-        @include deepGreenButton;
+        @include mainButton;
 
         width: 157px;
         height: 44px;
@@ -131,7 +131,7 @@
     }
 
     .consultation-btn {
-      @include deepGreenButton;
+      @include mainButton;
 
       width: 157px;
       height: 44px;
@@ -354,7 +354,7 @@
       }
 
       button {
-        @include deepGreenButton;
+        @include mainButton;
 
         width: 200px;
         height: 52px;
@@ -372,7 +372,7 @@
   background-color: #F3F5F4;
 
   button {
-    @include deepGreenButton;
+    @include mainButton;
 
     width: 236px;
     height: 52px;

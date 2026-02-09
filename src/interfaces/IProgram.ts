@@ -1,4 +1,4 @@
-export interface IPropose {
+export interface IProgramItem {
   id: number;
   iconName: string;
   title: string;

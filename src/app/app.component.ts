@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import './training' 
 import { Color } from '../enums/Color';
 import { Collection, numberCollection, stringCollection } from './collection';
-import { IPropose } from '../interfaces/IPropose';
+import { IProgramItem } from '../interfaces/IProgram';
 import { FormsModule } from '@angular/forms';
+import { widgetMode } from '../types/WidgetMode';
 
 @Component({
   selector: 'app-root',
@@ -14,16 +15,16 @@ import { FormsModule } from '@angular/forms';
 export class AppComponent {
 
   isLoading: boolean = true;
-  isBlockVisible: boolean = true;
+  widgetContent: widgetMode = 'timer';
   counter: number = 0;
-  currentTime: string = '';
-  readonly liveInputValue: string = '';
-  readonly tourLocation: string = '';
-  readonly dateTrip: string = '';
-  readonly participants: string = '';
+  currentDateTime: string = '';
+  liveInputValue: string = '';
+  tourLocation: string = '';
+  dateTrip: string = '';
+  participants: string = '';
   readonly companyName: string = 'румтибет';
 
-  readonly proposeDescription: IPropose[] = [
+  readonly programBlockItems: IProgramItem[] = [
     {
       id: 1,
       iconName: 'people-icon',
@@ -48,8 +49,23 @@ export class AppComponent {
     this.saveLastLogin();
     this.setVisitCount();
     this.isPrimaryColor(Color.ORANGE);
-    this.showDate();
-    this.loadingPage();
+    this.initPage();
+
+    setInterval(() => {
+      this.currentDateTime = new Date().toLocaleString();
+    })
+  }
+
+  increaseCounter(): void {
+    this.counter++;
+  }
+
+  reduceCounter(): void {
+    this.counter--;
+  }
+
+  switchWidgetMode(): void {
+    this.widgetContent = this.widgetContent === 'counter' ? 'timer' : 'counter';
   }
 
   private saveLastLogin(): void {
@@ -70,27 +86,7 @@ export class AppComponent {
     return mainColors.includes(color);
   }
 
-  private updateCurrentTime(): void {
-    this.currentTime = new Date().toLocaleString();
-  }
-
-  private showDate(): void {
-    setInterval((): void => this.updateCurrentTime());
-  }
-
-  increaseCounter(): void {
-    this.counter++;
-  }
-
-  reduceCounter(): void {
-    this.counter--;
-  }
-
-  toggleBlock(): void {
-    this.isBlockVisible = !this.isBlockVisible;
-  }
-
-  private loadingPage(): void {
+  private initPage(): void {
     setTimeout((): void => {
       this.isLoading = false;
     }, 3000);

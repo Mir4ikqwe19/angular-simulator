@@ -81,4 +81,4 @@ const users: IUser[] = [
   }
 ];
 
-let usersGender = users.filter(user => user.gender === 'man');
+let usersGender: IUser[] = users.filter((user: IUser) => user.gender === 'man');

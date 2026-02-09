@@ -1,0 +1,1 @@
+export type widgetMode = 'counter' | 'timer';

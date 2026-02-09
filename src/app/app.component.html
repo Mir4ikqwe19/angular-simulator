@@ -10,7 +10,7 @@
     <div class="main-header-wrapper">
       <div class="container main-header">
         <div class="company-logo">
-          <img src="/images/mountains-icon.svg" width="137px" height="29px" alt="Румтибет иконка">
+          <img src="/images/mountains-logo.svg" width="137px" height="29px" alt="Румтибет иконка">
           <span class="logo-name">{{ companyName }}</span>
         </div>
         <div class="main-header-info">
@@ -27,8 +27,8 @@
       </div>
       <div class="header-date-info">
 
-        @if (isBlockVisible) {
-          <p class="header-timer">{{ currentTime }}</p>
+        @if (widgetContent === 'timer') {
+          <p class="header-timer">{{ currentDateTime }}</p>
         } @else {
           <div class="header-counter">
             <button 
@@ -37,7 +37,7 @@
             [disabled]="counter <= 0" 
             class="counter-btn"
           >
-          -
+            -
           </button>
             <span>{{ counter }}</span>
             <button 
@@ -45,12 +45,12 @@
             (click)="increaseCounter()" 
             class="counter-btn"
           >
-          +
+            +
           </button>
           </div>
         }
 
-        <button id="toggle-block-btn" (click)="toggleBlock()">{{ isBlockVisible ? 'Показать счетчик' : 'Показать таймер' }}</button>
+        <button id="toggle-block-btn" (click)="switchWidgetMode()">{{ widgetContent === 'counter' ? 'Показать счетчик' : 'Показать таймер' }}</button>
       </div>
     </div>
   
@@ -94,7 +94,7 @@
             class="search-program-btn fs-16 fw-700"
             [disabled]="!tourLocation || !dateTrip || !participants"
           >
-          Найти программу
+            Найти программу
           </button>
         </div>
       </div>
@@ -137,12 +137,12 @@
       <p class="fs-18 fw-400 lh-150">Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа.</p>
       <div class="propose-description-container">
 
-        @for (propose of proposeDescription; track propose.id) {
+        @for (program of programBlockItems; track program.id) {
           <div class="description-wrapper">
-            <img [src]="'/images/' + propose.iconName + '.svg'" alt='{{ propose.iconName }}' width="100px" height="50px">
+            <img [src]="'/images/' + program.iconName + '.svg'" [alt]="program.iconName" width="100px" height="50px">
             <div class="propose-description">
-              <span class="fs-18 fw-700 lh-20px">{{ propose.title }}</span>
-              <p class="fs-14 fw-400 lh-20px">{{ propose.definition }}</p>
+              <span class="fs-18 fw-700 lh-20px">{{ program.title }}</span>
+              <p class="fs-14 fw-400 lh-20px">{{ program.definition }}</p>
             </div>
           </div>
         }
