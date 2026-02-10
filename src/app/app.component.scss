@@ -64,13 +64,17 @@
         justify-content: center;
         align-items: center;
 
+        .show-timer-btn {
+          margin-left: 50px;
+        }
+
         span {
           color: var(--white-color);
         }
       }
 
       button {
-        @include mainButton;
+        @include main-button;
 
         width: 157px;
         height: 44px;
@@ -131,7 +135,7 @@
     }
 
     .consultation-btn {
-      @include mainButton;
+      @include main-button;
 
       width: 157px;
       height: 44px;
@@ -354,7 +358,7 @@
       }
 
       button {
-        @include mainButton;
+        @include main-button;
 
         width: 200px;
         height: 52px;
@@ -372,7 +376,7 @@
   background-color: #F3F5F4;
 
   button {
-    @include mainButton;
+    @include main-button;
 
     width: 236px;
     height: 52px;

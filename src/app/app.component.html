@@ -27,8 +27,9 @@
       </div>
       <div class="header-date-info">
 
-        @if (widgetContent === 'timer') {
+        @if (currentWidget === 'timer') {
           <p class="header-timer">{{ currentDateTime }}</p>
+          <button id="show-counter-btn" (click)="switchWidgetMode('counter')">Показать счётчик</button>
         } @else {
           <div class="header-counter">
             <button 
@@ -47,10 +48,10 @@
           >
             +
           </button>
+          <button id="show-timer-btn" class="show-timer-btn" (click)="switchWidgetMode('timer')">Показать таймер</button>
           </div>
         }
 
-        <button id="toggle-block-btn" (click)="switchWidgetMode()">{{ widgetContent === 'counter' ? 'Показать счетчик' : 'Показать таймер' }}</button>
       </div>
     </div>
   
@@ -137,7 +138,7 @@
       <p class="fs-18 fw-400 lh-150">Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа.</p>
       <div class="propose-description-container">
 
-        @for (program of programBlockItems; track program.id) {
+        @for (program of programBlocks; track program.id) {
           <div class="description-wrapper">
             <img [src]="'/images/' + program.iconName + '.svg'" [alt]="program.iconName" width="100px" height="50px">
             <div class="propose-description">

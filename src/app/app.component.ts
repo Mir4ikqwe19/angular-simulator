@@ -15,16 +15,16 @@ import { widgetMode } from '../types/WidgetMode';
 export class AppComponent {
 
   isLoading: boolean = true;
-  widgetContent: widgetMode = 'timer';
   counter: number = 0;
-  currentDateTime: string = '';
-  liveInputValue: string = '';
-  tourLocation: string = '';
-  dateTrip: string = '';
-  participants: string = '';
+  currentDateTime: string = new Date().toLocaleString();
+  currentWidget!: widgetMode;
+  liveInputValue!: string;
+  tourLocation!: string;
+  dateTrip!: string;
+  participants!: string;
   readonly companyName: string = 'румтибет';
 
-  readonly programBlockItems: IProgramItem[] = [
+  readonly programBlocks: IProgramItem[] = [
     {
       id: 1,
       iconName: 'people-icon',
@@ -51,9 +51,9 @@ export class AppComponent {
     this.isPrimaryColor(Color.ORANGE);
     this.initPage();
 
-    setInterval(() => {
+    setInterval((): void => {
       this.currentDateTime = new Date().toLocaleString();
-    })
+    }, 1000);
   }
 
   increaseCounter(): void {
@@ -64,8 +64,8 @@ export class AppComponent {
     this.counter--;
   }
 
-  switchWidgetMode(): void {
-    this.widgetContent = this.widgetContent === 'counter' ? 'timer' : 'counter';
+  switchWidgetMode(widgetMode: widgetMode): void {
+    this.currentWidget = widgetMode;
   }
 
   private saveLastLogin(): void {
