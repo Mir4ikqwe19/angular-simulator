@@ -3,6 +3,17 @@
 
 * {
   font-family: 'Nunito Sans';
+  overflow-x: hidden;
+}
+
+p {
+  margin: 0px;
+  overflow-y: hidden;
+}
+
+h3 {
+  margin: 0px;
+  overflow-y: hidden;
 }
 
 .container {
@@ -10,10 +21,24 @@
   width: 1180px;
 }
 
+
+.bg-green {
+  background-color: #E5EEEB;
+}
+
+.bg-blue {
+  background-color: #E3E6EE;
+}
+
+.bg-yellow {
+  background-color: #F3F1E1;
+}
+
 :root {
   --primary-color: #18121E;
   --secondary-color: #F2BE22;
   --white-color: #FDFDFD;
+  --deep-green-color: #1A3E3E;
 }
 
 .fs-14 {
@@ -36,6 +61,10 @@
   font-size: 24px;
 }
 
+.fs-32 {
+  font-size: 32px;
+}
+
 .fw-400 {
   font-weight: 400;
 }
@@ -46,4 +75,28 @@
 
 .fw-700 {
   font-weight: 700;
+}
+
+.fw-800 {
+  font-weight: 800;
+}
+
+.lh-100 {
+  line-height: 100%;
+}
+
+.lh-120 {
+  line-height: 120%;
+}
+
+.lh-150 {
+  line-height: 150%;
+}
+
+.lh-20px {
+  line-height: 20px;
+}
+
+.lh-32px {
+  line-height: 32px;
 }

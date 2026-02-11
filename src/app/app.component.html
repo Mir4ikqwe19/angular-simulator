@@ -1,55 +1,162 @@
-<header class="bg-mountains header">
-  <div class="container main-header">
-    <div class="company-logo">
-      <img src="/images/mountains-icon.svg" width="137px" height="29px" alt="Румтибет иконка">
-      <span class="logo-name">{{ companyName }}</span>
+  @if (isLoading) {
+    <div class="loading-wrapper">
+      <img src="/images/loading-icon.svg" alt="иконка загрузки" width="51px" height="51px" class="loading-icon">
+      <span>Загрузка страницы...</span>
     </div>
-    <div class="main-header-info">
-      <nav class="header-nav fs-18 fw-600">
-        <a href="#">Главная</a>
-        <a href="#">Про гида</a>
-        <a href="#">Программа тура</a>
-        <a href="#">Стоимость</a>
-        <a href="#">Блог</a>
-        <a href="#">Контакты</a>
-      </nav>
-      <button class="consultation-btn fs-16 fw-600">Консультация</button>
-    </div>
-  </div>
+  }
 
-  <div class="sub-header container">
-    <div class="subtitle-container">
-      <p class="subtitle">Насладись прогулкой в горах с командой единомышленников</p>
-    </div>
-
-    <div class="search-panel">
-      <div class="input-field">
-        <select>
-          <option>Локация для тура</option>
-          <option>Италия</option>
-          <option>Япония</option>
-          <option>Франция</option>
-        </select>
-        <span>выберите из списка</span>
+<div [class.active]="isLoading">
+  <header class="bg-mountains header">
+    <div class="main-header-wrapper">
+      <div class="container main-header">
+        <div class="company-logo">
+          <img src="/images/mountains-logo.svg" width="137px" height="29px" alt="Румтибет иконка">
+          <span class="logo-name">{{ companyName }}</span>
+        </div>
+        <div class="main-header-info">
+          <nav class="header-nav fs-18 fw-600">
+            <a id="main-page-link" href="#">Главная</a>
+            <a id="about-guide-link" href="#">Про гида</a>
+            <a id="tour-program-link" href="#">Программа тура</a>
+            <a id="price-link" href="#">Стоимость</a>
+            <a id="blog-link" href="#">Блог</a>
+            <a id="contancts-link" href="#">Контакты</a>
+          </nav>
+          <button id="consultation-btn" class="consultation-btn fs-16 fw-600">Консультация</button>
+        </div>
       </div>
+      <div class="header-date-info">
 
-      <div class="input-field">
-        <input type="text" placeholder="Дата похода">
-        <span class="icon-calendar"></span>
-        <span>укажите диапазон</span>
-      </div>
+        @if (currentWidget === 'timer') {
+          <p class="header-timer">{{ currentDateTime }}</p>
+          <button id="show-counter-btn" (click)="switchWidgetMode('counter')">Показать счётчик</button>
+        } @else {
+          <div class="header-counter">
+            <button 
+            id="minus-counter-btn" 
+            (click)="reduceCounter()"
+            [disabled]="counter <= 0" 
+            class="counter-btn"
+          >
+            -
+          </button>
+            <span>{{ counter }}</span>
+            <button 
+            id="plus-counter-btn" 
+            (click)="increaseCounter()" 
+            class="counter-btn"
+          >
+            +
+          </button>
+          <button id="show-timer-btn" class="show-timer-btn" (click)="switchWidgetMode('timer')">Показать таймер</button>
+          </div>
+        }
 
-      <div class="input-field">
-        <select>
-          <option>Участники</option>
-          <option>4</option>
-          <option>5</option>
-          <option>6</option>
-          <option>7</option>
-        </select>
-        <span>минимум 4 человека</span>
       </div>
-      <button class="search-program-btn fs-16 fw-700">Найти программу</button>
     </div>
-  </div>
-</header>
+  
+    <div class="sub-header container">
+      <div class="subtitle-container">
+        <p class="subtitle">Насладись прогулкой в горах с командой единомышленников</p>
+      </div>
+  
+      <div class="search-panel">
+        <div class="search-panel-container">
+          <div class="input-field">
+            <select id="tour-location" [(ngModel)]="tourLocation">
+              <option hidden [value]="tourLocation">Локация для тура</option>
+              <option>Италия</option>
+              <option>Япония</option>
+              <option>Франция</option>
+              <option>Китай</option>
+            </select>
+            <span>выберите из списка</span>
+          </div>
+  
+          <div class="input-field">
+            <input id="hike-date" type="date" placeholder="Дата похода" [(ngModel)]="dateTrip">
+            <span class="icon-calendar"></span>
+            <span>укажите диапазон</span>
+          </div>
+  
+          <div class="input-field">
+            <select id="tour-participants" [(ngModel)]="participants">
+              <option hidden [value]="participants">Участники</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+            </select>
+            <span>выберите из списка</span>
+          </div>
+          <button
+            id="search-program-btn"
+            class="search-program-btn fs-16 fw-700"
+            [disabled]="!tourLocation || !dateTrip || !participants"
+          >
+            Найти программу
+          </button>
+        </div>
+      </div>
+      <div class="live-input-wrapper">
+        <input id="live-input" type="text" class="live-input" [(ngModel)]="liveInputValue">
+        <p>{{ liveInputValue }}</p>
+      </div>
+    </div>
+  </header>
+  
+  <section class="tour-info-section">
+    <div class="tour-info-wrapper container">
+      <div class="tour-info-left">
+        <img src="/images/white-mountains.png" class="white-mountains-img" alt="белые горы" width="350px" height="400px">
+        <div class="forest-house-img-container">
+          <img src="/images/forest-house.png" class="forest-house-img" alt="домик в лесу" width="350px" height="400px">
+          <button id="play-video-btn">
+            <img src="/images/play-icon.svg" alt="иконка проигрывателя" width="14px" height="15px">
+          </button>
+        </div>
+      </div>
+  
+      <div class="tour-info-right">
+        <div class="tour-info-subtitle">
+          <span class="fw-400 fs-24 lh-20px">о нашем походе</span>
+          <h3 class="fw-800 fs-32 lh-120">Исследуйте все горные массивы мира вместе с нами</h3>
+        </div>
+        <p class="fs-18 fw-400 lh-150">Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат Вирджиния, взял одно из самых странных слов в Lorem Ipsum, "consectetur"и занялся его поисками в классической латинской литературе.</p>
+        <button id="tour-program-btn" class="fs-16 fw-600 lh-20px">Программа тура</button>
+      </div>
+    </div>
+  </section>
+  
+  <section class="our-propose">
+    <div class="propose-wrapper">
+      <div class="propose-title">
+        <span class="fs-24 fw-400 lh-20px">наше предложение</span>
+        <h3 class="fs-32 fw-800 lh-120">Лучшие программы для тебя</h3>
+      </div>
+      <p class="fs-18 fw-400 lh-150">Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа.</p>
+      <div class="propose-description-container">
+
+        @for (program of programBlocks; track program.id) {
+          <div class="description-wrapper">
+            <img [src]="'/images/' + program.iconName + '.svg'" [alt]="program.iconName" width="100px" height="50px">
+            <div class="propose-description">
+              <span class="fs-18 fw-700 lh-20px">{{ program.title }}</span>
+              <p class="fs-14 fw-400 lh-20px">{{ program.definition }}</p>
+            </div>
+          </div>
+        }
+        
+      </div>
+      <button id="price-program-btn" class="fs-16 fw-600 lh-20px">Стоимость программ</button>
+    </div>
+  
+    <div class="propose-img-container">
+      <img src="/images/coffee-in-mountains.png" alt="кофе в горах" width="250px" height="250px">
+      <img src="/images/human-in-desert-mountains.png" alt="мужчина в пустынных горах" width="250px" height="250px">
+      <img src="/images/human-in-snow-mountains.png" alt="мужчина в горах на снегоходе" width="250px" height="250px">
+      <img src="/images/green-mountains.png" alt="зелёные горы с речкой" width="250px" height="250px">
+    </div>
+  </section>
+</div>

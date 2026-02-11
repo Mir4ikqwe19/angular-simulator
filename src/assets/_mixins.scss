@@ -1,0 +1,9 @@
+@mixin main-button {
+  align-items: center;
+  line-height: 20px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  background-color: var(--deep-green-color);
+  color: var(--white-color);
+}

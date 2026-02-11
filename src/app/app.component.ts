@@ -2,29 +2,78 @@ import { Component } from '@angular/core';
 import './training' 
 import { Color } from '../enums/Color';
 import { Collection, numberCollection, stringCollection } from './collection';
+import { IProgramItem } from '../interfaces/IProgram';
+import { FormsModule } from '@angular/forms';
+import { widgetMode } from '../types/WidgetMode';
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  
-  companyName: string = 'румтибет';
+
+  isLoading: boolean = true;
+  counter: number = 0;
+  currentDateTime: string = new Date().toLocaleString();
+  currentWidget!: widgetMode;
+  liveInputValue!: string;
+  tourLocation!: string;
+  dateTrip!: string;
+  participants!: string;
+  readonly companyName: string = 'румтибет';
+
+  readonly programBlocks: IProgramItem[] = [
+    {
+      id: 1,
+      iconName: 'people-icon',
+      title: 'Опытный гид',
+      definition: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.'
+    },
+    {
+      id: 2,
+      iconName: 'shield-icon',
+      title: 'Безопасный поход',
+      definition: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.'
+    },
+    {
+      id: 3,
+      iconName: 'loyal-price-icon',
+      title: 'Лояльные цены',
+      definition: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.'
+    }
+  ]
 
   constructor() {
     this.saveLastLogin();
     this.setVisitCount();
     this.isPrimaryColor(Color.ORANGE);
+    this.initPage();
+
+    setInterval((): void => {
+      this.currentDateTime = new Date().toLocaleString();
+    }, 1000);
   }
 
-  saveLastLogin(): void {
+  increaseCounter(): void {
+    this.counter++;
+  }
+
+  reduceCounter(): void {
+    this.counter--;
+  }
+
+  switchWidgetMode(widgetMode: widgetMode): void {
+    this.currentWidget = widgetMode;
+  }
+
+  private saveLastLogin(): void {
     const lastLog: string = new Date().toString();
     localStorage.setItem('last-login', lastLog);
   }
 
-  setVisitCount(): void {
+  private setVisitCount(): void {
     const LOGIN_KEY: string = 'login-count';
     const storedLoginCount: string = localStorage.getItem(LOGIN_KEY) || '0';
 
@@ -32,11 +81,17 @@ export class AppComponent {
     localStorage.setItem(LOGIN_KEY, loginCount.toString());
   }
 
-  isPrimaryColor(color: Color): boolean {
+  private isPrimaryColor(color: Color): boolean {
     const mainColors: Color[] = [Color.RED, Color.BLUE, Color.GREEN];
     return mainColors.includes(color);
   }
 
+  private initPage(): void {
+    setTimeout((): void => {
+      this.isLoading = false;
+    }, 3000);
+  }
+  
 }
 
 stringCollection.replaceItem(0, 1, 'Мандарин');

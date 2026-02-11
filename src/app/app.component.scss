@@ -1,8 +1,37 @@
+@use '../assets/mixins' as *;
+
 .bg-mountains {
   background-image: url('/images/bg-mountains.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100% 100%
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.loading-icon {
+  animation: rotate 2s linear infinite;
+  background: transparent;
+}
+
+.loading-wrapper {
+  width: 100%;
+  height: 985px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.active {
+  display: none;
 }
 
 .header {
@@ -12,9 +41,63 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+
+  .main-header-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+
+    .header-date-info {
+      display: flex;
+      gap: 50px;
+      justify-content: center;
+      align-items: center;
+
+      .header-timer {
+        color: var(--white-color);
+      }
+
+      .header-counter {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+
+        .show-timer-btn {
+          margin-left: 50px;
+        }
+
+        span {
+          color: var(--white-color);
+        }
+      }
+
+      button {
+        @include main-button;
+
+        width: 157px;
+        height: 44px;
+        color: var(--white-color);
+      }
+
+      .counter-btn {
+        width: 30px;
+        height: 30px;
+      }
+
+      .counter-btn:disabled {
+        background-color: #1a3e3e81;
+        color: var(--white-color);
+        cursor: not-allowed;
+        opacity: 0.6;
+      }
+    }
+  }
   
   .main-header {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     margin-top: 16px;
     height: 72px;
@@ -52,14 +135,10 @@
     }
 
     .consultation-btn {
-      color: var(--white-color);
+      @include main-button;
+
       width: 157px;
       height: 44px;
-      background-color: #1A3E3E;
-      border-radius: 4px;
-      border: none;
-      cursor: pointer;
-      line-height: 20px;
     }
   }
 
@@ -95,6 +174,11 @@
       border-radius: 16px;
       border: 1px solid rgba(255, 255, 255, 0.25);
 
+      &-container {
+        display: flex;
+        gap: 24px;
+      }
+
       .input-field {
         display: flex;
         flex-direction: column;
@@ -112,6 +196,13 @@
         color: #fff;
       }
 
+      .input-field input::-webkit-calendar-picker-indicator {
+        filter: invert(1);
+        cursor: pointer;
+        padding: 15px;
+        width: 0px;
+      }
+
       .input-field select {
         background: transparent;
         width: 270px;
@@ -126,6 +217,9 @@
 
       select option {
         text-transform: none;
+        color: black;
+        overflow-y: hidden;
+        align-items: baseline;
       }
       
       .input-field span {
@@ -146,7 +240,7 @@
         align-items: center;
         justify-content: center;
         width: 213px;
-        height: 52px;
+        height: 55px;
         background-color: #fff;
         align-items: center;
         margin-bottom: 25px;
@@ -154,6 +248,13 @@
         border-radius: 4px;
         line-height: 20px;
         cursor: pointer;
+      }
+
+      .search-program-btn:disabled {
+        background-color: #cccccc;
+        color: #504e4e;
+        cursor: not-allowed;
+        opacity: 0.6;
       }
 
       .icon-calendar {
@@ -168,5 +269,178 @@
         cursor: pointer;
       }
     }
+
+    .live-input {
+      background: transparent;
+      width: 270px;
+      height: 30px;
+      border: 1px solid #E1E3E4;
+      border-radius: 10px;
+      padding: 12px;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+    }
+    
+    .live-input-wrapper {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      color: var(--white-color);
+    }
+  }
+}
+
+.tour-info-section {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 726px;
+
+  .tour-info-wrapper {
+    display: flex;
+    height: 526px;
+    gap: 120px;
+    margin-top: 100px;
+
+    .tour-info-left {
+      display: flex;
+      width: 480px;
+      height: 526px;
+      position: relative;
+
+      .forest-house-img-container {
+        display: flex;
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+        align-items: center;
+
+        button {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 50px;
+          height: 50px;
+          top: 175px;
+          left: 150px;
+          border-radius: 100px;
+          background-color: #FDFDFD99;
+          border: none;
+          cursor: pointer;
+        }
+      }
+
+      .white-mountains-img {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+      }
+    }
+
+    .tour-info-right {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      margin: 64px 0px;
+      max-width: 580px;
+      height: 398px;
+
+      .tour-info-subtitle {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      span {
+        color: var(--secondary-color);
+      }
+
+      button {
+        @include main-button;
+
+        width: 200px;
+        height: 52px;
+      }
+    }
+  }
+}
+
+.our-propose {
+  display: flex;
+  justify-content: center;
+  gap: 90px;
+  width: 100%;
+  height: 771px;
+  background-color: #F3F5F4;
+
+  button {
+    @include main-button;
+
+    width: 236px;
+    height: 52px;
+  }
+
+  .propose-wrapper {
+    z-index: 1;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 80px;
+    width: 580px;
+    height: 591px;
+
+    .propose-title span {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--secondary-color);
+    }
+
+    .propose-description-container {
+      display: flex;
+      flex-direction: column;
+      overflow: visible;
+      gap: 40px;
+
+      .description-wrapper {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        border: 1px solid transparent;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+        cursor: pointer;
+
+          &:hover {
+            transform: scale(1.05);
+            padding: 5px;
+            border-radius: 5px;
+            box-shadow: 0 10px 20px rgba(0,0,0,.15);
+          }
+
+        .propose-img-bg {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 4px;
+          margin-bottom: 4px;
+          width: 91px;
+          height: 50px;
+        }
+      }
+    }
+  }
+
+  .propose-img-container {
+    margin-top: 120px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 515px;
+    column-gap: 10px;
+    row-gap: 10px;
+    height: 515px;
   }
 }
