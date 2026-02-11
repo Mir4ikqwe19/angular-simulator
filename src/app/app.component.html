@@ -64,7 +64,7 @@
         <div class="search-panel-container">
           <div class="input-field">
             <select id="tour-location" [(ngModel)]="tourLocation">
-              <option hidden value="">Локация для тура</option>
+              <option hidden [value]="tourLocation">Локация для тура</option>
               <option>Италия</option>
               <option>Япония</option>
               <option>Франция</option>
@@ -81,7 +81,7 @@
   
           <div class="input-field">
             <select id="tour-participants" [(ngModel)]="participants">
-              <option hidden value="">Участники</option>
+              <option hidden [value]="participants">Участники</option>
               <option>4</option>
               <option>5</option>
               <option>6</option>
