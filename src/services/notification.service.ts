@@ -7,22 +7,19 @@ import { MessageType } from '../enums/Message';
 })
 export class NotificationService {
   
-  messageArr: IMessage[] = [];
+  messageList: IMessage[] = [];
 
   addMessage(type: MessageType, text: string): void {
     const newMessage: IMessage = {type, text};
-    const updatedMessageArr: IMessage[] = [newMessage, ...this.messageArr];
-    this.messageArr = updatedMessageArr;
+    this.messageList = [newMessage, ...this.messageList];
 
-    setTimeout((): void => {
+    setTimeout(() => {
       this.closeMessage(newMessage);
     }, 5000);
   }
 
   closeMessage(currentMessage: IMessage): void {
-    if (this.messageArr.includes(currentMessage)) {
-      this.messageArr = this.messageArr.filter((message: IMessage): boolean => message !== currentMessage);
-    }
+    this.messageList = this.messageList.filter((message: IMessage): boolean => message !== currentMessage);
   }
 
 }

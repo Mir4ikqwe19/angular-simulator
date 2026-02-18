@@ -206,9 +206,11 @@
             </div>
             <div 
               class="destination-card-info"
-              [class.gap-35px]="destination.id === 1"
-              [class.gap-76px]="destination.id === 2"
-              [class.gap-45px]="destination.id === 3"
+              [style.gap.px]="
+                destination.id === 1 ? 35 :
+                destination.id === 2 ? 76 :
+                destination.id === 3 ? 45 : 0
+              "
             >
               <div class="destination-card-description">
                 <p class="fs-24 fw-700 lh-120">{{ destination.title }}</p>
@@ -251,9 +253,11 @@
               <h3 class="fs-24 fw-700 lh-32px">{{ blog.title }}</h3>
               <div 
               class="blog-description"
-              [class.height-116px]="blog.id === 1 || blog.id === 2"
-              [class.height-84px]="blog.id === 3"
-              [class.height-148px]="blog.id === 4"
+              [style.height.px]="
+                blog.id === 1 || blog.id === 2 ? 116 :
+                blog.id === 3 ? 84 :
+                blog.id === 4 ? 148 : 0
+              "
               >
                 <p class="fs-14 fw-400 lh-20px">{{ blog.description }}</p>
               </div>
@@ -297,7 +301,7 @@
 
   <div class="notification-message-wrapper">
 
-    @for (message of notificationService.messageArr; track message) {
+    @for (message of notificationService.messageList; track message) {
       <ng-container [ngTemplateOutlet]="notificationMessage" [ngTemplateOutletContext]="{ message: message }"></ng-container>
     }
 

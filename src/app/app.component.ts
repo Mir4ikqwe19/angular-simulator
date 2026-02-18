@@ -55,7 +55,7 @@ export class AppComponent {
     }
   ];
 
-  readonly destinationBlock: IDestinationItem[] = [
+  destinationBlock: IDestinationItem[] = [
     {
       id: 1,
       imageName: 'lake-near-mountains',
@@ -85,7 +85,7 @@ export class AppComponent {
     }
   ];
 
-  readonly travelBlog: IBlogItem[] = [
+  travelBlog: IBlogItem[] = [
     {
       id: 1,
       image: 'italy',
@@ -122,7 +122,7 @@ export class AppComponent {
     this.isPrimaryColor(Color.ORANGE);
     this.initPage();
 
-    setInterval((): void => {
+    setInterval(() => {
       this.currentDateTime = new Date().toLocaleString();
     }, 1000);
   }
@@ -159,7 +159,7 @@ export class AppComponent {
   }
 
   private initPage(): void {
-    setTimeout((): void => {
+    setTimeout(() => {
       this.isLoading = false;
     }, 2000);
   }
