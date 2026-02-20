@@ -511,11 +511,19 @@
           backdrop-filter: blur(6px);
           border-radius: 0px 0px 32px 32px;
 
-          .destination-card-description {
+          .destination-card-description-wrapper {
             display: flex;
-            flex-direction: column;
-            color: var(--white-color);
+            justify-content: space-between;
+            flex: 1;
+            padding: 0px 32px;
+
+            .destination-card-description {
+              display: flex;
+              flex-direction: column;
+              color: var(--white-color);
+            }
           }
+
 
           .destination-price-btn {
             display: flex;
@@ -589,14 +597,19 @@
       .blog-card-info {
         display: flex;
         flex-direction: column;
-        gap: 24px;
-        width: 294px;
-        padding: 16px 0px 16px 0px;
+        justify-content: space-between;
+        flex: 1;
+
+        .blog-description p {
+          margin-top: 24px;
+        }
       }
 
       .blog-date {
         display: flex;
         justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
 
         span {
           color: var(--secondary-color);

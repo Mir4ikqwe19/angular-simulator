@@ -10,7 +10,7 @@ export class NotificationService {
   messageList: IMessage[] = [];
 
   addMessage(type: MessageType, text: string): void {
-    const newMessage: IMessage = {type, text};
+    const newMessage: IMessage = { type, text };
     this.messageList = [newMessage, ...this.messageList];
 
     setTimeout(() => {

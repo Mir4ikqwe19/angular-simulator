@@ -5,20 +5,20 @@ import { Injectable } from '@angular/core';
 })
 export class LocalStorageService {
   
-  setStorage<T>(key: string, value: T): void {
+  setKey<T>(key: string, value: T): void {
     localStorage.setItem(key, JSON.stringify(value));
   }
 
-  getStorage<T>(key: string): T | null {
-    const getValue: string | null = localStorage.getItem(key);
-    return getValue ? JSON.parse(getValue) : null;
+  getKey<T>(key: string): T | null {
+    const storageKey: string | null = localStorage.getItem(key);
+    return storageKey ? JSON.parse(storageKey) : null;
   }
 
-  removeStorageValue(key: string): void {
+  removeKey(key: string): void {
     localStorage.removeItem(key);
   }
 
-  clearStorage(): void {
+  clear(): void {
     localStorage.clear();
   }
 

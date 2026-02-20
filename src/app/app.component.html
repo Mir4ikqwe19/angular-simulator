@@ -204,19 +204,14 @@
               >
               <span class="fs-14 fw-700 lh-18px">{{ destination.assessment }}</span>
             </div>
-            <div 
-              class="destination-card-info"
-              [style.gap.px]="
-                destination.id === 1 ? 35 :
-                destination.id === 2 ? 76 :
-                destination.id === 3 ? 45 : 0
-              "
-            >
-              <div class="destination-card-description">
-                <p class="fs-24 fw-700 lh-120">{{ destination.title }}</p>
-                <p class="fs-14 fw-400 lh-18px">{{ destination.description }}</p>
+            <div class="destination-card-info">
+              <div class="destination-card-description-wrapper">
+                <div class="destination-card-description">
+                  <p class="fs-24 fw-700 lh-120">{{ destination.title }}</p>
+                  <p class="fs-14 fw-400 lh-18px">{{ destination.description }}</p>
+                </div>
+                <button id="destination-price-btn" class="destination-price-btn fs-20 fw-700 lh-24px">{{ destination.price }} &#36;</button>
               </div>
-              <button id="destination-price-btn" class="destination-price-btn fs-20 fw-700 lh-24px">{{ destination.price }} &#36;</button>
             </div>
           </div>
         }
@@ -250,15 +245,8 @@
               height="280px"
             >
             <div class="blog-card-info">
-              <h3 class="fs-24 fw-700 lh-32px">{{ blog.title }}</h3>
-              <div 
-              class="blog-description"
-              [style.height.px]="
-                blog.id === 1 || blog.id === 2 ? 116 :
-                blog.id === 3 ? 84 :
-                blog.id === 4 ? 148 : 0
-              "
-              >
+              <div class="blog-description">
+                <h3 class="fs-24 fw-700 lh-32px">{{ blog.title }}</h3>
                 <p class="fs-14 fw-400 lh-20px">{{ blog.description }}</p>
               </div>
               <div class="blog-date">
@@ -280,6 +268,14 @@
     </div>
   </section>
 
+  <div class="notification-message-wrapper">
+
+    @for (message of notificationService.messageList; track message) {
+      <ng-container [ngTemplateOutlet]="notificationMessage" [ngTemplateOutletContext]="{ message: message }"></ng-container>
+    }
+
+  </div>
+
   <ng-template #notificationMessage let-notification="message">
     <div class="message">
       <div class="message-wrapper">
@@ -298,12 +294,4 @@
       </div>
     </div>
   </ng-template>
-
-  <div class="notification-message-wrapper">
-
-    @for (message of notificationService.messageList; track message) {
-      <ng-container [ngTemplateOutlet]="notificationMessage" [ngTemplateOutletContext]="{ message: message }"></ng-container>
-    }
-
-  </div>
 </div>
