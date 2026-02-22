@@ -22,7 +22,13 @@
             <a id="blog-link" href="#">Блог</a>
             <a id="contancts-link" href="#">Контакты</a>
           </nav>
-          <button id="consultation-btn" class="consultation-btn fs-16 fw-600">Консультация</button>
+          <button 
+            id="consultation-btn" 
+            class="consultation-btn fs-16 fw-600"
+            (click)="notificationService.addMessage(messageType.INFO, 'Information is not available')"
+          >
+            Консультация
+        </button>
         </div>
       </div>
       <div class="header-date-info">
@@ -124,7 +130,13 @@
           <h3 class="fw-800 fs-32 lh-120">Исследуйте все горные массивы мира вместе с нами</h3>
         </div>
         <p class="fs-18 fw-400 lh-150">Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат Вирджиния, взял одно из самых странных слов в Lorem Ipsum, "consectetur"и занялся его поисками в классической латинской литературе.</p>
-        <button id="tour-program-btn" class="fs-16 fw-600 lh-20px">Программа тура</button>
+        <button
+          id="tour-program-btn"
+          class="fs-16 fw-600 lh-20px"
+          (click)="notificationService.addMessage(messageType.ERROR, 'Tour programs will be later')"
+        >
+          Программа тура
+      </button>
       </div>
     </div>
   </section>
@@ -149,7 +161,13 @@
         }
         
       </div>
-      <button id="price-program-btn" class="fs-16 fw-600 lh-20px">Стоимость программ</button>
+      <button 
+        id="price-program-btn"
+        class="fs-16 fw-600 lh-20px"
+        (click)="notificationService.addMessage(messageType.WARN, 'The cost of programs will be later')"
+      >
+        Стоимость программ
+      </button>
     </div>
   
     <div class="propose-img-container">
@@ -159,4 +177,121 @@
       <img src="/images/green-mountains.png" alt="зелёные горы с речкой" width="250px" height="250px">
     </div>
   </section>
+
+  <section class="popular-destination">
+    <div class="popular-destination-container container">
+      <div class="destination-title">
+        <span class="fs-24 fw-400 lh-20px">по версии отдыхающих</span>
+        <h3 class="fs-32 fw-800 lh-120">Популярные направления</h3>
+      </div>
+
+      <div class="destination-block-wrapper">
+
+        @for (destination of destinationBlock; track destination.id) {
+          <div class="destination-card">
+            <img
+              [src]="'/images/' + destination.imageName + '.png'"
+              [alt]="destination.imageName"
+              width="380px"
+              height="500px"
+            >
+            <div class="star-icon">
+              <img
+                [src]="'/images/' + destination.iconName + '.svg'"
+                [alt]="destination.iconName"
+                width="17px"
+                height="16px"
+              >
+              <span class="fs-14 fw-700 lh-18px">{{ destination.assessment }}</span>
+            </div>
+            <div class="destination-card-info">
+              <div class="destination-card-description-wrapper">
+                <div class="destination-card-description">
+                  <p class="fs-24 fw-700 lh-120">{{ destination.title }}</p>
+                  <p class="fs-14 fw-400 lh-18px">{{ destination.description }}</p>
+                </div>
+                <button id="destination-price-btn" class="destination-price-btn fs-20 fw-700 lh-24px">{{ destination.price }} &#36;</button>
+              </div>
+            </div>
+          </div>
+        }
+
+      </div>
+      <button
+        id="destination-rating-btn"
+        class="destination-rating fs-16 fw-600 lh-20px"
+        (click)="notificationService.addMessage(messageType.SUCCESS, 'Success is all directions')"
+      >
+        Рейтинг направлений
+      </button>
+    </div>
+  </section>
+
+  <section class="travel-blog">
+    <div class="travel-blog-container container">
+      <div class="travel-blog-title">
+        <span class="fs-24 fw-400 lh-20px">делимся впечатлениями</span>
+        <h3 class="fs-32 fw-800 lh-120">Блог о путешествиях</h3>
+      </div>
+
+      <div class="blog-cards-container">
+
+        @for (blog of travelBlog; track blog.id) {
+          <div class="blog-card" [class.card-shadow]="blog.id === 2">
+            <img
+              [src]="'/images/' + blog.image + '.png'"
+              [alt]="blog.image"
+              width="230px"
+              height="280px"
+            >
+            <div class="blog-card-info">
+              <div class="blog-description">
+                <h3 class="fs-24 fw-700 lh-32px">{{ blog.title }}</h3>
+                <p class="fs-14 fw-400 lh-20px">{{ blog.description }}</p>
+              </div>
+              <div class="blog-date">
+                <span class="fs-14 fw-700 lh-20px">{{ blog.date }}</span>
+                <a [id]="'state-' + blog.id" class="fs-14 fw-700 lh-20px" href="#">читать статью</a>
+              </div>
+            </div>
+          </div>
+        }
+
+      </div>
+      <button
+        id="travel-blog-material-btn"
+        class="travel-blog-material-btn fs-16 fw-600 lh-20px"
+        (click)="notificationService.addMessage(messageType.ERROR, 'Will come later')"
+      >
+        Другие материалы
+    </button>
+    </div>
+  </section>
+
+  <div class="notification-message-wrapper">
+
+    @for (message of notificationService.messageList; track message) {
+      <ng-container [ngTemplateOutlet]="notificationMessage" [ngTemplateOutletContext]="{ message: message }"></ng-container>
+    }
+
+  </div>
+
+  <ng-template #notificationMessage let-notification="message">
+    <div class="message">
+      <div class="message-wrapper">
+        <div class="message-info-container">
+          <img src="/images/message-icon.svg" alt="иконка сообщения" width="40px" height="40px">
+          <div class="message-title">
+            <span class="fs-16 fw-700 lh-20px">{{ notification.type }}</span>
+            <span class="fs-14 fw-400 lh-20px">{{ notification.text }}</span>
+          </div>
+        </div>
+        <div class="close-message-wrapper">
+          <button [id]="'close-' + notification.text" class="close-message" (click)="notificationService.closeMessage(notification)">
+            <img src="/images/close-message-icon.svg" alt="иконка крестика" width="20px" height="20px">
+          </button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
 </div>
