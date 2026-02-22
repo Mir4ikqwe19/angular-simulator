@@ -142,15 +142,15 @@ export class AppComponent {
   private saveLastLogin(): void {
     const LAST_LOGIN_KEY: string = 'last-login';
     const lastLog: string = new Date().toString();
-    this.localStorageService.setKey(LAST_LOGIN_KEY, lastLog);
+    this.localStorageService.setValue(LAST_LOGIN_KEY, lastLog);
   }
 
   private setVisitCount(): void {
     const LOGIN_COUNT_KEY: string = 'login-count';
-    const storedLoginCount: string = this.localStorageService.getKey(LOGIN_COUNT_KEY) || '0';
+    const storedLoginCount: string = this.localStorageService.getValue(LOGIN_COUNT_KEY) || '0';
 
     let loginCount: number = JSON.parse(storedLoginCount) + 1;
-    this.localStorageService.setKey(LOGIN_COUNT_KEY, loginCount);
+    this.localStorageService.setValue(LOGIN_COUNT_KEY, loginCount);
   }
 
   private isPrimaryColor(color: Color): boolean {
