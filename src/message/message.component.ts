@@ -1,15 +1,15 @@
 import { NgTemplateOutlet } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { NotificationService } from '../services/notification.service';
+import { MessageService } from '../services/message.service';
 
 @Component({
   selector: 'app-message',
-  imports: [NgTemplateOutlet,],
+  imports: [NgTemplateOutlet],
   templateUrl: './message.component.html',
   styleUrl: './message.component.scss',
 })
 export class MessageComponent {
 
-  notificationService: NotificationService = inject(NotificationService);
+  messageService: MessageService = inject(MessageService);
   
 }

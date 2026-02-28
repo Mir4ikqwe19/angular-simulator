@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { widgetMode } from '../types/WidgetMode';
-import { NotificationService } from '../services/notification.service';
+import { MessageService } from '../services/message.service';
 import { RouterLink, RouterLinkActive } from "@angular/router";
 import { INavigation } from '../interfaces/INavigation';
 
@@ -12,7 +12,7 @@ import { INavigation } from '../interfaces/INavigation';
 })
 export class HeaderComponent {
 
-  notificationService: NotificationService = inject(NotificationService);
+  messageService: MessageService = inject(MessageService);
 
   companyName: string = 'румтибет';
   counter: number = 0;

@@ -5,7 +5,7 @@ import { MessageType } from '../enums/Message';
 @Injectable({
   providedIn: 'root',
 })
-export class NotificationService {
+export class MessageService {
   
   messageList: IMessage[] = [];
 
@@ -19,23 +19,19 @@ export class NotificationService {
   }
 
   showWarn(text: string): void {
-    const warn: MessageType.WARN = MessageType.WARN;
-    this.addMessage(warn, text);
+    this.addMessage(MessageType.WARN, text);
   }
 
   showError(text: string): void {
-    const error: MessageType.ERROR = MessageType.ERROR;
-    this.addMessage(error, text);
+    this.addMessage(MessageType.ERROR, text);
   }
 
   showSucces(text: string) {
-    const succes: MessageType.SUCCESS = MessageType.SUCCESS;
-    this.addMessage(succes, text);
+    this.addMessage(MessageType.SUCCESS, text);
   }
 
   showInfo(text: string) {
-    const info: MessageType.INFO = MessageType.INFO;
-    this.addMessage(info, text);
+    this.addMessage(MessageType.INFO, text);
   }
 
   closeMessage(currentMessage: IMessage): void {

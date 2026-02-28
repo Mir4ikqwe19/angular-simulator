@@ -6,7 +6,7 @@ import { Color } from '../enums/Color';
 import { LocalStorageService } from '../services/local-storage.service';
 import { numberCollection, stringCollection } from '../app/collection';
 import { FormsModule } from '@angular/forms';
-import { NotificationService } from '../services/notification.service';
+import { MessageService } from '../services/message.service';
 
 @Component({
   selector: 'app-home-page',
@@ -16,7 +16,7 @@ import { NotificationService } from '../services/notification.service';
 })
 export class HomePageComponent {
 
-  notificationService: NotificationService = inject(NotificationService);
+  messageService: MessageService = inject(MessageService);
   private localStorageService: LocalStorageService = inject(LocalStorageService);
 
   isLoading: boolean = true;
@@ -25,7 +25,7 @@ export class HomePageComponent {
   dateTrip!: string;
   participants!: string;
 
-  readonly programBlocks: IProgramItem[] = [
+  programBlocks: IProgramItem[] = [
     {
       id: 1,
       iconName: 'people-icon',
@@ -123,7 +123,7 @@ export class HomePageComponent {
     const LOGIN_COUNT_KEY: string = 'login-count';
     const storedLoginCount: string = this.localStorageService.getValue(LOGIN_COUNT_KEY) || '0';
 
-    let loginCount: number = JSON.parse(storedLoginCount) + 1;
+    const loginCount: number = JSON.parse(storedLoginCount) + 1;
     this.localStorageService.setValue(LOGIN_COUNT_KEY, loginCount);
   }
 

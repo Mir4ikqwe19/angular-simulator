@@ -66,8 +66,8 @@
         <h3>Наши услуги</h3>
         <div class="footer-links-wrapper">
 
-          @for (favor of favorBlock; track favor.id) {
-            <a href="#" class="footer-link" [id]="'footer-link-' + favor.id">{{ favor.text }}</a>
+          @for (favor of favorBlock; track $index) {
+            <a href="#" class="footer-link" [id]="'footer-link-' + $index">{{ favor }}</a>
           }
 
         </div>
@@ -77,8 +77,8 @@
         <h3>Важно для путешествий</h3>
         <div class="footer-links-wrapper">
 
-          @for (board of boardItems; track board.id) {
-            <a href="#" class="footer-link" [id]="'board-lonk-' + board.id">{{ board.text }}</a>
+          @for (board of boardItems; track $index) {
+            <a href="#" class="footer-link" [id]="'board-lonk-' + $index">{{ board }}</a>
           }
 
         </div>

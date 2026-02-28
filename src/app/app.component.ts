@@ -1,8 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import './training' 
-import { Color } from '../enums/Color';
 import { FormsModule } from '@angular/forms';
-import { LocalStorageService } from '../services/local-storage.service';
 import { HeaderComponent } from "../header/header.component";
 import { RouterOutlet } from '@angular/router';
 import { FooterComponent } from "../footer/footer.component";
