@@ -1,0 +1,28 @@
+<div class="notification-message-wrapper">
+
+  @for (message of notificationService.messageList; track message) {
+    <ng-container [ngTemplateOutlet]="notificationMessage" [ngTemplateOutletContext]="{ message: message }"></ng-container>
+  }
+
+</div>
+
+<ng-template #notificationMessage let-notification="message">
+
+  <div class="message">
+    <div class="message-wrapper">
+      <div class="message-info-container">
+        <img src="/images/message-icon.svg" alt="иконка сообщения" width="40px" height="40px">
+        <div class="message-title">
+          <span class="fs-16 fw-700 lh-20px">{{ notification.type }}</span>
+          <span class="fs-14 fw-400 lh-20px">{{ notification.text }}</span>
+        </div>
+      </div>
+      <div class="close-message-wrapper">
+        <button [id]="'close-' + notification.text" class="close-message" (click)="notificationService.closeMessage(notification)">
+          <img src="/images/close-message-icon.svg" alt="иконка крестика" width="20px" height="20px">
+        </button>
+      </div>
+    </div>
+  </div>
+  
+</ng-template>
