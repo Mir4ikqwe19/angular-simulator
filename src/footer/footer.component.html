@@ -1,0 +1,95 @@
+<section class="subscribe">
+  <div class="container subscribe-wrapper">
+    <div class="subscribe-container">
+      <div class="subscribe-title">
+        <span class="fs-18 fw-400 lh-20px">актуально</span>
+        <h3 class="fs-26 fw-800 lh-120">Получайте полезные рассылки о путешествиях</h3>
+      </div>
+
+      <div class="subscribe-form-wrapper">
+        <span>Введите e-mail адрес</span>
+        <div class="subscribe-form-shadow">
+          <div class="subscribe-form">
+            <input type="text" class="subscribe-input" placeholder="name@domain.com">
+            <button class="subscribe-btn" id="subscribe-btn">Подписаться на новости</button>
+          </div>
+        </div>
+        <div class="subscribe-form-description">
+          <p class="subscribe__agreement">
+            Подписываясь на новости, вы автоматически соглашаетесь с 
+            <a href="#" class="subscribe-link" id="subscribe-link">
+              условиями обработки персональных данных
+            </a>
+              и
+            <a href="#" class="subscribe-link" id="ad-rules-link">
+              правилами рекламных рассылок
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-wrapper">
+
+    <div class="footer-left">
+      <div class="footer-left-title">
+        <h3 class="fs-20 fw-700 lh-24px">Компания «РумТибет»</h3>
+        <p class="fs-14 fw-400 lh-20px">Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney.</p>
+      </div>
+      <div class="footer-left-links">
+        <div class="footer-left-contacts">
+          <a href="#" id="mail-link" class="fs-14 fw-600 lh-18px">info&#64;domain.com</a>
+          <a href="#" id="phone-number" class="fs-14 fw-600 lh-18px">+7 (123) 456-78-90</a>
+        </div>
+        <div class="footer-left-icons">
+          <a href="#" id="telegram-link">
+            <img src="/images/telegram-icon.svg" alt="telegram-icon">
+          </a>
+          <a href="#" id="vk-link">
+            <img src="/images/vk-icon.svg" alt="vk-icon">
+          </a>
+          <a href="#" id="pinterest-link">
+            <img src="/images/pinterest-icon.svg" alt="pinterest-icon">
+          </a>
+          <a href="#" id="skype-link">
+            <img src="/images/skype-icon.svg" alt="skype-icon">
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="links-container">
+      <div class="footer-middle">
+        <h3>Наши услуги</h3>
+        <div class="footer-links-wrapper">
+
+          @for (favor of favorBlock; track $index) {
+            <a href="#" class="footer-link" [id]="'footer-link-' + $index">{{ favor }}</a>
+          }
+
+        </div>
+      </div>
+      
+      <div class="footer-right">
+        <h3>Важно для путешествий</h3>
+        <div class="footer-links-wrapper">
+
+          @for (board of boardItems; track $index) {
+            <a href="#" class="footer-link" [id]="'board-lonk-' + $index">{{ board }}</a>
+          }
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container footer-bottom-description">
+      <span>ИП Константинопольский К.К., 2023</span>
+      <a href="#" id="data-policy">Политика обработки персональных данных</a>
+    </div>
+  </div>
+</footer>
