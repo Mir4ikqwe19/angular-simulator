@@ -1,0 +1,50 @@
+.message {
+  display: flex;
+  width: 350px;
+  height: 70px;
+  background-color: #0F172AD9;
+  border: 1px solid #FFFFFF;
+  border-radius: 10px;
+
+  .message-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 350px;
+    height: 70px;
+
+    .message-info-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin: 15px 0px 15px 15px;
+
+      .message-title {
+        display: flex;
+        flex-direction: column;
+        color: var(--white-color);
+      }
+    }
+  }
+
+  .close-message-wrapper {
+    display: flex;
+    height: 20px;
+    padding: 7px;
+    
+    .close-message {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
+  }
+}
+
+.notification-message-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}

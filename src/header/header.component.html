@@ -1,0 +1,64 @@
+<header class="header">
+  <div class="main-header-wrapper">
+    <div class="container main-header">
+
+      <div class="company-logo">
+        <img src="/images/mountains-logo.svg" width="137px" height="29px" alt="Румтибет иконка">
+        <span class="logo-name">{{ companyName }}</span>
+      </div>
+
+      <div class="main-header-info-wrapper">
+        <div class="main-header-info">
+          <nav class="header-nav fs-18 fw-600">
+
+            @for (link of navigationItems; track link.id) {
+            <a 
+              [id]="'navigate-link-' + link.id"
+              [routerLink]="link.path"
+              routerLinkActive="active-link"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >
+              {{ link.text }}
+            </a>
+            }
+
+          </nav>
+          <button
+            id="consultation-btn"
+            class="consultation-btn fs-16 fw-600"
+            (click)="messageService.showError('Ошибка!')"
+          >
+            Консультация
+          </button>
+        </div>
+        <div class="header-date-info">
+          @if (currentWidget === 'timer') {
+            <p class="header-timer">{{ currentDateTime }}</p>
+            <button id="show-counter-btn" (click)="switchWidgetMode('counter')">Показать счётчик</button>
+          } @else {
+            <div class="header-counter">
+              <button
+              id="minus-counter-btn"
+              (click)="reduceCounter()"
+              [disabled]="counter <= 0"
+              class="counter-btn"
+            >
+              -
+            </button>
+              <span>{{ counter }}</span>
+              <button
+              id="plus-counter-btn"
+              (click)="increaseCounter()"
+              class="counter-btn"
+            >
+              +
+            </button>
+            <button id="show-timer-btn" class="show-timer-btn" (click)="switchWidgetMode('timer')">Показать таймер</button>
+            </div>
+          }
+        </div>
+      </div>
+
+    </div>
+  </div>
+</header>
