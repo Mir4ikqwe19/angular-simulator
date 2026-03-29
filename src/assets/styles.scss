@@ -6,6 +6,11 @@
   overflow-x: hidden;
 }
 
+.no-scroll {
+  overflow: hidden !important;
+  height: 100vh !important;
+}
+
 p {
   margin: 0px;
   overflow-y: hidden;
@@ -41,8 +46,16 @@ h3 {
   --deep-green-color: #1A3E3E;
 }
 
+.fs-12 {
+  font-size: 12px;
+}
+
 .fs-14 {
   font-size: 14px;
+}
+
+.fs-15 {
+  font-size: 15px;
 }
 
 .fs-16 {
@@ -97,12 +110,24 @@ h3 {
   line-height: 150%;
 }
 
+.lh-14px {
+  line-height: 14px;
+}
+
+.lh-17px {
+  line-height: 17px;
+}
+
 .lh-20px {
   line-height: 20px;
 }
 
 .lh-24px {
   line-height: 24px;
+}
+
+.lh-30px {
+  line-height: 30px;
 }
 
 .lh-32px {

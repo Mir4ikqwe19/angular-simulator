@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import './training' 
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from "../header/header.component";
 import { RouterOutlet } from '@angular/router';
 import { FooterComponent } from "../footer/footer.component";
 import { MessageComponent } from "../message/message.component";
+import { LoaderService } from '../services/loader.service';
+import { LoaderComponent } from '../loader/loader.component';
+import { UserService } from '../services/user.service';
 
 
 @Component({
@@ -15,16 +18,9 @@ import { MessageComponent } from "../message/message.component";
 })
 export class AppComponent {
   
-  isLoading: boolean = true;
+  loaderService: LoaderService = inject(LoaderService);
 
-  constructor() {
-    this.initPage();
-  }
+  constructor() {}
 
-  private initPage(): void {
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 2000);
-  }
   
 }

@@ -1,11 +1,4 @@
-  @if (isLoading) {
-    <div class="loading-wrapper">
-      <img src="/images/loading-icon.svg" alt="иконка загрузки" width="51px" height="51px" class="loading-icon">
-      <span>Загрузка страницы...</span>
-    </div>
-  }
-
-<div [class.active]="isLoading">
+<div>
     <app-header></app-header>
     <router-outlet></router-outlet>
     <app-footer></app-footer>

@@ -1,6 +1,6 @@
 <div class="notification-message-wrapper">
 
-  @for (message of messageService.messageList; track message) {
+  @for (message of messageService.messages$ | async; track message) {
     <ng-container [ngTemplateOutlet]="notificationMessage" [ngTemplateOutletContext]="{ message: message }"></ng-container>
   }
 
