@@ -12,15 +12,10 @@ import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-root',
-  imports: [FormsModule, HeaderComponent, RouterOutlet, FooterComponent, MessageComponent],
+  imports: [FormsModule, HeaderComponent, RouterOutlet, FooterComponent, MessageComponent, LoaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  
-  loaderService: LoaderService = inject(LoaderService);
-
-  constructor() {}
-
   
 }

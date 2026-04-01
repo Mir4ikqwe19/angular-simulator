@@ -1,10 +1,7 @@
-@if (loaderService.isLoading) {
-  <app-loader></app-loader>
-}
-
 <div class="users-page-wrapper">
   <div class="users-container">
-    @for (user of usersList$ | async; track user.id) {
+    
+    @for (user of userList$ | async; track user.id) {
       <div class="user-card">
 
         <div class="user-card-wrapper">
@@ -84,5 +81,6 @@
     } @empty {
       <span class="empty fw-800 fs-26 lh-30px">Нет пользователей для отображения</span>
     }
+    
   </div>
 </div>

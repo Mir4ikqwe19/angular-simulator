@@ -4,11 +4,11 @@ import { LoaderComponent } from '../loader/loader.component';
 import { LoaderService } from '../services/loader.service';
 import { IUser } from '../interfaces/IUser';
 import { AsyncPipe } from '@angular/common';
-import { Observable } from 'rxjs';
+import { delay, Observable, tap } from 'rxjs';
 
 @Component({
   selector: 'app-users-page',
-  imports: [LoaderComponent, AsyncPipe],
+  imports: [AsyncPipe],
   templateUrl: './users-page.component.html',
   styleUrl: './users-page.component.scss',
 })
@@ -16,11 +16,13 @@ export class UsersPageComponent {
 
   private userService: UserService = inject(UserService);
   loaderService: LoaderService = inject(LoaderService);
-
-  usersList$: Observable<IUser[]> = this.userService.users$;
+  userList$: Observable<IUser[]> = this.userService.users$;
 
   constructor() {
-    this.userService.loadUsers().subscribe()
+    this.userService.loadUsers()
+      .pipe(
+        tap((users: IUser[]) => this.userService.setUsers(users))
+      ).subscribe();
   }
 
 }

@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class LoaderService {
   
-  isLoading!: boolean;
-
-  constructor() {}
+  private loaderSubject: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  loader$: Observable<boolean> = this.loaderSubject.asObservable();
 
   showLoader(): void {
-    this.isLoading = true;
-    document.documentElement.classList.add('no-scroll');
+    this.loaderSubject.next(true);
+    document.documentElement.style.overflow = 'hidden';
   }
 
   hideLoader(): void {
-    this.isLoading = false;
-    document.documentElement.classList.remove('no-scroll');
+    this.loaderSubject.next(false);
+    document.documentElement.style.removeProperty('overflow');
   }
 
 }

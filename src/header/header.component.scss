@@ -29,6 +29,9 @@
       gap: 50px;
 
       .header-timer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         color: var(--white-color);
       }
 

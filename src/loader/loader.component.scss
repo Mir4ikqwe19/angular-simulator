@@ -1,6 +1,7 @@
 .spinner-container {
   display: flex;
   justify-content: center;
+  overflow: hidden;
   align-items: center;
   position: fixed;
   inset: 0;

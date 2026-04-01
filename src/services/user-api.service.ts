@@ -3,7 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { IUser } from '../interfaces/IUser';
 import { Observable } from 'rxjs';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class UserApiService {
   
   private http: HttpClient = inject(HttpClient);

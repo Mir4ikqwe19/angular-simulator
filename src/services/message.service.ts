@@ -3,9 +3,7 @@ import { IMessage } from '../interfaces/IMessage';
 import { MessageType } from '../enums/Message';
 import { BehaviorSubject, filter, map, Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class MessageService {
   
   messageList: IMessage[] = [];
