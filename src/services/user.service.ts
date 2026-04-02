@@ -7,6 +7,7 @@ import { MessageService } from './message.service';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
+
   private userApi: UserApiService = inject(UserApiService);
   private loaderService: LoaderService = inject(LoaderService);
   private messageService: MessageService = inject(MessageService);
@@ -34,4 +35,5 @@ export class UserService {
         finalize(() => this.loaderService.hideLoader()),
       );
   }
+  
 }

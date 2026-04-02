@@ -15,7 +15,7 @@ import { delay, Observable, tap } from 'rxjs';
 export class UsersPageComponent {
 
   private userService: UserService = inject(UserService);
-  loaderService: LoaderService = inject(LoaderService);
+  private loaderService: LoaderService = inject(LoaderService);
   userList$: Observable<IUser[]> = this.userService.users$;
 
   constructor() {

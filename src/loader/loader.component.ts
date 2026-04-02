@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { LoaderService } from '../services/loader.service';
 import { AsyncPipe } from '@angular/common';
-import { tap } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 
 @Component({
   selector: 'app-loader',
@@ -12,6 +12,6 @@ import { tap } from 'rxjs';
 export class LoaderComponent {
 
   loaderService: LoaderService = inject(LoaderService);
-  isLoading$ = this.loaderService.loader$
+  isLoading$: Observable<boolean> = this.loaderService.loader$
 
 }
