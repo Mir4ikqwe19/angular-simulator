@@ -1,3 +1,86 @@
-<div class="users-page">
-  <h1>Coming soon, wait for it</h1>
+<div class="users-page-wrapper">
+  <div class="users-container">
+    
+    @for (user of userList$ | async; track user.id) {
+      <div class="user-card">
+
+        <div class="user-card-wrapper">
+          <div class="user-name">
+            <h3 class="fs-26 lh-30px fw-800">{{ user.name }}</h3>
+            <span class="fs-15 fw-700 lh-17px">{{ '&#64;' + user.username }}</span>
+          </div>
+
+          <div class="blocks-info">
+            <h4 class="title-flex small-font-bold">Контакты</h4>
+            <div class="blocks-info-flex">
+              <p>Эл. почта:</p>
+              <span class="yellow-text">{{ user.email }}</span>
+            </div>
+
+            <div class="blocks-info-flex">
+              <p>Телефон:</p>
+              <span class="contacts-info-number">{{ user.phone }}</span>
+            </div>
+
+            <div class="blocks-info-flex">
+              <p>Веб-сайт:</p>
+              <span class="yellow-text">{{ user.website }}</span>
+            </div>
+          </div>
+
+          <div class="address-wrapper">
+            <h4 class="title-flex small-font-bold">Адрес проживания</h4>
+            <div class="blocks-info">
+              <div class="blocks-info-flex">
+                <p>Город:</p>
+                <span>{{ user.address.city }}</span>
+              </div>
+
+              <div class="blocks-info-flex">
+                <p>Улица:</p>
+                <span>{{ user.address.street }}</span>
+              </div>
+
+              <div class="blocks-info-flex">
+                <p>Индекс:</p>
+                <span>{{ user.address.zipcode }}</span>
+              </div>
+
+              <div class="blocks-info-flex">
+                <p>Координаты:</p>
+                <div class="geo-wrapper">
+                  <span class="geo">{{ user.address.geo.lat }}</span>
+                  <span class="geo">{{ user.address.geo.lng }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="workplace-wrapper">
+            <h4 class="title-flex small-font-bold">Место работы</h4>
+            <div class="blocks-info">
+              <div class="blocks-info-flex">
+                <p>Компания:</p>
+                <span>{{ user.company.name }}</span>
+              </div>
+
+              <div class="blocks-info-flex">
+                <p>Миссия:</p>
+                <span>{{ user.company.catchPhrase }}</span>
+              </div>
+
+              <div class="blocks-info-flex">
+                <p>Специализация:</p>
+                <span>{{ user.company.bs }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    } @empty {
+      <span class="empty fw-800 fs-26 lh-30px">Нет пользователей для отображения</span>
+    }
+    
+  </div>
 </div>
