@@ -1,0 +1,25 @@
+.filter-input-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  box-sizing: border-box;
+  width: 1890px;
+  height: 70px;
+  padding: 20px;
+  background-color: var(--deep-green-color);
+
+  input {
+    width: 330px;
+    height: 35px;
+    box-sizing: border-box;
+    padding: 8px;
+    border-radius: 5px;
+    border: 2px outset var(--white-color);
+
+    &::placeholder {
+      color: #969696;
+    }
+  }
+
+  
+}

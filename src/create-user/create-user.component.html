@@ -1,0 +1,126 @@
+<form 
+  class="user-form-wrapper"
+  [formGroup]="createUserForm"
+>
+  <div class="form-wrapper">
+    <h3>User Info:</h3>
+
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name" formControlName="name">
+    </div>
+
+    <div>
+      <label for="user-name">Username:</label>
+      <input type="text" name="user-name" id="user-name" formControlName="username">
+    </div>
+
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" name="email" id="email" formControlName="email">
+    </div>
+
+    <div>
+      <label for="phone">Phone:</label>
+      <input type="tel" name="phone" id="phone" formControlName="phone">
+    </div>
+
+    <div>
+      <label for="website">Websiite:</label>
+      <input 
+        type="text" 
+        name="website" 
+        id="website" 
+        formControlName="website" 
+        placeholder="Необязательное поле"
+      >
+    </div>
+  </div>
+
+  <div class="form-wrapper">
+    <h3>Address:</h3>
+
+    <div formGroupName="address">
+      <label for="address-city">Address city:</label>
+      <input type="text" name="address-city" id="address-city" formControlName="city">
+    </div>
+
+    <div formGroupName="address">
+      <label for="address-street">Address street:</label>
+      <input type="text" name="address-street" id="address-street" formControlName="street">
+    </div>
+
+    <div formGroupName="address">
+      <label for="address-suite">Address suite:</label>
+      <input 
+        type="text" 
+        name="address-suite" 
+        id="address-suite" 
+        formControlName="suite"
+        placeholder="Необязательное поле"
+      >
+    </div>
+
+    <div formGroupName="address" >
+      <label for="address-zipcode">Address zipcode:</label>
+      <input type="number" name="address-zipcode" id="address-zipcode" formControlName="zipcode">
+    </div>
+
+    <div formGroupName="address">
+      <ng-container formGroupName="geo">
+        <label for="address-geo-lat">Address geo lat:</label>
+        <input type="number" name="address-geo-lat" id="address-geo-lat" formControlName="lat">
+      </ng-container>
+    </div>
+
+    <div formGroupName="address">
+      <ng-container formGroupName="geo">
+        <label for="address-geo-lng">Address geo lng:</label>
+        <input type="number" name="address-geo-lng" id="address-geo-lng" formControlName="lng">
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="form-wrapper">
+    <h3>Company</h3>
+
+    <div formGroupName="company">
+      <label for="company-name">Company name:</label>
+      <input type="text" name="company-name" id="company-name" formControlName="name">
+    </div>
+
+    <div formGroupName="company">
+      <label for="company-catchPhrase">Company catchPhrase:</label>
+      <input 
+        type="text" 
+        name="company-catch-phrase" 
+        id="company-catch-phrase" 
+        formControlName="catchPhrase"
+        placeholder="Необязательное поле"
+      >
+    </div>
+
+    <div formGroupName="company">
+      <label for="company-bs">Company bs:</label>
+      <input 
+        type="text" 
+        name="company-bs" 
+        id="company-bs" 
+        formControlName="bs"
+        placeholder="Необязательное поле"
+      >
+    </div>
+  </div>
+</form>
+
+<div class="create-user-btn-wrapper">
+  <button
+    class="create-user-btn"
+    type="submit"
+    id="create-user-btn"
+    (click)="onSubmit()"
+    [disabled]="createUserForm.invalid"
+  >
+    Create User
+  </button>
+</div>
