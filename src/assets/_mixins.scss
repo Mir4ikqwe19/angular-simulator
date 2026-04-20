@@ -17,3 +17,8 @@
   background-color: var(--white-color);
   color: var(--deep-green-color);
 }
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}

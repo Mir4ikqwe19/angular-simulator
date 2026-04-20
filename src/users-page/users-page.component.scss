@@ -4,156 +4,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 1470px;
-}
-
-h4 {
-  margin: 0;
-}
-
-.small-font-bold {
-  font-size: 12px;
-  line-height: 14px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.title-flex {
-  width: 380px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.yellow-text {
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 20px;
-  color: #d4a373;
-}
-
-.blocks-info {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-
-  span {
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 20px;
-  }
-
-  &-flex {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  p {
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 20px;
-    color: #667c7c;
-  }
-}
-
-.users-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin: 80px 210px;
-  row-gap: 50px;
-  column-gap: 70px;
-
-  .user-card-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
-
-  .user-card {
-    display: flex;
-    flex-direction: column;
-    border-top: 4px solid #c58a4b;
-    max-width: 440px;
-    box-sizing: border-box;
-    max-height: 630px;
-    background-color: var(--white-color);
-    padding: 35px 30px 50px 30px;
-
-    .user-name {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      margin-bottom: 21px;
-      gap: 3px;
-      height: 48px;
-
-      span {
-        color: #d4a373;
-      }
-    }
-
-    h4::after {
-      content: '';
-      display: block;
-      width: 289px;
-      height: 1px;
-      background-color: #e2e8f0;
-    }
-
-    .contacts-info {
-      &-number {
-        color: #1d3939 !important;
-      }
-    }
-
-    .address-wrapper {
-      display: flex;
-      flex-direction: column;
-      gap: 13px;
-
-      h4::after {
-        content: '';
-        display: block;
-        width: 211px;
-        height: 1px;
-        background-color: #e2e8f0;
-      }
-
-      .geo-wrapper {
-        display: flex;
-        gap: 4px;
-
-        .geo {
-          border: 1px solid #e2e8f0;
-          background-color: #f4f7f5;
-          border-radius: 3px;
-          padding: 1px 6px;
-        }
-      }
-    }
-
-    .workplace-wrapper {
-      display: flex;
-      flex-direction: column;
-      gap: 13px;
-
-      &-info {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      h4::after {
-        content: '';
-        display: block;
-        width: 255px;
-        height: 1px;
-        background-color: #e2e8f0;
-      }
-    }
-  }
 }
 
 .empty {
@@ -167,4 +17,13 @@ h4 {
   color: var(--white-color);
   padding: 30px;
   border-radius: 20px;
+}
+
+.user-list-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0px 210px;
+  row-gap: 50px;
+  column-gap: 70px;
 }
