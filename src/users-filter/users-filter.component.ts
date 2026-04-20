@@ -1,7 +1,7 @@
 import { Component, DestroyRef, EventEmitter, inject, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { IUser } from '../interfaces/IUser';
-import { combineLatest, debounceTime, distinctUntilChanged, tap } from 'rxjs';
+import { combineLatest, debounceTime, distinctUntilChanged, map, tap } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
@@ -16,13 +16,14 @@ export class UsersFilterComponent implements OnInit {
   
   private destroyRef: DestroyRef = inject(DestroyRef);
 
-  searchInput: FormControl<string> = new FormControl<string>('', { nonNullable: true });
+  filterForm: FormControl<string> = new FormControl<string>('', { nonNullable: true });
 
   ngOnInit(): void {
-    this.searchInput.valueChanges
+    this.filterForm.valueChanges
       .pipe(
         debounceTime(200),
         distinctUntilChanged(),
+        map((value: string) => value.trim().toLowerCase()),
         tap((value: string) => this.filterChange.emit(value)),
         takeUntilDestroyed(this.destroyRef)
       ).subscribe();

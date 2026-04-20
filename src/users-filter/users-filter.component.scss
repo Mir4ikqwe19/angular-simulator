@@ -1,25 +1,49 @@
 .filter-input-wrapper {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   box-sizing: border-box;
+  overflow: visible;
   width: 1890px;
-  height: 70px;
+  min-height: 140px;
   padding: 20px;
-  background-color: var(--deep-green-color);
 
-  input {
-    width: 330px;
-    height: 35px;
-    box-sizing: border-box;
-    padding: 8px;
-    border-radius: 5px;
-    border: 2px outset var(--white-color);
+input {
+  width: 360px;
+  height: 50px;
+  box-sizing: border-box;
+  padding: 15px;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background: #fff;
 
-    &::placeholder {
-      color: #969696;
-    }
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.04),
+    0 6px 12px rgba(0, 0, 0, 0.06),
+    0 12px 24px rgba(0, 0, 0, 0.08);
+
+  transition: all 0.2s ease;
+
+  &::placeholder {
+    color: #969696;
   }
+
+  &:hover {
+    box-shadow:
+      0 4px 8px rgba(0, 0, 0, 0.06),
+      0 10px 20px rgba(0, 0, 0, 0.08),
+      0 18px 32px rgba(0, 0, 0, 0.1);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: #5b9cff;
+
+    box-shadow:
+      0 0 0 3px rgba(91, 156, 255, 0.2),
+      0 8px 20px rgba(0, 0, 0, 0.12);
+  }
+}
 
   
 }

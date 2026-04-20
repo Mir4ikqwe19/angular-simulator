@@ -19,7 +19,7 @@ export class UserService {
 
   setUsers(users: IUser[]): void {
     this.usersSubject.next(users);
-    this.localStorageService.setValue('USERS', users);
+    this.localStorageService.setValue('users', users);
   }
 
   getUsers(): IUser[] {
@@ -35,23 +35,21 @@ export class UserService {
 
   deleteUser(id: number): void {
     const currentUser: IUser[] = this.getUsers();
-    const updatedUsers: IUser[] = currentUser.filter(user => user.id !== id);
+    const updatedUsers: IUser[] = currentUser.filter((user: IUser) => user.id !== id);
     
     this.setUsers(updatedUsers);
   }
 
   loadUsers(): Observable<IUser[]> {
-    const usersFromStorage: IUser[] = this.localStorageService.getValue<IUser[]>('USERS') || [];
+    const usersFromStorage: IUser[] = this.localStorageService.getValue<IUser[]>('users') || [];
 
-    if (usersFromStorage?.length) {
+    if (usersFromStorage.length) {
       this.setUsers(usersFromStorage);
       return of(usersFromStorage);
     } else {
       this.loaderService.showLoader();
       return this.userApi.getUsers()
         .pipe(
-          tap((users: IUser[]) => this.localStorageService.setValue('USERS', users)),
-          tap((users: IUser[]) => this.setUsers(users)),
           catchError(() => {
             this.messageService.showError('Не удалось загрузить.');
             return of([]);

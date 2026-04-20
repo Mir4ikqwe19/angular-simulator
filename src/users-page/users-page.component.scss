@@ -5,3 +5,25 @@
   justify-content: center;
   align-items: center;
 }
+
+.empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: 606px;
+  height: 90px;
+  background-color: #b15757;
+  color: var(--white-color);
+  padding: 30px;
+  border-radius: 20px;
+}
+
+.user-list-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0px 210px;
+  row-gap: 50px;
+  column-gap: 70px;
+}

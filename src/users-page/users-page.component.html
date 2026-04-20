@@ -1,16 +1,17 @@
 <div class="users-page-wrapper">
-  <app-users-filter 
-    (filterChange)="filterUsers($event)"
-  />
-  <app-create-user 
-    (createUser)="addUser($event)"
-  />
-
+  <app-create-user (createUser)="addUser($event)" />
+  <app-users-filter (filterChange)="filterUsers($event)" />
+  
   @if (filteredUsers$ | async; as users) {
-    <app-user-card 
-      [userList]="users"
-      (deleteUser)="deleteUser($event)"
-    />
+    <div class="user-list-wrapper">
+
+      @for (user of users; track user.id) {
+        <app-user-card [user]="user" (deleteUser)="deleteUser($event)" />
+      } @empty {
+        <span class="empty fw-800 fs-26 lh-30px">Нет пользователей для отображения</span>
+      }
+
+    </div>
   }
 
 </div>

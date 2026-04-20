@@ -20,21 +20,18 @@ export class UsersPageComponent implements OnInit {
   userList$: Observable<IUser[]> = this.userService.users$;
   filteredUsers$: Observable<IUser[]> = new Observable();
 
-  constructor() {
+  ngOnInit(): void {
+    this.filteredUsers$ = combineLatest([this.userList$, this.filterSubject])
+      .pipe(
+        map(([users, filter]: [IUser[], string]) => {
+          return users.filter((user: IUser) => user.name.trim().toLowerCase().includes(filter));
+        })
+      );
+
     this.userService.loadUsers()
       .pipe(
         tap((users: IUser[]) => this.userService.setUsers(users))
       ).subscribe();
-  }
-
-  ngOnInit(): void {
-    this.filteredUsers$ = combineLatest([this.userList$, this.filterSubject])
-      .pipe(
-        map(([users, filter]) => {
-          const lowerCaseFilter: string = filter.toLowerCase();
-          return users.filter((user: IUser) => user.name.toLowerCase().includes(lowerCaseFilter));
-        })
-      );
   }
 
   deleteUser(user: IUser): void {
