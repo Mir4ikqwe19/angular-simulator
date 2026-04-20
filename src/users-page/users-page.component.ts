@@ -17,10 +17,12 @@ export class UsersPageComponent implements OnInit {
 
   private userService: UserService = inject(UserService);
   private filterSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
+
+  filter$: Observable<string> = this.filterSubject.asObservable();
   userList$: Observable<IUser[]> = this.userService.users$;
   filteredUsers$: Observable<IUser[]> = combineLatest([
     this.userList$, 
-    this.filterSubject
+    this.filter$
   ]).pipe(
     map(([users, filter]: [IUser[], string]) => {
       return users.filter((user: IUser) => user.name.trim().toLowerCase().includes(filter));
