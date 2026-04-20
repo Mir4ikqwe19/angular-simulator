@@ -18,16 +18,16 @@ export class UsersPageComponent implements OnInit {
   private userService: UserService = inject(UserService);
   private filterSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
   userList$: Observable<IUser[]> = this.userService.users$;
-  filteredUsers$: Observable<IUser[]> = new Observable();
+  filteredUsers$: Observable<IUser[]> = combineLatest([
+    this.userList$, 
+    this.filterSubject
+  ]).pipe(
+    map(([users, filter]: [IUser[], string]) => {
+      return users.filter((user: IUser) => user.name.trim().toLowerCase().includes(filter));
+    })
+  );
 
   ngOnInit(): void {
-    this.filteredUsers$ = combineLatest([this.userList$, this.filterSubject])
-      .pipe(
-        map(([users, filter]: [IUser[], string]) => {
-          return users.filter((user: IUser) => user.name.trim().toLowerCase().includes(filter));
-        })
-      );
-
     this.userService.loadUsers()
       .pipe(
         tap((users: IUser[]) => this.userService.setUsers(users))

@@ -12,7 +12,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 })
 export class UsersFilterComponent implements OnInit {
   
-  @Output() filterChange = new EventEmitter<string>();
+  @Output() filterChange: EventEmitter<string> = new EventEmitter<string>();
   
   private destroyRef: DestroyRef = inject(DestroyRef);
 

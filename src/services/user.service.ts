@@ -44,7 +44,6 @@ export class UserService {
     const usersFromStorage: IUser[] = this.localStorageService.getValue<IUser[]>('users') || [];
 
     if (usersFromStorage.length) {
-      this.setUsers(usersFromStorage);
       return of(usersFromStorage);
     } else {
       this.loaderService.showLoader();
