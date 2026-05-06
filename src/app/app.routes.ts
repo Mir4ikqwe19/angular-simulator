@@ -6,5 +6,5 @@ import { NotFoundPageComponent } from '../not-found-page/not-found-page.componen
 export const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'users', component: UsersPageComponent },
-  { path: '**', component: NotFoundPageComponent }
+  { path: '**', component: NotFoundPageComponent },
 ];

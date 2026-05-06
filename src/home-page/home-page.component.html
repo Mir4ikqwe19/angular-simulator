@@ -19,7 +19,9 @@
 
         <div class="input-field">
           <input id="hike-date" type="date" placeholder="Дата похода" [(ngModel)]="dateTrip">
-          <span class="icon-calendar"></span>
+          <div class="icon-calendar">
+            <fa-icon [icon]="faCalendar" />
+          </div>
           <span>укажите диапазон</span>
         </div>
 
@@ -56,7 +58,7 @@
       <div class="forest-house-img-container">
         <img src="/images/forest-house.png" class="forest-house-img" alt="домик в лесу" width="350px" height="400px">
         <button id="play-video-btn">
-          <img src="/images/play-icon.svg" alt="иконка проигрывателя" width="14px" height="15px">
+          <fa-icon [icon]="faPlay" />
         </button>
       </div>
     </div>
@@ -87,9 +89,9 @@
     <p class="fs-18 fw-400 lh-150">Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа.</p>
     <div class="propose-description-container">
 
-      @for (program of programBlocks; track program.id) {
+      @for (program of programBlocks; track program.id; let i = $index) {
         <div class="description-wrapper">
-          <img [src]="'/images/' + program.iconName + '.svg'" [alt]="program.iconName" width="100px" height="50px">
+          <fa-icon [icon]="program.iconName" [class]="'icon-container icon-color-' + i" />
           <div class="propose-description">
             <span class="fs-18 fw-700 lh-20px">{{ program.title }}</span>
             <p class="fs-14 fw-400 lh-20px">{{ program.definition }}</p>
@@ -133,12 +135,7 @@
             height="500px"
           >
           <div class="star-icon">
-            <img
-              [src]="'/images/' + destination.iconName + '.svg'"
-              [alt]="destination.iconName"
-              width="17px"
-              height="16px"
-            >
+            <fa-icon [icon]="faStar" />
             <span class="fs-14 fw-700 lh-18px">{{ destination.assessment }}</span>
           </div>
           <div class="destination-card-info">

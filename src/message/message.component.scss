@@ -1,6 +1,20 @@
+:host::ng-deep {
+  .fa-envelope {
+    width: 30px;
+    height: 30px;
+    color: #FFFFFF;
+  }
+
+  .fa-circle-xmark {
+    width: 20px;
+    height: 20px;
+    color: #FFFFFF;
+  }
+}
+
 .message {
   display: flex;
-  width: 350px;
+  width: 320px;
   height: 70px;
   background-color: #0F172AD9;
   border: 1px solid #FFFFFF;
@@ -21,7 +35,7 @@
       .message-title {
         display: flex;
         flex-direction: column;
-        color: var(--white-color);
+        color: var(--secondary-text-color);
       }
     }
   }

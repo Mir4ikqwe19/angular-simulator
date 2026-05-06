@@ -1,17 +1,12 @@
 .filter-input-wrapper {
   display: flex;
   justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-  overflow: visible;
-  width: 1890px;
-  min-height: 140px;
-  padding: 20px;
+  align-items: end;
+  min-height: 100px;
 
 input {
   width: 360px;
   height: 50px;
-  box-sizing: border-box;
   padding: 15px;
   border-radius: 8px;
   border: 2px solid transparent;
