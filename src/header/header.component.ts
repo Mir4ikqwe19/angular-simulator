@@ -13,7 +13,7 @@ import { usePreset } from '@primeuix/themes';
 import { ThemeService } from '../services/theme.service';
 import { faMoon, faSun, IconDefinition } from '@fortawesome/free-regular-svg-icons';
 import { Observable } from 'rxjs';
-import { AppThemes } from '../enums/Theme';
+import { AppTheme } from '../enums/Theme';
 import { ITheme } from '../interfaces/ITheme';
 
 @Component({
@@ -70,7 +70,7 @@ export class HeaderComponent {
     this.themeService.toggleDarkMode(event.checked);
   }
 
-  onButtonClick(theme: AppThemes): void {
+  onButtonClick(theme: AppTheme): void {
     this.themeService.changeTheme(theme);
   }
 

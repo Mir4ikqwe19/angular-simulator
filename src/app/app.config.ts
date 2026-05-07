@@ -11,20 +11,19 @@ import { LaraBaseDesignTokens } from '@primeuix/themes/lara/base';
 import { Preset } from '@primeuix/themes/types';
 import { AuraBaseDesignTokens } from '@primeuix/themes/aura/base';
 import { NoraBaseDesignTokens } from '@primeuix/themes/nora/base';
-import { AppThemes } from '../enums/Theme';
+import { AppTheme } from '../enums/Theme';
 
 function getTheme(): Preset {
-  const savedTheme: AppThemes | null = localStorage.getItem('app-theme') as AppThemes;
+  const savedTheme: AppTheme | null = localStorage.getItem('app-theme') as AppTheme;
 
   if (!savedTheme) {
-    return Lara
+    return Lara;
   }
 
-  const currentTheme: string = JSON.parse(savedTheme);
-  switch(currentTheme) {
-    case 'Aura':
+  switch(savedTheme) {
+    case AppTheme.AURA:
       return Aura;
-    case 'Nora':
+    case AppTheme.NORA:
       return Nora;
     default:
       return Lara

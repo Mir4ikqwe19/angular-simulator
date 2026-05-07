@@ -1,4 +1,4 @@
-export enum AppThemes {
+export enum AppTheme {
   LARA = 'Lara',
   AURA = 'Aura',
   NORA = 'Nora'

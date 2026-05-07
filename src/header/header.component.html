@@ -39,7 +39,7 @@
               optionValue="theme"
               [options]="themeService.themeOptions"
               [ngModel]="themeService.theme$ | async"
-              (ngModelChange)="onButtonClick($event)"/>
+              (onChange)="onButtonClick($event.value)"/>
           </div>
 
           <div class="toggle-wrapper">
