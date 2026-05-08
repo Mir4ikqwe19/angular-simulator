@@ -1,6 +1,6 @@
 .users-page-wrapper {
   display: flex;
-  background-color: #f3f5f4;
+  background-color: var(--primary-background-color);
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -10,7 +10,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  box-sizing: border-box;
   width: 606px;
   height: 90px;
   background-color: #b15757;
@@ -23,7 +22,7 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin: 0px 210px;
+  margin: 80px 210px;
   row-gap: 50px;
   column-gap: 70px;
 }

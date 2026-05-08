@@ -7,10 +7,13 @@ import { LocalStorageService } from '../services/local-storage.service';
 import { numberCollection, stringCollection } from '../app/collection';
 import { FormsModule } from '@angular/forms';
 import { MessageService } from '../services/message.service';
+import { FontAwesomeModule, IconDefinition } from '@fortawesome/angular-fontawesome';
+import { faCoffee, faPeopleGroup, faPlay, faStar, faShield, faHandHoldingDollar } from '@fortawesome/free-solid-svg-icons'
+import { faCalendar } from '@fortawesome/free-regular-svg-icons'
 
 @Component({
   selector: 'app-home-page',
-  imports: [FormsModule],
+  imports: [FormsModule, FontAwesomeModule],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss',
 })
@@ -24,23 +27,26 @@ export class HomePageComponent {
   tourLocation!: string;
   dateTrip!: string;
   participants!: string;
+  faStar: IconDefinition = faStar;
+  faPlay: IconDefinition = faPlay;
+  faCalendar: IconDefinition = faCalendar;
 
   programBlocks: IProgramItem[] = [
     {
       id: 1,
-      iconName: 'people-icon',
+      iconName: faPeopleGroup,
       title: 'Опытный гид',
       definition: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.'
     },
     {
       id: 2,
-      iconName: 'shield-icon',
+      iconName: faShield,
       title: 'Безопасный поход',
       definition: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.'
     },
     {
       id: 3,
-      iconName: 'loyal-price-icon',
+      iconName: faHandHoldingDollar,
       title: 'Лояльные цены',
       definition: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.'
     }

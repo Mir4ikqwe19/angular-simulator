@@ -11,7 +11,7 @@
   <div class="message">
     <div class="message-wrapper">
       <div class="message-info-container">
-        <img src="/images/message-icon.svg" alt="иконка сообщения" width="40px" height="40px">
+        <fa-icon [icon]="faEnvelope" />
         <div class="message-title">
           <span class="fs-16 fw-700 lh-20px">{{ message.type }}</span>
           <span class="fs-14 fw-400 lh-20px">{{ message.text }}</span>
@@ -19,7 +19,7 @@
       </div>
       <div class="close-message-wrapper">
         <button [id]="'close-' + message.text" class="close-message" (click)="messageService.closeMessage(message)">
-          <img src="/images/close-message-icon.svg" alt="иконка крестика" width="20px" height="20px">
+          <fa-icon [icon]="faCloseMark" />
         </button>
       </div>
     </div>

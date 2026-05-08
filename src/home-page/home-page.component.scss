@@ -7,6 +7,48 @@
   background-size: 100% 100%;
 }
 
+:host::ng-deep {
+  .fa-star {
+    width: 17px;
+    height: 16px;
+    color: var(--secondary-color);
+  }
+
+  .fa-people-group, .fa-shield, .fa-hand-holding-dollar {
+    width: 100px;
+    height: 35px;
+  }
+
+  .fa-calendar {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.icon-color-0 {
+  color: #45766A;
+  background-color: #E5EEEB;
+}
+
+.icon-color-1 {
+  color: #6276AA;
+  background-color: #E3E6EE;
+}
+
+.icon-color-2 {
+  color: #F2BE22;
+  background-color: #F3F1E1;
+}
+
+.icon-container {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 60px !important;
+  height: 60px !important;
+  border-radius: 4px !important;
+}
+
 .hero {
   width: 100%;
   height: 985px;
@@ -28,7 +70,7 @@
       height: 150px;
 
       .subtitle {
-        color: var(--white-color);
+        color: var(--secondary-text-color);
         margin: 0px;
         font-family: 'Next Art-Bold';
         font-size: 50px;
@@ -57,17 +99,17 @@
         display: flex;
         flex-direction: column;
         gap: 8px;
-        color: #fff;
+        color: var(--secondary-text-color);
       }
       
       .input-field input {
         background: transparent;
-        width: 245px;
-        height: 30px;
+        width: 270px;
+        height: 55px;
         border: 1px solid #E1E3E4;
         border-radius: 10px;
         padding: 12px;
-        color: #fff;
+        color: var(--secondary-text-color);
       }
 
       .input-field input::-webkit-calendar-picker-indicator {
@@ -104,7 +146,7 @@
       }
 
       input::placeholder {
-        color: var(--white-color);
+        color: var(--secondary-text-color);
         font-size: 16px;
         font-weight: 700;
       }
@@ -134,11 +176,7 @@
       .icon-calendar {
         position: absolute;
         pointer-events: none;
-        width: 20px;
-        height: 20px;
-        background: url('/images/calendar-icon.svg');
-        background-repeat: no-repeat;
-        top: 37%;
+        top: 36%;
         left: 48%;
         cursor: pointer;
       }
@@ -147,7 +185,7 @@
     .live-input {
       background: transparent;
       width: 270px;
-      height: 30px;
+      height: 55px;
       border: 1px solid #E1E3E4;
       border-radius: 10px;
       padding: 12px;
@@ -160,7 +198,7 @@
       display: flex;
       gap: 15px;
       align-items: center;
-      color: var(--white-color);
+      color: var(--secondary-text-color);
     }
   }
 }
@@ -220,6 +258,7 @@
       margin: 64px 0px;
       max-width: 580px;
       height: 398px;
+      color: var(--primary-text-color);;
 
       .tour-info-subtitle {
         display: flex;
@@ -251,7 +290,7 @@
   gap: 90px;
   width: 100%;
   height: 771px;
-  background-color: #F3F5F4;
+  background-color: var(--primary-background-color);
 
   button {
     @include main-button;
@@ -261,14 +300,13 @@
   }
 
   .propose-wrapper {
-    z-index: 1;
-    overflow: visible;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 40px;
-    margin-top: 80px;
     width: 580px;
-    height: 591px;
+    z-index: 1;
+    color: var(--primary-text-color);
 
     .propose-title span {
       display: block;
@@ -280,7 +318,6 @@
     .propose-description-container {
       display: flex;
       flex-direction: column;
-      overflow: visible;
       gap: 40px;
 
       .description-wrapper {
@@ -345,6 +382,10 @@
       align-items: center;
       gap: 8px;
 
+      h3 {
+        color: var(--primary-text-color);
+      }
+
       span {
         color: var(--secondary-color);
       }
@@ -370,7 +411,7 @@
           position: absolute;
           gap: 7px;
           top: 10%;
-          left: 80%;
+          left: 83%;
           padding: 4px 8px;
           color: var(--deep-green-color);
           background: #FDFDFD66;
@@ -395,20 +436,19 @@
             justify-content: space-between;
             flex: 1;
             padding: 0px 32px;
+            color: var(--secondary-text-color);
 
             .destination-card-description {
               display: flex;
               flex-direction: column;
-              color: var(--white-color);
             }
           }
-
 
           .destination-price-btn {
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--white-color);
+            color: var(--secondary-text-color);
             width: 86px;
             height: 40px;
             background: #FFFFFF4D;
@@ -435,7 +475,7 @@
   align-items: center;
   width: 100%;
   height: 1036px;
-  background-color: #F3F5F4;
+  background-color: var(--primary-background-color);
 
   .travel-blog-container {
     display: flex;
@@ -452,6 +492,10 @@
       gap: 8px;
       overflow-y: hidden;
 
+      h3 {
+        color: var(--primary-text-color);
+      }
+
       span {
         color: var(--secondary-color);
       }
@@ -467,10 +511,11 @@
         display: flex;
         padding: 16px;
         gap: 24px;
-        width: 548px;
-        height: 280px;
+        width: 580px;
+        height: 312px;
         border-radius: 10px;
-        background-color: var(--white-color);
+        background-color: var(--primary-card-color);
+        color: var(--primary-text-color);
       }
 
       .blog-card-info {
@@ -528,9 +573,9 @@
 
   .photo-report-wrapper {
     display: flex;
-    height: 826px;
     flex-direction: column;
-    margin-top: 85px;
+    justify-content: center;
+    
     gap: 50px;
 
     .photo-report-title {
@@ -539,6 +584,10 @@
       overflow-y: hidden;
       gap: 8px;
       align-items: center;
+
+      h3 {
+        color: var(--primary-text-color);
+      }
 
       span {
         color: var(--secondary-color);
