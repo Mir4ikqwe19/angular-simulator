@@ -6,10 +6,13 @@ import { BehaviorSubject, combineLatest, delay, filter, map, Observable, Subject
 import { UserCardComponent } from "../user-card/user-card.component";
 import { CreateUserComponent } from "../create-user/create-user.component";
 import { UsersFilterComponent } from "../users-filter/users-filter.component";
+import { PluralPipe } from '../pipes/plural.pipe';
+import { GradientDirective } from '../directives/gradient.directive';
+import { IGradientConfiguration } from '../interfaces/IGradient';
 
 @Component({
   selector: 'app-users-page',
-  imports: [UserCardComponent, AsyncPipe, CreateUserComponent, UsersFilterComponent],
+  imports: [UserCardComponent, AsyncPipe, CreateUserComponent, UsersFilterComponent, PluralPipe, GradientDirective],
   templateUrl: './users-page.component.html',
   styleUrl: './users-page.component.scss',
 })
@@ -28,6 +31,11 @@ export class UsersPageComponent implements OnInit {
       return users.filter((user: IUser) => user.name.trim().toLowerCase().includes(filter));
     })
   );
+
+  cardConfiguration: IGradientConfiguration = {
+    colors: ['var(--p-rose-800), var(--p-sky-600), var(--p-cyan-600)'],
+    thickness: '3px'
+  }
 
   ngOnInit(): void {
     this.userService.loadUsers()

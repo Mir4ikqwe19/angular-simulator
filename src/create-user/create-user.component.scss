@@ -17,11 +17,13 @@
   flex-direction: column;
   gap: 10px;
   border-top: 4px solid var(--secondary-color);
-  background-color: var(--primary-card-color);
+  background-color: var(--secondary-card-color);
+    box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.06),
+    0 10px 20px rgba(0, 0, 0, 0.10);
 
   input {
     height: 30px;
-    border: 1px outset #667c7c;
     background-color: #FFFFFF;
     color: #000000;
     border-radius: 5px;

@@ -2,7 +2,7 @@
 
     <div class="user-card-wrapper">
       <div class="user-name">
-        <h3 class="fs-26 lh-30px fw-800">{{ user.name }}</h3>
+        <h3 class="fs-26 lh-30px fw-800">{{ user.name | uppercase }}</h3>
         <span class="fs-15 fw-700 lh-17px">{{ '&#64;' + user.username }}</span>
       </div>
 
@@ -15,7 +15,7 @@
 
         <div class="blocks-info-flex">
           <p>Телефон:</p>
-          <span class="contacts-info-number">{{ user.phone }}</span>
+          <span class="contacts-info-number">{{ user.phone | phone: phoneMode.MASKED}}</span>
         </div>
 
         <div class="blocks-info-flex">
@@ -76,11 +76,7 @@
           </div>
         </div>
       </div>
-      <div class="delete-btn-wrapper">
-        <button class="delete-btn" (click)="onDeleteClick(user)">
-          <fa-icon [icon]="faRectangleXmark" />
-        </button>
-      </div>
+      <button Hover class="delete-btn fs-15" (click)="onDeleteClick(user)">Delete user</button>
     </div>
 
   </div>

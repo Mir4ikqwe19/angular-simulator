@@ -1,3 +1,5 @@
+@use '../assets/mixins' as *;
+
 h4 {
   margin: 0;
 }
@@ -64,27 +66,27 @@ h4 {
     overflow-y: hidden;
   }
 
-  .delete-btn-wrapper {
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
+  .delete-btn {
+    @include main-button;
 
-    .delete-btn {
-      background-color: transparent;
-      border: none;
-      cursor: pointer;
-    }
+    align-self: center;
+    text-transform: uppercase;
+    width: 140px;
+    height: 40px;
   }
 }
 
 .user-card {
   display: flex;
   flex-direction: column;
-  border-top: 4px solid var(--secondary-color);;
   max-width: 440px;
-  max-height: 630px;
-  background-color: var(--primary-card-color);
+  max-height: 640px;
+  background-color: var(--secondary-card-color);
   padding: 30px;
+    box-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.08),
+    0 12px 24px rgba(0, 0, 0, 0.12),
+    0 20px 40px rgba(0, 0, 0, 0.08);
 
   .user-name {
     display: flex;

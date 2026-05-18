@@ -14,6 +14,7 @@
   --secondary-color: #F2BE22;
 
   --primary-card-color: #FDFDFD;
+  --secondary-card-color: #fff;
 
   --primary-background-color: #F3F5F4;
   --secondary-background-color: #1A3E3E;
@@ -39,6 +40,7 @@
   --primary-color: var(--p-sky-950);
 
   --primary-card-color: #1D293D;
+  --secondary-card-color: var(--p-surface-900);
 
   --primary-background-color: #0F172B;
   --secondary-background-color: var(--p-rose-950);
@@ -169,4 +171,33 @@ h3 {
 
 .content-container {
   background-color: var(--primary-color);
+}
+
+.active {
+  font-weight: bold;
+}
+
+.gradient-border {
+  position: relative;
+  border: var(--border-width) solid transparent;
+  background:
+    linear-gradient(#FFFFFF) padding-box,
+    linear-gradient(90deg, var(--gradient-colors)) border-box;
+  background-size: 100% 100%, 300% 300%;
+  background-position: 0 0, 0% 50%;
+  animation: gradientBorder 4s infinite linear;
+}
+
+@keyframes gradientBorder {
+  0% {
+    background-position: 0 0, 0% 50%;
+  }
+
+  50% {
+    background-position: 0 0, 100% 50%;
+  }
+
+  100% {
+    background-position: 0 0, 0% 50%;
+  }
 }

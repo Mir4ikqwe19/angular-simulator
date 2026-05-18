@@ -1,9 +1,20 @@
 .users-page-wrapper {
   display: flex;
-  background-color: var(--primary-background-color);
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  .user-card-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .users-count {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+  }
 }
 
 .empty {
@@ -22,7 +33,7 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin: 80px 210px;
+  margin: 0px 210px;
   row-gap: 50px;
-  column-gap: 70px;
+  column-gap: 60px;
 }
