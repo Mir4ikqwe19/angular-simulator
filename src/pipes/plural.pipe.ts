@@ -11,14 +11,14 @@ export class PluralPipe implements PipeTransform {
     const lastTwoDigits: number = count % 100;
 
     if (lastTwoDigits > 10 && lastTwoDigits < 20) {
-      return `${value} ${ thirdForm }`;
+      return `${ value } ${ thirdForm }`;
     } else if (lastDigit >= 2 && lastDigit <= 4 ) {
-      return `${value} ${ secondForm }`;
+      return `${ value } ${ secondForm }`;
     } else if (lastDigit === 1) {
-      return `${value} ${ firstForm}`;
+      return `${ value } ${ firstForm}`;
     }
 
-    return `${value} ${ thirdForm }`;
+    return `${ value } ${ thirdForm }`;
   }
 
 }

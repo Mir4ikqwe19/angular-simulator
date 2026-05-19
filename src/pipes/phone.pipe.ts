@@ -13,17 +13,17 @@ export class PhonePipe implements PipeTransform {
     const subscriberNumber: string[] = phoneList.slice(5, 8);
     const subscriberNumberPart: string[] = phoneList.slice(8, 10);
     const lastNumbers: string[] = phoneList.slice(10, 12);
-    const maskedNumber: string = `${subscriberNumber} ${subscriberNumberPart}`.replace(/\d/g, '*');
+    const maskedNumber: string = `${ subscriberNumber } ${ subscriberNumberPart }`.replace(/\d/g, '*');
 
     switch(mode) {
       case PhoneMode.COMPACT:
         return string.replace(/[\-x().\s]/g, '').replace('', '+');
       case PhoneMode.INTERNATIONAL:
-        return `+${countryCode} ${operatorCode} ${subscriberNumber} ${subscriberNumberPart} ${lastNumbers}`.replace(/,/g, '');
+        return `+${ countryCode } ${ operatorCode } ${ subscriberNumber } ${ subscriberNumberPart } ${ lastNumbers }`.replace(/,/g, '');
       case PhoneMode.NATIONAL:
-        return `${operatorCode} ${subscriberNumber} ${subscriberNumberPart} ${lastNumbers}`.replace(/,/g, '');
+        return `${ operatorCode } ${ subscriberNumber } ${ subscriberNumberPart } ${ lastNumbers }`.replace(/,/g, '');
       case PhoneMode.MASKED:
-        return `+${countryCode} ${operatorCode} ${maskedNumber} ${lastNumbers}`.replace(/,/g, '');
+        return `+${ countryCode } ${ operatorCode } ${ maskedNumber } ${ lastNumbers }`.replace(/,/g, '');
     }
 
   }

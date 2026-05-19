@@ -19,7 +19,7 @@ export class CreateUserComponent {
   private fb: FormBuilder = inject(FormBuilder);
   private messageService: MessageService = inject(MessageService);
 
-  inputConfiguratioun: IGradientConfiguration = {
+  inputGradientBorder: IGradientConfiguration = {
     colors: ['var(--p-rose-800), var(--p-sky-600), var(--p-cyan-600), var(--p-neutral-300)'],
     thickness: '3px'
   }
