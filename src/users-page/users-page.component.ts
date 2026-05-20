@@ -33,7 +33,7 @@ export class UsersPageComponent implements OnInit {
   );
 
   cardConfiguration: IGradientConfiguration = {
-    colors: ['var(--p-rose-800), var(--p-sky-600), var(--p-cyan-600)'],
+    colors: ['var(--p-rose-800)', 'var(--p-sky-600)', 'var(--p-cyan-600)'],
     thickness: '3px'
   }
 
