@@ -1,4 +1,4 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, inject, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
 import { routes } from './app.routes';
 import { definePreset, palette, updatePrimaryPalette } from '@primeuix/themes';
 import { provideRouter } from '@angular/router';

@@ -2,10 +2,13 @@ import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IUser } from '../interfaces/IUser';
 import { MessageService } from '../services/message.service';
+import { HoverDirective } from "../directives/hover.directive";
+import { GradientDirective } from '../directives/gradient.directive';
+import { IGradientConfiguration } from '../interfaces/IGradient';
 
 @Component({
   selector: 'app-create-user',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, HoverDirective, GradientDirective],
   templateUrl: './create-user.component.html',
   styleUrl: './create-user.component.scss',
 })
@@ -15,6 +18,11 @@ export class CreateUserComponent {
 
   private fb: FormBuilder = inject(FormBuilder);
   private messageService: MessageService = inject(MessageService);
+
+  gradientBorderConfiguration: IGradientConfiguration = {
+    colors: ['var(--p-rose-800)', 'var(--p-sky-600)', 'var(--p-cyan-600)', 'var(--p-neutral-300)'],
+    thickness: '3px'
+  }
 
   createUserForm: FormGroup = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
