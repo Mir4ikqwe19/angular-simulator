@@ -29,6 +29,7 @@ function getTheme(): Preset {
       return Lara
   }
 }
+import { provideHttpClient } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -43,6 +44,7 @@ export const appConfig: ApplicationConfig = {
           ripple: true,
         }
       },
-    })
+    }),
+    provideHttpClient()
   ]
 };
