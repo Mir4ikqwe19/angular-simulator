@@ -12,6 +12,9 @@ import { Preset } from '@primeuix/themes/types';
 import { AuraBaseDesignTokens } from '@primeuix/themes/aura/base';
 import { NoraBaseDesignTokens } from '@primeuix/themes/nora/base';
 import { AppTheme } from '../enums/Theme';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { httpInterceptor } from '../interceptors/http.interceptor';
+import { catchErrorInterceptor } from '../interceptors/catch-error.interceptor';
 
 function getTheme(): Preset {
   const savedTheme: AppTheme | null = localStorage.getItem('app-theme') as AppTheme;
@@ -35,6 +38,7 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
     provideZoneChangeDetection(),
+    provideHttpClient(withInterceptors([httpInterceptor, catchErrorInterceptor])),
     providePrimeNG({
       theme: {
         preset: getTheme(),
