@@ -13,7 +13,7 @@ import { AuraBaseDesignTokens } from '@primeuix/themes/aura/base';
 import { NoraBaseDesignTokens } from '@primeuix/themes/nora/base';
 import { AppTheme } from '../enums/Theme';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { httpInterceptor } from '../interceptors/http.interceptor';
+import { loggingInterceptor } from '../interceptors/logging.interceptor';
 import { catchErrorInterceptor } from '../interceptors/catch-error.interceptor';
 
 function getTheme(): Preset {
@@ -38,7 +38,7 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
     provideZoneChangeDetection(),
-    provideHttpClient(withInterceptors([httpInterceptor, catchErrorInterceptor])),
+    provideHttpClient(withInterceptors([loggingInterceptor, catchErrorInterceptor])),
     providePrimeNG({
       theme: {
         preset: getTheme(),
