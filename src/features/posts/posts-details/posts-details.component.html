@@ -1,0 +1,23 @@
+  <a class="back-btn" id="go-back-link" routerLink="/posts">&larr; Назад к списку постов</a>
+
+  <div class="post-card">
+    <div class="post-card-header">
+      <h2 class="fs-22 fw-600 lh-30px">{{ post.title }}</h2>
+      <span class="post-id fs-14">#{{ post.id }}</span>
+    </div>
+    <p class="post-card-body fs-15 lh-26px">{{ post.body }}</p>
+    <div class="post-card-tags">
+      @for (tag of post.tags; track $index) {
+        <span class="tag fs-13">{{ tag }}</span>
+      }
+    </div>
+
+    <div class="post-card-footer">
+      <div class="stats">
+        <span>Likes: {{ post.reactions.likes }}</span>
+        <span>Dislikes: {{ post.reactions.dislikes }}</span>
+        <span>Views: {{ post.views }}</span>
+      </div>
+      <span class="author fs-14">Author #{{ post.userId }}</span>
+    </div>
+  </div>

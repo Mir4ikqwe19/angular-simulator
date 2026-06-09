@@ -1,0 +1,76 @@
+<div class="centered">
+  <a id="create-post-link" href="/posts/create" class="post-create-link">&#43; Create new post</a>
+
+  @if (postList$ | async; as posts) {
+    <div class="table-wrapper">
+      @if (isLoading) {
+        <p-table 
+          [value]="posts" 
+          [tableStyle]="{ 'min-width': '50rem' }"
+          [paginator]="true"
+          [rows]="5"
+          [rowsPerPageOptions]="[5, 10, 20]"
+        >
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Tags</th>
+              <th>Title</th>
+              <th>Views</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body">
+            <tr>
+              <td><p-skeleton /></td>
+              <td><p-skeleton /></td>
+              <td><p-skeleton /></td>
+            </tr>
+          </ng-template>
+        </p-table>
+      } @else {
+        <p-contextmenu #cm [model]="items" (onHide)="selectedPost = null"/>
+        <p-table
+          [value]="posts"
+          [(contextMenuSelection)]="selectedPost"
+          [contextMenu]="cm"
+          dataKey="id"
+          [tableStyle]="{ 'min-width': '70rem' }"
+          [paginator]="true"
+          [showCurrentPageReport]="true"
+          [totalRecords]="totalRecords"
+          [lazy]="true"
+          [first]="first"
+          [rows]="rows"
+          (onPage)="onPageChange($event)"
+          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+          [rowsPerPageOptions]="[10, 20, 50]"
+        >
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Tags</th>
+              <th>Title</th>
+              <th>Views</th>
+            </tr>
+          </ng-template>
+      
+          <ng-template pTemplate="body" let-post>
+            <tr [pContextMenuRow]="post">
+              <td>
+                <a [id]="'tags-' + post.userId + '-redirect'" (dblclick)="onRedirect(post)">{{ post.tags }}</a>
+                <button id="edit-post-btn" class="edit-btn" (click)="onEditPost(post)">
+                  <fa-icon [icon]="faPenIcon" />
+                </button>
+              </td>
+              <td>
+                <a [id]="'title-' + post.userId + '-redirect'" (dblclick)="onRedirect(post)">{{ post.title }}</a>
+              </td>
+              <td>
+                <a [id]="'views-' + post.userId + '-redirect'" (dblclick)="onRedirect(post)">{{ post.views }}</a>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      }
+    </div>
+  }
+  
+</div>
