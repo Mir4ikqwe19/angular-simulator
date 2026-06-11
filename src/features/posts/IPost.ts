@@ -10,16 +10,3 @@ export interface IPost {
   views: number;
   userId: number;
 }
-
-export interface IPostResponse {
-  limit: number;
-  posts: IPost[];
-  skip: number;
-  total: number;
-}
-
-export interface IPostForm {
-  title: string;
-  tags: string[];
-  views: number;
-}

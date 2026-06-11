@@ -27,7 +27,14 @@
           </ng-template>
         </p-table>
       } @else {
-        <p-contextmenu #cm [model]="items" (onHide)="selectedPost = null"/>
+        <p-contextmenu #cm [model]="items" (onHide)="selectedPost = null">
+          <ng-template #item let-item>
+            <a class="context-menu-item">
+              <fa-icon class="context-menu-icon" [icon]="item.state.icon"></fa-icon>
+              <span>{{ item.label }}</span>
+            </a>
+          </ng-template>
+        </p-contextmenu>
         <p-table
           [value]="posts"
           [(contextMenuSelection)]="selectedPost"
@@ -55,16 +62,16 @@
           <ng-template pTemplate="body" let-post>
             <tr [pContextMenuRow]="post">
               <td>
-                <a [id]="'tags-' + post.userId + '-redirect'" (dblclick)="onRedirect(post)">{{ post.tags }}</a>
+                <a [id]="'tags-' + post.userId + '-redirect'" (dblclick)="onPostPageRedirect(post)">{{ post.tags }}</a>
                 <button id="edit-post-btn" class="edit-btn" (click)="onEditPost(post)">
                   <fa-icon [icon]="faPenIcon" />
                 </button>
               </td>
               <td>
-                <a [id]="'title-' + post.userId + '-redirect'" (dblclick)="onRedirect(post)">{{ post.title }}</a>
+                <a [id]="'title-' + post.userId + '-redirect'" (dblclick)="onPostPageRedirect(post)">{{ post.title }}</a>
               </td>
               <td>
-                <a [id]="'views-' + post.userId + '-redirect'" (dblclick)="onRedirect(post)">{{ post.views }}</a>
+                <a [id]="'views-' + post.userId + '-redirect'" (dblclick)="onPostPageRedirect(post)">{{ post.views }}</a>
               </td>
             </tr>
           </ng-template>

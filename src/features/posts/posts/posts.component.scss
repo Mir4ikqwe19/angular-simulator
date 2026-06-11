@@ -1,3 +1,26 @@
+:host ::ng-deep .p-contextmenu {
+  padding: 5px;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+:host ::ng-deep .p-contextmenu-root-list {
+  gap: 5px;
+}
+
+.context-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 5px;
+}
+
+.context-menu-icon {
+  width: 16px;
+  text-align: center;
+}
+
 .centered {
   padding: 40px;
   display: flex;

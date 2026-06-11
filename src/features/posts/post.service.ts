@@ -1,11 +1,13 @@
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, finalize, map, Observable, of, tap, throwError } from 'rxjs';
 import { PostApiService } from './post-api.service';
-import { IPost, IPostForm, IPostResponse } from './IPost';
+import { IPost } from './IPost';
 import { LoaderService } from '../../services/loader.service';
 import { MessageService } from '../../services/message.service';
 import { Route, Router } from '@angular/router';
 import { TablePageEvent } from 'primeng/table';
+import { IPostResponse } from './IPostresponse';
+import { IPostForm } from './IPostform';
 
 
 @Injectable({
@@ -53,7 +55,7 @@ export class PostService {
         this.setPosts(changedPosts);
         this.messageService.showSucces(`Пост под номером - ${ postId } изменён`);
       }),
-      catchError((err) => {
+      catchError((err: unknown) => {
         this.messageService.showError('Не удалось изменить!');
         return throwError(() => err);
       }),
@@ -71,7 +73,7 @@ export class PostService {
 
         this.messageService.showSucces(`Пост Создан ${ post.title }`);
       }),
-      catchError((err) => {
+      catchError((err: unknown) => {
         this.messageService.showError('Не удалось создать!');
         return throwError(() => err);
       }),
@@ -82,17 +84,17 @@ export class PostService {
     ).subscribe();
   }
 
-  deletePost(post: IPost): void {
+  deletePost(postId: number): void {
     this.loaderService.showLoader()
     
-    this.postApiService.deletePostById(post.id).pipe(
+    this.postApiService.deletePostById(postId).pipe(
       tap(() => {
-        const deletedPost: IPost[] = this.getPosts().filter((currPost: IPost) => currPost.id !== post.id);
+        const deletedPost: IPost[] = this.getPosts().filter((currPost: IPost) => currPost.id !== postId);
         this.setPosts(deletedPost);
         
-        this.messageService.showInfo(`Пост под номером - ${ post.id } удалён`);
+        this.messageService.showInfo(`Пост под номером - ${ postId } удалён`);
       }),
-      catchError((err) => {
+      catchError((err: unknown) => {
         this.messageService.showError('Не удалось удалить!');
         return throwError(() => err);
       }),
@@ -100,7 +102,7 @@ export class PostService {
     ).subscribe();
   }
 
-  redirect(post: IPost): void {
+  postPageredirect(post: IPost): void {
     this.router.navigate([`posts/post/${ post.id }`]);
   }
 
@@ -108,7 +110,7 @@ export class PostService {
     this.loaderService.showLoader();
 
     return this.postApiService.getPosts(limit, skip).pipe(
-      catchError((err) => {
+      catchError((err: unknown) => {
         this.messageService.showError('Не удалось загрузить!');
         return throwError(() => err);
       }),

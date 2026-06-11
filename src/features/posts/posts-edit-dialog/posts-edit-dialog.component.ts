@@ -18,9 +18,9 @@ export class PostsEditDialogComponent {
   post: IPost = this.config.data;
 
   editPostForm: FormGroup = this.fb.group({
-    title: [this.post.title],
-    tags: [this.post.tags],
-    views: [this.post.views]
+    title: [this.post.title, [Validators.required, Validators.minLength(3)]],
+    tags: [this.post.tags, [Validators.required, Validators.minLength(3)]],
+    views: [this.post.views, [Validators.required, Validators.minLength(3)]]
   });
 
   onSubmit(): void {

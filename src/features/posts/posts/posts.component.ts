@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { PostApiService } from '../post-api.service';
 import { PostService } from '../post.service';
 import { delay, map, Observable, tap } from 'rxjs';
-import { IPost, IPostForm, IPostResponse } from '../IPost';
+import { IPost } from '../IPost';
 import { AsyncPipe } from '@angular/common';
 import { TableModule, TablePageEvent } from 'primeng/table';
 import { ContextMenuModule } from 'primeng/contextmenu';
@@ -16,6 +16,10 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { PostsEditDialogComponent } from '../posts-edit-dialog/posts-edit-dialog.component';
 import { faPenToSquare, IconDefinition } from '@fortawesome/free-regular-svg-icons';
 import { FaIconComponent } from "@fortawesome/angular-fontawesome";
+import { faSistrix } from '@fortawesome/free-brands-svg-icons';
+import { faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { IPostResponse } from '../IPostresponse';
+import { IPostForm } from '../IPostform';
 
 @Component({
   selector: 'app-posts',
@@ -32,7 +36,10 @@ export class PostsComponent implements OnInit {
 
   postList$: Observable<IPost[]> = this.postService.posts$;
   
-  faPenIcon: IconDefinition = faPenToSquare;
+  readonly faPenIcon: IconDefinition = faPenToSquare;
+  readonly faDeleteMark: IconDefinition = faXmark;
+  readonly faMagnify: IconDefinition = faMagnifyingGlass;
+
   selectedPost: IPost | null = null;
   items!: MenuItem[];
   isLoading: boolean = true;
@@ -49,21 +56,37 @@ export class PostsComponent implements OnInit {
       })
     ).subscribe();
 
+    this.initContextMenuItems();
+  }
+
+  initContextMenuItems(): void {
     this.items = [
-      { label: 'View', icon: 'pi pi-fw pi-search', command: () => {
+      { label: 'View', 
+        state: {
+          icon: this.faMagnify
+        },
+        command: () => {
           if (this.selectedPost) {
-            this.postService.redirect(this.selectedPost)
+            this.postService.postPageredirect(this.selectedPost)
           }
         } 
       },
-      { label: 'Delete', icon: 'pi pi-fw pi-times', command: () => {
+      { label: 'Delete', 
+        state: {
+          icon: this.faDeleteMark
+        },
+        command: () => {
           if (this.selectedPost) {
-            this.postService.deletePost(this.selectedPost);
+            this.postService.deletePost(this.selectedPost.id);
           }
         } 
       },
       {
-        label: 'Edit', icon: ' pi pi-fw pi-pencil', command: () => {
+        label: 'Edit', 
+        state: {
+          icon: this.faPenIcon
+        },
+        command: () => {
           if (this.selectedPost) {
             this.onEditPost(this.selectedPost);
           }
@@ -72,8 +95,8 @@ export class PostsComponent implements OnInit {
     ];
   }
 
-  onRedirect(post: IPost): void {
-    this.postService.redirect(post);
+  onPostPageRedirect(post: IPost): void {
+    this.postService.postPageredirect(post);
   }
 
   onPageChange(event: TablePageEvent): void {

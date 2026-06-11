@@ -16,15 +16,15 @@ export class PostsCreateComponent {
   private postService: PostService = inject(PostService);
 
   createPostForm: FormGroup = this.fb.group({
-    title: ['', Validators.required],
-    body: ['', Validators.required],
-    tags: ['', Validators.required],
+    title: ['', [Validators.required, Validators.minLength(3)]],
+    body: ['', [Validators.required, Validators.minLength(2)]],
+    tags: ['', [Validators.required, Validators.maxLength(30)]],
     reactions: this.fb.group({
       likes: ['', Validators.required],
       dislikes: ['', Validators.required]
     }),
     views: ['', Validators.required],
-    userId: ['', Validators.required]
+    userId: ['', [Validators.required, Validators.minLength(1)]]
   });
 
   onSubmit(): void {
