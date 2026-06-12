@@ -60,18 +60,18 @@
           </ng-template>
       
           <ng-template pTemplate="body" let-post>
-            <tr [pContextMenuRow]="post">
+            <tr [pContextMenuRow]="post" (dblclick)="onPostPageRedirect(post)">
               <td>
-                <a [id]="'tags-' + post.userId + '-redirect'" (dblclick)="onPostPageRedirect(post)">{{ post.tags }}</a>
+                <a [id]="'tags-' + post.userId + '-redirect'">{{ post.tags }}</a>
                 <button id="edit-post-btn" class="edit-btn" (click)="onEditPost(post)">
                   <fa-icon [icon]="faPenIcon" />
                 </button>
               </td>
               <td>
-                <a [id]="'title-' + post.userId + '-redirect'" (dblclick)="onPostPageRedirect(post)">{{ post.title }}</a>
+                <a [id]="'title-' + post.userId + '-redirect'">{{ post.title }}</a>
               </td>
               <td>
-                <a [id]="'views-' + post.userId + '-redirect'" (dblclick)="onPostPageRedirect(post)">{{ post.views }}</a>
+                <a [id]="'views-' + post.userId + '-redirect'">{{ post.views }}</a>
               </td>
             </tr>
           </ng-template>

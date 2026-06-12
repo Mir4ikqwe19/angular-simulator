@@ -7,7 +7,7 @@ import { MessageService } from '../../services/message.service';
 import { Route, Router } from '@angular/router';
 import { TablePageEvent } from 'primeng/table';
 import { IPostResponse } from './IPostresponse';
-import { IPostForm } from './IPostform';
+import { IPostEditForm } from './IPostEditForm';
 
 
 @Injectable({
@@ -39,7 +39,7 @@ export class PostService {
     this.postsSubject.next(post);
   }
 
-  editPost(postId: number, changes: IPostForm): void {
+  editPost(postId: number, changes: IPostEditForm): void {
     this.loaderService.showLoader();
 
     this.postApiService.updatePost(postId, changes).pipe(

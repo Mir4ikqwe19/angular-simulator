@@ -19,7 +19,7 @@ import { FaIconComponent } from "@fortawesome/angular-fontawesome";
 import { faSistrix } from '@fortawesome/free-brands-svg-icons';
 import { faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { IPostResponse } from '../IPostresponse';
-import { IPostForm } from '../IPostform';
+import { IPostEditForm } from '../IPostEditForm';
 
 @Component({
   selector: 'app-posts',
@@ -61,7 +61,8 @@ export class PostsComponent implements OnInit {
 
   initContextMenuItems(): void {
     this.items = [
-      { label: 'View', 
+      { 
+        label: 'View', 
         state: {
           icon: this.faMagnify
         },
@@ -71,7 +72,8 @@ export class PostsComponent implements OnInit {
           }
         } 
       },
-      { label: 'Delete', 
+      { 
+        label: 'Delete', 
         state: {
           icon: this.faDeleteMark
         },
@@ -124,7 +126,7 @@ export class PostsComponent implements OnInit {
     );
 
     this.ref?.onClose.pipe(
-      tap((updatedPost: IPostForm) => {
+      tap((updatedPost: IPostEditForm) => {
         if (updatedPost) {
           this.postService.editPost(post.id, updatedPost);
         }

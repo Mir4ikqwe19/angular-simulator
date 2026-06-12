@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
-import { IPost, IPostForm, IPostResponse } from './IPost';
+import { IPost} from './IPost';
+import { IPostResponse } from './IPostresponse';
+import { IPostEditForm } from './IPostEditForm';
 
 @Injectable({
   providedIn: 'root',
@@ -22,7 +24,7 @@ export class PostApiService {
     return this.http.delete<IPost>(`https://dummyjson.com/posts/${ postId }`);
   }
 
-  updatePost(postId: number, changes: IPostForm) {
+  updatePost(postId: number, changes: IPostEditForm) {
     return this.http.patch<IPost>(`https://dummyjson.com/posts/${ postId }`, changes);
   }
 

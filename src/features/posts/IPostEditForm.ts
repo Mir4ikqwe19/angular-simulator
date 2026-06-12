@@ -1,4 +1,4 @@
-export interface IPostForm {
+export interface IPostEditForm {
   title: string;
   tags: string[];
   views: number;
