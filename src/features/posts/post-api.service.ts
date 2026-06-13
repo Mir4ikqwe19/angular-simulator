@@ -4,6 +4,7 @@ import { Observable, tap } from 'rxjs';
 import { IPost} from './IPost';
 import { IPostResponse } from './IPostresponse';
 import { IPostEditForm } from './IPostEditForm';
+import { IPostEditFormAppearence } from './IPostEditFormAppearence';
 
 @Injectable({
   providedIn: 'root',
@@ -24,8 +25,8 @@ export class PostApiService {
     return this.http.delete<IPost>(`https://dummyjson.com/posts/${ postId }`);
   }
 
-  updatePost(postId: number, changes: IPostEditForm) {
-    return this.http.patch<IPost>(`https://dummyjson.com/posts/${ postId }`, changes);
+  updatePost(post: IPostEditFormAppearence) {
+    return this.http.patch<IPost>(`https://dummyjson.com/posts/${ post.id }`, post);
   }
 
   createPost(post: IPost) {

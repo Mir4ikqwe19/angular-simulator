@@ -20,6 +20,7 @@ import { faSistrix } from '@fortawesome/free-brands-svg-icons';
 import { faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { IPostResponse } from '../IPostresponse';
 import { IPostEditForm } from '../IPostEditForm';
+import { IPostEditFormAppearence } from '../IPostEditFormAppearence';
 
 @Component({
   selector: 'app-posts',
@@ -126,9 +127,9 @@ export class PostsComponent implements OnInit {
     );
 
     this.ref?.onClose.pipe(
-      tap((updatedPost: IPostEditForm) => {
+      tap((updatedPost: IPostEditFormAppearence) => {
         if (updatedPost) {
-          this.postService.editPost(post.id, updatedPost);
+          this.postService.editPost(updatedPost);
         }
       })
     ).subscribe();

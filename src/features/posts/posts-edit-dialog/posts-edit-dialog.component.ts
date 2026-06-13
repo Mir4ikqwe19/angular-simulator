@@ -24,7 +24,7 @@ export class PostsEditDialogComponent {
   });
 
   onSubmit(): void {
-    const updatedPost: IPost = this.editPostForm.getRawValue();
+    const updatedPost: IPost = { ...this.editPostForm.getRawValue(), id: this.post.id }
     this.ref.close(updatedPost);
   }
 

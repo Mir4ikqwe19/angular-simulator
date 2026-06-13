@@ -8,6 +8,7 @@ import { Route, Router } from '@angular/router';
 import { TablePageEvent } from 'primeng/table';
 import { IPostResponse } from './IPostresponse';
 import { IPostEditForm } from './IPostEditForm';
+import { IPostEditFormAppearence } from './IPostEditFormAppearence';
 
 
 @Injectable({
@@ -39,21 +40,21 @@ export class PostService {
     this.postsSubject.next(post);
   }
 
-  editPost(postId: number, changes: IPostEditForm): void {
+  editPost(post: IPostEditFormAppearence): void {
     this.loaderService.showLoader();
 
-    this.postApiService.updatePost(postId, changes).pipe(
-      tap((updatedPost: IPost) => {
+    this.postApiService.updatePost(post).pipe(
+      tap(() => {
         const changedPosts: IPost[] = this.getPosts().map((currentPost: IPost) => {
-          if (currentPost.id === updatedPost.id) {
-            return { ...currentPost, ...updatedPost }
+          if (currentPost.id === post.id) {
+            return { ...currentPost, ...post }
           } else {
             return currentPost;
           }
         });
 
         this.setPosts(changedPosts);
-        this.messageService.showSucces(`Пост под номером - ${ postId } изменён`);
+        this.messageService.showSucces(`Пост под номером - ${ post.id } изменён`);
       }),
       catchError((err: unknown) => {
         this.messageService.showError('Не удалось изменить!');
