@@ -1,5 +1,5 @@
 import { IPostEditForm } from "./IPostEditForm";
 
-export interface IPostEditFormAppearence extends IPostEditForm {
+export interface IEditPostRequest extends IPostEditForm {
   id: number;
 }

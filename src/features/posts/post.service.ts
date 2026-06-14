@@ -8,8 +8,7 @@ import { Route, Router } from '@angular/router';
 import { TablePageEvent } from 'primeng/table';
 import { IPostResponse } from './IPostresponse';
 import { IPostEditForm } from './IPostEditForm';
-import { IPostEditFormAppearence } from './IPostEditFormAppearence';
-
+import { IEditPostRequest } from './IEditPostRequest';
 
 @Injectable({
   providedIn: 'root',
@@ -40,17 +39,13 @@ export class PostService {
     this.postsSubject.next(post);
   }
 
-  editPost(post: IPostEditFormAppearence): void {
+  editPost(post: IEditPostRequest): void {
     this.loaderService.showLoader();
 
     this.postApiService.updatePost(post).pipe(
       tap(() => {
         const changedPosts: IPost[] = this.getPosts().map((currentPost: IPost) => {
-          if (currentPost.id === post.id) {
-            return { ...currentPost, ...post }
-          } else {
-            return currentPost;
-          }
+          return currentPost.id === post.id ? { ...currentPost, ...post } : currentPost;
         });
 
         this.setPosts(changedPosts);
