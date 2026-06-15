@@ -1,6 +1,6 @@
 import { HttpHandlerFn, HttpInterceptorFn, HttpRequest } from '@angular/common/http';
 import { inject } from '@angular/core';
-import { catchError, pipe } from 'rxjs';
+import { catchError, pipe, throwError } from 'rxjs';
 import { MessageService } from '../services/message.service';
 
 export const catchErrorInterceptor: HttpInterceptorFn = (req: HttpRequest<unknown>, next: HttpHandlerFn) => {
@@ -12,7 +12,7 @@ export const catchErrorInterceptor: HttpInterceptorFn = (req: HttpRequest<unknow
         messageService.showError(`Ошибка: ${ error.status }`);
       }
 
-      return [];
+      return throwError(() => error);
     })
   );
 };

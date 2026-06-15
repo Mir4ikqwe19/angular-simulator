@@ -1,0 +1,86 @@
+:host ::ng-deep .p-contextmenu {
+  padding: 5px;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+:host ::ng-deep .p-contextmenu-root-list {
+  gap: 5px;
+}
+
+.context-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 5px;
+}
+
+.context-menu-icon {
+  width: 16px;
+  text-align: center;
+}
+
+.centered {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .post-create-link {
+    display: inline-flex;
+    align-items: center;
+    width: 170px;
+    padding: 12px 20px;
+    background: var(--secondary-card-color);
+    color: var(--primary-text-color);
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+
+    box-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.08),
+      0 8px 24px rgba(0, 0, 0, 0.06);
+
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease,
+      border-color 0.2s ease;
+  }
+
+  .post-create-link:hover {
+    transform: translateY(-2px);
+    border-color: #d1d5db;
+    box-shadow:
+      0 4px 8px rgba(0, 0, 0, 0.08),
+      0 12px 32px rgba(0, 0, 0, 0.1);
+  }
+
+  .post-create-link:active {
+    transform: translateY(0);
+    box-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.table-wrapper {
+  background: var(--secondary-card-color);
+  border-radius: 16px;
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.05),
+    0 12px 32px rgba(0, 0, 0, 0.08);
+
+  .edit-btn {
+    padding: 5px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+.container {
+  height: 200px;
+}

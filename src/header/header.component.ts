@@ -45,6 +45,11 @@ export class HeaderComponent {
       id: 2,
       text: 'Пользователи',
       path: 'users'
+    },
+    {
+      id: 3,
+      text: 'Посты',
+      path: 'posts'
     }
   ]
 

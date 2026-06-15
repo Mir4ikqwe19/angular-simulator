@@ -1,0 +1,27 @@
+<div class="form-wrapper">
+  <form [formGroup]="editPostForm" class="form-container">
+    <div class="input-wrapper">
+      <label for="post-title">Post title:</label>
+      <input type="text" name="post-title" id="post-title" formControlName="title">
+    </div>
+  
+    <div class="input-wrapper">
+      <label for="post-tags">Post tags:</label>
+      <input type="text" name="post-tags" id="post-tags" formControlName="tags">
+    </div>
+  
+    <div class="input-wrapper">
+      <label for="post-views">Post views:</label>
+      <input type="text" name="post-views" id="post-views" formControlName="views">
+    </div>
+  
+    <button 
+      id="save-post-button" 
+      type="button" 
+      class="save-post-btn fs-16 fw-600" 
+      (click)="onSubmit()"
+    >
+      Save
+    </button>
+  </form>
+</div>
