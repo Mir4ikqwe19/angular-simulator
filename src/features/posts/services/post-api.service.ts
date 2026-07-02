@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
-import { IPost} from './IPost';
-import { IPostResponse } from './IPostresponse';
-import { IPostEditForm } from './IPostEditForm';
-import { IEditPostRequest } from './IEditPostRequest';
+import { IPost} from '../interfaces/IPost';
+import { IPostResponse } from '../interfaces/IPostresponse';
+import { IPostEditForm } from '../interfaces/IPostEditForm';
+import { IEditPostRequest } from '../interfaces/IEditPostRequest';
 
 @Injectable({
   providedIn: 'root',

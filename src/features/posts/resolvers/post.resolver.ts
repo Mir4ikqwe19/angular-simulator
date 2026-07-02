@@ -1,7 +1,9 @@
 import { ActivatedRouteSnapshot, ResolveFn, RouterStateSnapshot } from '@angular/router';
-import { IPost } from './IPost';
+import { IPost } from '../interfaces/IPost';
 import { inject } from '@angular/core';
-import { PostService } from './post.service';
+import { PostService } from '../services/post.service';
+import { LoaderService } from '../../../services/loader.service';
+import { finalize } from 'rxjs';
 
 export const postResolver: ResolveFn<IPost> = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
   const postService: PostService = inject(PostService);

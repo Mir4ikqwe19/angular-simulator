@@ -15,6 +15,7 @@ import { AppTheme } from '../enums/Theme';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { loggingInterceptor } from '../interceptors/logging.interceptor';
 import { catchErrorInterceptor } from '../interceptors/catch-error.interceptor';
+import { authInterceptor } from '../features/auth/interceptors/auth.interceptor';
 
 function getTheme(): Preset {
   const savedTheme: AppTheme | null = localStorage.getItem('app-theme') as AppTheme;
@@ -38,7 +39,7 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
     provideZoneChangeDetection(),
-    provideHttpClient(withInterceptors([loggingInterceptor, catchErrorInterceptor])),
+    provideHttpClient(withInterceptors([loggingInterceptor, catchErrorInterceptor, authInterceptor])),
     providePrimeNG({
       theme: {
         preset: getTheme(),

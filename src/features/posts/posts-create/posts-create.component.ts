@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule, FormGroup } from '@angular/forms';
-import { IPost } from '../IPost';
-import { PostService } from '../post.service';
+import { PostService } from '../services/post.service';
 import { RouterLink } from '@angular/router';
+import { IPost } from '../interfaces/IPost';
 
 @Component({
   selector: 'app-posts-create',

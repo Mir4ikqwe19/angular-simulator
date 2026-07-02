@@ -1,14 +1,14 @@
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, finalize, map, Observable, of, tap, throwError } from 'rxjs';
 import { PostApiService } from './post-api.service';
-import { IPost } from './IPost';
-import { LoaderService } from '../../services/loader.service';
-import { MessageService } from '../../services/message.service';
+import { IPost } from '../interfaces/IPost';
+import { LoaderService } from '../../../services/loader.service';
+import { MessageService } from '../../../services/message.service';
 import { Route, Router } from '@angular/router';
 import { TablePageEvent } from 'primeng/table';
-import { IPostResponse } from './IPostresponse';
-import { IPostEditForm } from './IPostEditForm';
-import { IEditPostRequest } from './IEditPostRequest';
+import { IPostResponse } from '../interfaces/IPostresponse';
+import { IPostEditForm } from '../interfaces/IPostEditForm';
+import { IEditPostRequest } from '../interfaces/IEditPostRequest';
 
 @Injectable({
   providedIn: 'root',
@@ -98,7 +98,7 @@ export class PostService {
     ).subscribe();
   }
 
-  postPageredirect(post: IPost): void {
+  postPageRedirect(post: IPost): void {
     this.router.navigate([`posts/post/${ post.id }`]);
   }
 

@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FontAwesomeModule, IconDefinition } from '@fortawesome/angular-fontawesome';
 import { faPinterest, faSkype, faTelegram, faVk } from '@fortawesome/free-brands-svg-icons'
-import { PostService } from '../features/posts/post.service';
+import { PostService } from '../features/posts/services/post.service';
 
 @Component({
   selector: 'app-footer',

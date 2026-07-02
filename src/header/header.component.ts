@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { widgetMode } from '../types/WidgetMode';
 import { MessageService } from '../services/message.service';
-import { RouterLink, RouterLinkActive } from "@angular/router";
+import { Router, RouterLink, RouterLinkActive } from "@angular/router";
 import { FormsModule } from '@angular/forms';
 import { INavigation } from '../interfaces/INavigation';
 import { ToggleSwitchChangeEvent, ToggleSwitchModule } from 'primeng/toggleswitch';
@@ -15,6 +15,9 @@ import { faMoon, faSun, IconDefinition } from '@fortawesome/free-regular-svg-ico
 import { Observable } from 'rxjs';
 import { AppTheme } from '../enums/Theme';
 import { ITheme } from '../interfaces/ITheme';
+import { LoaderService } from '../services/loader.service';
+import { AuthService } from '../features/auth/services/auth.service';
+import { IAuthUser } from '../features/auth/interfaces/IAuthUser';
 
 @Component({
   selector: 'app-header',
@@ -27,6 +30,10 @@ export class HeaderComponent {
   messageService: MessageService = inject(MessageService);
   themeService: ThemeService = inject(ThemeService);
   private localStorageService: LocalStorageService = inject(LocalStorageService);
+  private router: Router = inject(Router);
+  private loaderService: LoaderService = inject(LoaderService);
+  private authService: AuthService = inject(AuthService);
+  authUser$: Observable<IAuthUser | null> = this.authService.authUser$;
 
   companyName: string = 'румтибет';
   counter: number = 0;
@@ -39,7 +46,7 @@ export class HeaderComponent {
     {
       id: 1,
       text: 'Главная',
-      path: ''
+      path: 'home'
     },
     {
       id: 2,
@@ -77,6 +84,14 @@ export class HeaderComponent {
 
   onButtonClick(theme: AppTheme): void {
     this.themeService.changeTheme(theme);
+  }
+
+  toLoginPage(): void {
+    this.router.navigate(['login']);
+  }
+
+  toLogOut(): void {
+    this.authService.logOut();
   }
 
 }

@@ -1,10 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PostApiService } from '../post-api.service';
-import { PostService } from '../post.service';
+import { PostApiService } from '../services/post-api.service';
+import { PostService } from '../services/post.service';
 import { AsyncPipe } from '@angular/common';
 import { Observable } from 'rxjs';
-import { IPost } from '../IPost';
+import { IPost } from '../interfaces/IPost';
 import { RouterLink } from '@angular/router';
 
 @Component({
