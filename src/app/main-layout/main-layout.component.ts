@@ -7,7 +7,7 @@ import { LoaderComponent } from '../../loader/loader.component';
 
 @Component({
   selector: 'app-main-layout',
-  imports: [HeaderComponent, FooterComponent, RouterOutlet, MessageComponent, LoaderComponent],
+  imports: [HeaderComponent, FooterComponent, RouterOutlet],
   templateUrl: './main-layout.component.html',
   styleUrl: './main-layout.component.scss',
 })

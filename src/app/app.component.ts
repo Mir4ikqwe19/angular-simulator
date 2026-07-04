@@ -12,7 +12,7 @@ import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-root',
-  imports: [FormsModule, RouterOutlet],
+  imports: [FormsModule, RouterOutlet, LoaderComponent, MessageComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

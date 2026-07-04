@@ -5,15 +5,14 @@ import { MessageService } from '../../../services/message.service';
 import { catchError, switchMap, tap, throwError } from 'rxjs';
 import { LocalStorageService } from '../../../services/local-storage.service';
 import { AuthApiService } from '../services/auth-api.service';
-import { IAuthResponse } from '../interfaces/IAuthResponse';
+import { IToken } from '../interfaces/IToken';
 
 export const authInterceptor: HttpInterceptorFn = (req: HttpRequest<unknown>, next: HttpHandlerFn) => {
   const localStorageService: LocalStorageService = inject(LocalStorageService);
-  const authApiService: AuthApiService = inject(AuthApiService);
   const authService: AuthService = inject(AuthService);
 
-  const tokens: IAuthResponse = localStorageService.getValue<IAuthResponse>('tokens')!;
-  const accessToken: string = tokens?.accessToken;
+  const tokens: IToken | null = localStorageService.getValue<IToken>('tokens');
+  const accessToken: string | undefined = tokens?.accessToken;
 
   if (accessToken) {
     const authRequest: HttpRequest<unknown> = req.clone({
@@ -26,7 +25,7 @@ export const authInterceptor: HttpInterceptorFn = (req: HttpRequest<unknown>, ne
       catchError((err: HttpErrorResponse) => {
         if (err.status === 401) {
           return authService.refreshToken().pipe(
-            switchMap((response) => {
+            switchMap((response: IToken) => {
               const newRequest = req.clone({
                 setHeaders: {
                   Authorization: `Bearer ${ response.accessToken }`,
@@ -35,7 +34,7 @@ export const authInterceptor: HttpInterceptorFn = (req: HttpRequest<unknown>, ne
 
               return next(newRequest);
             }),
-            catchError((err) => {
+            catchError((err: unknown) => {
               authService.logOut();
               return throwError(() => err);
             }),

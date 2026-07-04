@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { IAuthResponse } from '../interfaces/IAuthResponse';
+import { IToken } from '../interfaces/IToken';
 import { ILogin } from '../interfaces/ILogin';
 import { Observable } from 'rxjs';
 import { IAuthUser } from '../interfaces/IAuthUser';
@@ -13,20 +13,18 @@ export class AuthApiService {
 
   private http: HttpClient = inject(HttpClient);
 
-  private readonly LOGIN_URL = 'https://dummyjson.com/auth/login';
-  private readonly GET_USER_URL = 'https://dummyjson.com/auth/me';
-  private readonly REFRESH_URL = 'https://dummyjson.com/auth/refresh';
+  private readonly URL: string = 'https://dummyjson.com/auth/';
 
-  login(user: ILogin): Observable<IAuthResponse> {
-    return this.http.post<IAuthResponse>(this.LOGIN_URL, user);
+  login(formValue: ILogin): Observable<IToken> {
+    return this.http.post<IToken>(`${ this.URL }login`, formValue);
   }
 
   getUser(): Observable<IAuthUser> {
-    return this.http.get<IAuthUser>(this.GET_USER_URL);
+    return this.http.get<IAuthUser>(`${ this.URL }me`);
   }
 
-  refreshToken(refreshToken: string): Observable<IAuthResponse> {
-    return this.http.post<IAuthResponse>(this.REFRESH_URL, { refreshToken });
+  refreshToken(refreshToken: string): Observable<IToken> {
+    return this.http.post<IToken>(`${ this.URL }refresh`, { refreshToken });
   }
 
 }

@@ -1,4 +1,4 @@
-import { ApplicationConfig, inject, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
+import { APP_INITIALIZER, ApplicationConfig, inject, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
 import { routes } from './app.routes';
 import { definePreset, palette, updatePrimaryPalette } from '@primeuix/themes';
 import { provideRouter } from '@angular/router';
@@ -16,6 +16,9 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { loggingInterceptor } from '../interceptors/logging.interceptor';
 import { catchErrorInterceptor } from '../interceptors/catch-error.interceptor';
 import { authInterceptor } from '../features/auth/interceptors/auth.interceptor';
+import { AuthService } from '../features/auth/services/auth.service';
+import { IAuthUser } from '../features/auth/interfaces/IAuthUser';
+import { Observable } from 'rxjs';
 
 function getTheme(): Preset {
   const savedTheme: AppTheme | null = localStorage.getItem('app-theme') as AppTheme;
@@ -34,8 +37,13 @@ function getTheme(): Preset {
   }
 }
 
+export function initializeApp(authService: AuthService): () => Observable<IAuthUser | null> {
+  return () => authService.initAuth();
+}
+
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideHttpClient(),
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
     provideZoneChangeDetection(),
@@ -49,6 +57,11 @@ export const appConfig: ApplicationConfig = {
         }
       },
     }),
-    provideHttpClient(),
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeApp,
+      deps: [AuthService],
+      multi: true
+    }
   ]
 };
