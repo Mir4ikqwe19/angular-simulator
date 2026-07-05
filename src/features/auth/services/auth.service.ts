@@ -42,7 +42,7 @@ export class AuthService {
     return of(null);
   }
 
-  getUser(): IAuthUser | null {
+  getProfile(): IAuthUser | null {
     return this.authUserSubject.getValue();
   }
 
@@ -60,13 +60,15 @@ export class AuthService {
         this.localStorageService.setValue<IToken>(this.TOKENS_KEY, res);
       }),
       switchMap(() => this.getCurrentUser()),
-      tap(() => this.router.navigate(['/home'])),
+      tap(() => {
+        this.messageService.showSucces(`Добро пожаловать ${ user.username }`);
+        this.router.navigate(['/home']);
+      }),
       catchError((err: HttpErrorResponse) => {
-        if (err.status === 200) {
-          this.messageService.showSucces(`Добро пожаловать ${ user.username }!`);
-        } else if (err.status >= 400) {
+        if (err.status >= 400) {
           this.messageService.showError(`Ошибка №${ err.status }!`);
         }
+
         return throwError(() => err);
       }),
       finalize(() => {
@@ -75,7 +77,7 @@ export class AuthService {
     );
   }
 
-  logOut(): void {
+  logout(): void {
     this.clearSession();
     this.router.navigate(['/login']);
   }

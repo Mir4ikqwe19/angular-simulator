@@ -91,7 +91,7 @@ export class HeaderComponent {
   }
 
   toLogOut(): void {
-    this.authService.logOut();
+    this.authService.logout();
   }
 
 }

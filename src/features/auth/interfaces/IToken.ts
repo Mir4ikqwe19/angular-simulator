@@ -1,6 +1,4 @@
-import { IAuthUser } from "./IAuthUser";
-
-export interface IToken extends IAuthUser{
+export interface IToken {
   accessToken: string;
   refreshToken: string;
 }
