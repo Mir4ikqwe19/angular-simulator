@@ -1,8 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { PostApiService } from '../post-api.service';
-import { PostService } from '../post.service';
+import { PostApiService } from '../services/post-api.service';
+import { PostService } from '../services/post.service';
 import { delay, map, Observable, tap } from 'rxjs';
-import { IPost } from '../IPost';
 import { AsyncPipe } from '@angular/common';
 import { TableModule, TablePageEvent } from 'primeng/table';
 import { ContextMenuModule } from 'primeng/contextmenu';
@@ -18,9 +17,9 @@ import { faPenToSquare, IconDefinition } from '@fortawesome/free-regular-svg-ico
 import { FaIconComponent } from "@fortawesome/angular-fontawesome";
 import { faSistrix } from '@fortawesome/free-brands-svg-icons';
 import { faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
-import { IPostResponse } from '../IPostresponse';
-import { IPostEditForm } from '../IPostEditForm';
-import { IEditPostRequest } from '../IEditPostRequest';
+import { IPost } from '../interfaces/IPost';
+import { IPostResponse } from '../interfaces/IPostresponse';
+import { IEditPostRequest } from '../interfaces/IEditPostRequest';
 
 @Component({
   selector: 'app-posts',
@@ -69,7 +68,7 @@ export class PostsComponent implements OnInit {
         },
         command: () => {
           if (this.selectedPost) {
-            this.postService.postPageredirect(this.selectedPost)
+            this.postService.postPageRedirect(this.selectedPost)
           }
         } 
       },
@@ -99,7 +98,7 @@ export class PostsComponent implements OnInit {
   }
 
   onPostPageRedirect(post: IPost): void {
-    this.postService.postPageredirect(post);
+    this.postService.postPageRedirect(post);
   }
 
   onPageChange(event: TablePageEvent): void {

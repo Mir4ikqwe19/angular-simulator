@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { IPost } from '../IPost';
+import { IPost } from '../interfaces/IPost';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators, } from '@angular/forms';
 
 @Component({
