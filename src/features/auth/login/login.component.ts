@@ -6,7 +6,6 @@ import { catchError, finalize, map, tap } from 'rxjs';
 import { LoaderService } from '../../../services/loader.service';
 import { MessageService } from '../../../services/message.service';
 import { IToken } from '../interfaces/IToken';
-import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
