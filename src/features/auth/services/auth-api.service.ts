@@ -4,7 +4,6 @@ import { IToken } from '../interfaces/IToken';
 import { ILogin } from '../interfaces/ILogin';
 import { Observable } from 'rxjs';
 import { IAuthUser } from '../interfaces/IAuthUser';
-import { LocalStorageService } from '../../../services/local-storage.service';
 
 @Injectable({
   providedIn: 'root',

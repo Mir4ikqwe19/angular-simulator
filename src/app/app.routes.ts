@@ -10,6 +10,7 @@ import { postResolver } from '../features/posts/resolvers/post.resolver';
 import { LoginComponent } from '../features/auth/login/login.component';
 import { authGuard } from '../features/auth/guards/auth.guard';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
+import { adminGuard } from '../features/auth/guards/admin.guard';
 
 export const routes: Routes = [
   {
@@ -33,9 +34,11 @@ export const routes: Routes = [
       {
         path: 'users', 
         loadComponent: () => import('../users-page/users-page.component').then(m => m.UsersPageComponent),
+        canActivate: [adminGuard]
       },
       { 
         path: 'posts',
+        canActivate: [adminGuard],
         children: [
           {
             path: 'create',
