@@ -7,7 +7,7 @@ import { MessageService } from '../../../services/message.service';
 export const adminGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
   const authService: AuthService = inject(AuthService);
   const router: Router = inject(Router);
-  const messageService: MessageService = inject(MessageService)
+  const messageService: MessageService = inject(MessageService);
 
   const user: IAuthUser | null = authService.getProfile();
 

@@ -36,7 +36,7 @@ export class AuthService {
           this.clearSession();
           return of(null);
         })
-      )
+      );
     }
 
     return of(null);

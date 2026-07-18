@@ -1,15 +1,6 @@
 import { Routes } from '@angular/router';
-import { HomePageComponent } from '../home-page/home-page.component';
-import { UsersPageComponent } from '../users-page/users-page.component';
-import { NotFoundPageComponent } from '../not-found-page/not-found-page.component';
-import { PostsComponent } from '../features/posts/posts/posts.component';
-import { PostsCreateComponent } from '../features/posts/posts-create/posts-create.component';
-import { PostsDetailsComponent } from '../features/posts/posts-details/posts-details.component';
-import { PostsEditDialogComponent } from '../features/posts/posts-edit-dialog/posts-edit-dialog.component';
 import { postResolver } from '../features/posts/resolvers/post.resolver';
-import { LoginComponent } from '../features/auth/login/login.component';
 import { authGuard } from '../features/auth/guards/auth.guard';
-import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { adminGuard } from '../features/auth/guards/admin.guard';
 
 export const routes: Routes = [
