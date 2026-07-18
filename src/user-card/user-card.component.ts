@@ -3,9 +3,9 @@ import { Component, EventEmitter, Input, input, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IUser } from '../interfaces/IUser';
 import { faRectangleXmark, IconDefinition } from '@fortawesome/free-regular-svg-icons';
-import { FaIconComponent } from "@fortawesome/angular-fontawesome";
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { PhonePipe } from '../pipes/phone.pipe';
-import { HoverDirective } from "../directives/hover.directive";
+import { HoverDirective } from '../directives/hover.directive';
 import { PhoneMode } from '../enums/Phone';
 
 @Component({

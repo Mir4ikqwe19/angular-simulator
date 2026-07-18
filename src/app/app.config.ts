@@ -1,16 +1,16 @@
-import { APP_INITIALIZER, ApplicationConfig, inject, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
+import {
+  APP_INITIALIZER,
+  ApplicationConfig,
+  provideBrowserGlobalErrorListeners,
+  provideZoneChangeDetection,
+} from '@angular/core';
 import { routes } from './app.routes';
-import { definePreset, palette, updatePrimaryPalette } from '@primeuix/themes';
 import { provideRouter } from '@angular/router';
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
-import Lara from '@primeuix/themes/lara'
-import Nora from '@primeuix/themes/nora'
-import Material from '@primeuix/themes/material'
-import { LaraBaseDesignTokens } from '@primeuix/themes/lara/base';
+import Lara from '@primeuix/themes/lara';
+import Nora from '@primeuix/themes/nora';
 import { Preset } from '@primeuix/themes/types';
-import { AuraBaseDesignTokens } from '@primeuix/themes/aura/base';
-import { NoraBaseDesignTokens } from '@primeuix/themes/nora/base';
 import { AppTheme } from '../enums/Theme';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { loggingInterceptor } from '../interceptors/logging.interceptor';
@@ -27,13 +27,13 @@ function getTheme(): Preset {
     return Lara;
   }
 
-  switch(savedTheme) {
+  switch (savedTheme) {
     case AppTheme.AURA:
       return Aura;
     case AppTheme.NORA:
       return Nora;
     default:
-      return Lara
+      return Lara;
   }
 }
 
@@ -43,25 +43,26 @@ export function initializeApp(authService: AuthService): () => Observable<IAuthU
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideHttpClient(),
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
     provideZoneChangeDetection(),
-    provideHttpClient(withInterceptors([loggingInterceptor, catchErrorInterceptor, authInterceptor])),
+    provideHttpClient(
+      withInterceptors([loggingInterceptor, catchErrorInterceptor, authInterceptor]),
+    ),
     providePrimeNG({
       theme: {
         preset: getTheme(),
         options: {
           darkModeSelector: '.my-app-dark',
           ripple: true,
-        }
+        },
       },
     }),
     {
       provide: APP_INITIALIZER,
       useFactory: initializeApp,
       deps: [AuthService],
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 };

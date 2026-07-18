@@ -1,18 +1,16 @@
 <header class="header">
   <div class="main-header-wrapper">
     <div class="container main-header">
-
       <div class="company-logo">
-        <img src="/images/mountains-logo.svg" width="137px" height="29px" alt="Румтибет иконка">
+        <img src="/images/mountains-logo.svg" width="137px" height="29px" alt="Румтибет иконка" />
         <span class="logo-name">{{ companyName }}</span>
       </div>
 
       <div class="main-header-info-wrapper">
         <div class="main-header-info">
           <nav class="header-nav fs-18 fw-600">
-
             @for (link of navigationItems; track link.id) {
-              <a 
+              <a
                 [id]="'navigate-link-' + link.id"
                 [routerLink]="link.path"
                 routerLinkActive="active-link"
@@ -21,7 +19,6 @@
                 {{ link.text }}
               </a>
             }
-
           </nav>
           <button
             id="consultation-btn"
@@ -34,55 +31,58 @@
         </div>
         <div class="header-date-info">
           <div class="theme-toggle-wrapper">
-            <p-selectbutton 
+            <p-selectbutton
               id="select-theme-btn"
               optionLabel="name"
               optionValue="theme"
               [options]="themeService.themeOptions"
               [ngModel]="themeService.theme$ | async"
-              (onChange)="onButtonClick($event.value)"/>
+              (onChange)="onButtonClick($event.value)"
+            />
           </div>
 
           <div class="toggle-wrapper">
-            <p-toggle-switch 
-              id="dark-mode-swithcer" 
-              [ngModel]="themeService.isDarkMode$| async"
+            <p-toggle-switch
+              id="dark-mode-swithcer"
+              [ngModel]="themeService.isDarkMode$ | async"
               (onChange)="toggleDarkMode($event)"
             >
               <ng-template #handle>
-                <fa-icon [icon]="(themeService.isDarkMode$| async) ? faMoon : faSun" />
+                <fa-icon [icon]="(themeService.isDarkMode$ | async) ? faMoon : faSun" />
               </ng-template>
             </p-toggle-switch>
           </div>
 
           @if (currentWidget === 'timer') {
             <p class="header-timer">{{ currentDateTime }}</p>
-            <button id="show-counter-btn" (click)="switchWidgetMode('counter')">Показать счётчик</button>
+            <button id="show-counter-btn" (click)="switchWidgetMode('counter')">
+              Показать счётчик
+            </button>
           } @else {
             <div class="header-counter">
               <button
-              id="minus-counter-btn"
-              (click)="reduceCounter()"
-              [disabled]="counter <= 0"
-              class="counter-btn"
-            >
-              -
-            </button>
+                id="minus-counter-btn"
+                (click)="reduceCounter()"
+                [disabled]="counter <= 0"
+                class="counter-btn"
+              >
+                -
+              </button>
               <span>{{ counter }}</span>
+              <button id="plus-counter-btn" (click)="increaseCounter()" class="counter-btn">
+                +
+              </button>
               <button
-              id="plus-counter-btn"
-              (click)="increaseCounter()"
-              class="counter-btn"
-            >
-              +
-            </button>
-            <button id="show-timer-btn" class="show-timer-btn" (click)="switchWidgetMode('timer')">Показать таймер</button>
+                id="show-timer-btn"
+                class="show-timer-btn"
+                (click)="switchWidgetMode('timer')"
+              >
+                Показать таймер
+              </button>
             </div>
           }
-          
         </div>
       </div>
-
     </div>
   </div>
 </header>

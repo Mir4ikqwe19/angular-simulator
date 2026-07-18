@@ -1,11 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { widgetMode } from '../types/WidgetMode';
 import { MessageService } from '../services/message.service';
-import { Router, RouterLink, RouterLinkActive } from "@angular/router";
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { INavigation } from '../interfaces/INavigation';
 import { ToggleSwitchChangeEvent, ToggleSwitchModule } from 'primeng/toggleswitch';
-import { FaIconComponent } from "@fortawesome/angular-fontawesome";
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { AsyncPipe, NgClass } from '@angular/common';
 import { LocalStorageService } from '../services/local-storage.service';
 import { SelectButtonModule } from 'primeng/selectbutton';
@@ -21,7 +21,15 @@ import { IAuthUser } from '../features/auth/interfaces/IAuthUser';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, RouterLinkActive, FormsModule, SelectButtonModule, FaIconComponent, AsyncPipe, ToggleSwitchModule],
+  imports: [
+    RouterLink,
+    RouterLinkActive,
+    FormsModule,
+    SelectButtonModule,
+    FaIconComponent,
+    AsyncPipe,
+    ToggleSwitchModule,
+  ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
@@ -42,23 +50,23 @@ export class HeaderComponent {
   faMoon: IconDefinition = faMoon;
   faSun: IconDefinition = faSun;
 
-  navigationItems: INavigation[] =[
+  navigationItems: INavigation[] = [
     {
       id: 1,
       text: 'Главная',
-      path: 'home'
+      path: 'home',
     },
     {
       id: 2,
       text: 'Пользователи',
-      path: 'users'
+      path: 'users',
     },
     {
       id: 3,
       text: 'Посты',
-      path: 'posts'
-    }
-  ]
+      path: 'posts',
+    },
+  ];
 
   constructor() {
     setInterval(() => {

@@ -1,6 +1,17 @@
 import { inject, Injectable } from '@angular/core';
 import { UserApiService } from './user-api.service';
-import { BehaviorSubject, catchError, delay, finalize, Observable, of, pipe, shareReplay, tap, timeout } from 'rxjs';
+import {
+  BehaviorSubject,
+  catchError,
+  delay,
+  finalize,
+  Observable,
+  of,
+  pipe,
+  shareReplay,
+  tap,
+  timeout,
+} from 'rxjs';
 import { IUser } from '../interfaces/IUser';
 import { LoaderService } from './loader.service';
 import { MessageService } from './message.service';
@@ -36,7 +47,7 @@ export class UserService {
   deleteUser(id: number): void {
     const currentUser: IUser[] = this.getUsers();
     const updatedUsers: IUser[] = currentUser.filter((user: IUser) => user.id !== id);
-    
+
     this.setUsers(updatedUsers);
   }
 
@@ -47,15 +58,14 @@ export class UserService {
       return of(usersFromStorage);
     } else {
       this.loaderService.showLoader();
-      return this.userApi.getUsers()
-        .pipe(
-          catchError(() => {
-            this.messageService.showError('Не удалось загрузить.');
-            return of([]);
-          }),
-          finalize(() => this.loaderService.hideLoader()),
-        );
+      return this.userApi.getUsers().pipe(
+        catchError(() => {
+          this.messageService.showError('Не удалось загрузить.');
+          return of([]);
+        }),
+        finalize(() => this.loaderService.hideLoader()),
+      );
     }
   }
-  
+
 }
