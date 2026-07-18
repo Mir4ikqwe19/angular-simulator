@@ -28,8 +28,10 @@ module.exports = defineConfig([
 
     rules: {
       eqeqeq: ['error', 'always'],
-      
+
       '@typescript-eslint/no-unused-vars': 'off',
+      '@typescript-eslint/no-inferrable-types': 'off',
+      '@typescript-eslint/consistent-generic-constructors': 'off',
 
       '@angular-eslint/directive-selector': [
         'error',

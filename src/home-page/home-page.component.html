@@ -18,7 +18,7 @@
         </div>
 
         <div class="input-field">
-          <input id="hike-date" type="date" placeholder="Дата похода" [(ngModel)]="dateTrip">
+          <input id="hike-date" type="date" placeholder="Дата похода" [(ngModel)]="dateTrip" />
           <div class="icon-calendar">
             <fa-icon [icon]="faCalendar" />
           </div>
@@ -46,7 +46,7 @@
       </div>
     </div>
     <div class="live-input-wrapper">
-      <input id="live-input" type="text" class="live-input" [(ngModel)]="liveInputValue">
+      <input id="live-input" type="text" class="live-input" [(ngModel)]="liveInputValue" />
       <p>{{ liveInputValue }}</p>
     </div>
   </div>
@@ -54,9 +54,21 @@
 <section class="tour-info-section">
   <div class="tour-info-wrapper container">
     <div class="tour-info-left">
-      <img src="/images/white-mountains.png" class="white-mountains-img" alt="белые горы" width="350px" height="400px">
+      <img
+        src="/images/white-mountains.png"
+        class="white-mountains-img"
+        alt="белые горы"
+        width="350px"
+        height="400px"
+      />
       <div class="forest-house-img-container">
-        <img src="/images/forest-house.png" class="forest-house-img" alt="домик в лесу" width="350px" height="400px">
+        <img
+          src="/images/forest-house.png"
+          class="forest-house-img"
+          alt="домик в лесу"
+          width="350px"
+          height="400px"
+        />
         <button id="play-video-btn">
           <fa-icon [icon]="faPlay" />
         </button>
@@ -68,14 +80,19 @@
         <span class="fw-400 fs-24 lh-20px">о нашем походе</span>
         <h3 class="fw-800 fs-32 lh-120">Исследуйте все горные массивы мира вместе с нами</h3>
       </div>
-      <p class="fs-18 fw-400 lh-150">Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат Вирджиния, взял одно из самых странных слов в Lorem Ipsum, "consectetur"и занялся его поисками в классической латинской литературе.</p>
+      <p class="fs-18 fw-400 lh-150">
+        Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух
+        тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат
+        Вирджиния, взял одно из самых странных слов в Lorem Ipsum, "consectetur"и занялся его
+        поисками в классической латинской литературе.
+      </p>
       <button
         id="tour-program-btn"
         class="fs-16 fw-600 lh-20px"
         (click)="messageService.showWarn('Внимание!')"
       >
         Программа тура
-    </button>
+      </button>
     </div>
   </div>
 </section>
@@ -86,9 +103,11 @@
       <span class="fs-24 fw-400 lh-20px">наше предложение</span>
       <h3 class="fs-32 fw-800 lh-120">Лучшие программы для тебя</h3>
     </div>
-    <p class="fs-18 fw-400 lh-150">Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа.</p>
+    <p class="fs-18 fw-400 lh-150">
+      Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух
+      тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа.
+    </p>
     <div class="propose-description-container">
-
       @for (program of programBlocks; track program.id; let i = $index) {
         <div class="description-wrapper">
           <fa-icon [icon]="program.iconName" [class]="'icon-container icon-color-' + i" />
@@ -98,7 +117,6 @@
           </div>
         </div>
       }
-      
     </div>
     <button
       id="price-program-btn"
@@ -110,10 +128,25 @@
   </div>
 
   <div class="propose-img-container">
-    <img src="/images/coffee-in-mountains.png" alt="кофе в горах" width="250px" height="250px">
-    <img src="/images/human-in-desert-mountains.png" alt="мужчина в пустынных горах" width="250px" height="250px">
-    <img src="/images/human-in-snow-mountains.png" alt="мужчина в горах на снегоходе" width="250px" height="250px">
-    <img src="/images/green-mountains.png" alt="зелёные горы с речкой" width="250px" height="250px">
+    <img src="/images/coffee-in-mountains.png" alt="кофе в горах" width="250px" height="250px" />
+    <img
+      src="/images/human-in-desert-mountains.png"
+      alt="мужчина в пустынных горах"
+      width="250px"
+      height="250px"
+    />
+    <img
+      src="/images/human-in-snow-mountains.png"
+      alt="мужчина в горах на снегоходе"
+      width="250px"
+      height="250px"
+    />
+    <img
+      src="/images/green-mountains.png"
+      alt="зелёные горы с речкой"
+      width="250px"
+      height="250px"
+    />
   </div>
 </section>
 
@@ -125,7 +158,6 @@
     </div>
 
     <div class="destination-block-wrapper">
-
       @for (destination of destinationBlock; track destination.id) {
         <div class="destination-card">
           <img
@@ -133,7 +165,7 @@
             [alt]="destination.imageName"
             width="380px"
             height="500px"
-          >
+          />
           <div class="star-icon">
             <fa-icon [icon]="faStar" />
             <span class="fs-14 fw-700 lh-18px">{{ destination.assessment }}</span>
@@ -144,12 +176,13 @@
                 <p class="fs-24 fw-700 lh-120">{{ destination.title }}</p>
                 <p class="fs-14 fw-400 lh-18px">{{ destination.description }}</p>
               </div>
-              <button id="destination-price-btn" class="destination-price-btn fs-20 fw-700 lh-24px">{{ destination.price }} &#36;</button>
+              <button id="destination-price-btn" class="destination-price-btn fs-20 fw-700 lh-24px">
+                {{ destination.price }} &#36;
+              </button>
             </div>
           </div>
         </div>
       }
-
     </div>
     <button
       id="destination-rating-btn"
@@ -169,7 +202,6 @@
     </div>
 
     <div class="blog-cards-container">
-
       @for (blog of travelBlog; track blog.id) {
         <div class="blog-card" [class.card-shadow]="blog.id === 2">
           <img
@@ -177,7 +209,7 @@
             [alt]="blog.image"
             width="230px"
             height="280px"
-          >
+          />
           <div class="blog-card-info">
             <div class="blog-description">
               <h3 class="fs-24 fw-700 lh-32px">{{ blog.title }}</h3>
@@ -190,7 +222,6 @@
           </div>
         </div>
       }
-
     </div>
     <button
       id="travel-blog-material-btn"
@@ -198,7 +229,7 @@
       (click)="messageService.showInfo('Будет позже!')"
     >
       Другие материалы
-  </button>
+    </button>
   </div>
 </section>
 
@@ -210,12 +241,12 @@
     </div>
 
     <div class="photo-wrapper">
-      <img src="/images/cappadocia.png" alt="cappadocia" width="580px" height="250px">
-      <img src="/images/travel-map.png" alt="travel-map" width="280px" height="250px">
-      <img src="/images/burj-al-arab.png" alt="burj-al-arab" width="280px" height="250px">
-      <img src="/images/island-beach.png" alt="island-beach" width="280px" height="250px">
-      <img src="/images/desert-canyon.png" alt="desert-canyon" width="580px" height="250px">
-      <img src="/images/old-travel-map.png" alt="old-travel-map" width="280px" height="250px">
+      <img src="/images/cappadocia.png" alt="cappadocia" width="580px" height="250px" />
+      <img src="/images/travel-map.png" alt="travel-map" width="280px" height="250px" />
+      <img src="/images/burj-al-arab.png" alt="burj-al-arab" width="280px" height="250px" />
+      <img src="/images/island-beach.png" alt="island-beach" width="280px" height="250px" />
+      <img src="/images/desert-canyon.png" alt="desert-canyon" width="580px" height="250px" />
+      <img src="/images/old-travel-map.png" alt="old-travel-map" width="280px" height="250px" />
     </div>
 
     <button class="photo-report-btn fs-16 fw-600 lh-20px" id="pinterest-btn">Наш pinterest</button>

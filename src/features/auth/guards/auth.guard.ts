@@ -1,9 +1,17 @@
 import { inject } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot } from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  CanActivateFn,
+  Router,
+  RouterStateSnapshot,
+} from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { IAuthUser } from '../interfaces/IAuthUser';
 
-export const authGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+export const authGuard: CanActivateFn = (
+  route: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot,
+) => {
   const router: Router = inject(Router);
   const authService: AuthService = inject(AuthService);
   const currentUser: IAuthUser | null = authService.getProfile();
@@ -11,6 +19,6 @@ export const authGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: R
   if (currentUser) {
     return true;
   }
-  
+
   return router.createUrlTree(['/login']);
 };

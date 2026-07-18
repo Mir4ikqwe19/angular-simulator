@@ -2,7 +2,7 @@ import { Directive, HostBinding, HostListener, Input } from '@angular/core';
 import { IGradientConfiguration } from '../interfaces/IGradient';
 
 @Directive({
-  selector: '[Gradient]',
+  selector: '[appGradient]',
 })
 export class GradientDirective {
 
@@ -13,17 +13,17 @@ export class GradientDirective {
   private defaultConfiguration: IGradientConfiguration = {
     delay: 1000,
     colors: ['transparent'],
-    thickness: '2px'
-  }
+    thickness: '2px',
+  };
 
   @HostBinding('class.gradient-border') isActive: boolean = false;
 
   @HostBinding('style.--border-width')
   get borderWidth(): string {
     if (this.isActive) {
-      return this.gradientConfiguration.thickness!
+      return this.gradientConfiguration.thickness!;
     } else {
-      return this.defaultConfiguration.thickness!
+      return this.defaultConfiguration.thickness!;
     }
   }
 

@@ -1,21 +1,24 @@
 <div class="users-page-wrapper">
   <app-create-user (createUser)="addUser($event)" />
   <app-users-filter (filterChange)="filterUsers($event)" />
-  
+
   <div class="user-card-wrapper">
     @if (filteredUsers$ | async; as users) {
       <span class="users-count">
         {{ users.length | plural: 'Пользователь' : 'Пользователя' : 'Пользователей' }}
       </span>
       <div class="user-list-wrapper">
-    
         @for (user of users; track user.id) {
-          <app-user-card Gradient [gradientConfiguration]="cardConfiguration" [user]="user" (deleteUser)="deleteUser($event)" />
+          <app-user-card
+            appGradient
+            [gradientConfiguration]="cardConfiguration"
+            [user]="user"
+            (deleteUser)="deleteUser($event)"
+          />
         } @empty {
           <span class="empty fw-800 fs-26 lh-30px">Нет пользователей для отображения</span>
         }
       </div>
     }
   </div>
-
 </div>

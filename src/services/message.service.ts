@@ -5,7 +5,7 @@ import { BehaviorSubject, filter, map, Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class MessageService {
-  
+
   messageList: IMessage[] = [];
 
   private messagesSubject: BehaviorSubject<IMessage[]> = new BehaviorSubject<IMessage[]>([]);
@@ -37,7 +37,9 @@ export class MessageService {
   }
 
   closeMessage(currentMessage: IMessage): void {
-    const filteredMessages: IMessage[] = this.messagesSubject.getValue().filter((message: IMessage) => message !== currentMessage);
+    const filteredMessages: IMessage[] = this.messagesSubject
+      .getValue()
+      .filter((message: IMessage) => message !== currentMessage);
     this.messagesSubject.next(filteredMessages);
   }
 

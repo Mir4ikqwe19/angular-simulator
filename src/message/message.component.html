@@ -1,13 +1,13 @@
 <div class="notification-message-wrapper">
-
   @for (message of messageService.messages$ | async; track message) {
-    <ng-container [ngTemplateOutlet]="notificationMessage" [ngTemplateOutletContext]="{ message: message }"></ng-container>
+    <ng-container
+      [ngTemplateOutlet]="notificationMessage"
+      [ngTemplateOutletContext]="{ message: message }"
+    ></ng-container>
   }
-
 </div>
 
 <ng-template #notificationMessage let-message="message">
-
   <div class="message">
     <div class="message-wrapper">
       <div class="message-info-container">
@@ -18,11 +18,14 @@
         </div>
       </div>
       <div class="close-message-wrapper">
-        <button [id]="'close-' + message.text" class="close-message" (click)="messageService.closeMessage(message)">
+        <button
+          [id]="'close-' + message.text"
+          class="close-message"
+          (click)="messageService.closeMessage(message)"
+        >
           <fa-icon [icon]="faCloseMark" />
         </button>
       </div>
     </div>
   </div>
-  
 </ng-template>

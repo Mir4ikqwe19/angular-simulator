@@ -25,7 +25,8 @@ export class UsersFilterComponent implements OnInit {
         map((value: string) => value.trim().toLowerCase()),
         tap((value: string) => this.filterChange.emit(value)),
         takeUntilDestroyed(this.destroyRef),
-      ).subscribe();
+      )
+      .subscribe();
   }
 
 }

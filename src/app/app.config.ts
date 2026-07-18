@@ -1,4 +1,9 @@
-import { APP_INITIALIZER, ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
+import {
+  APP_INITIALIZER,
+  ApplicationConfig,
+  provideBrowserGlobalErrorListeners,
+  provideZoneChangeDetection,
+} from '@angular/core';
 import { routes } from './app.routes';
 import { provideRouter } from '@angular/router';
 import { providePrimeNG } from 'primeng/config';
@@ -22,7 +27,7 @@ function getTheme(): Preset {
     return Lara;
   }
 
-  switch(savedTheme) {
+  switch (savedTheme) {
     case AppTheme.AURA:
       return Aura;
     case AppTheme.NORA:
@@ -41,21 +46,23 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
     provideZoneChangeDetection(),
-    provideHttpClient(withInterceptors([loggingInterceptor, catchErrorInterceptor, authInterceptor])),
+    provideHttpClient(
+      withInterceptors([loggingInterceptor, catchErrorInterceptor, authInterceptor]),
+    ),
     providePrimeNG({
       theme: {
         preset: getTheme(),
         options: {
           darkModeSelector: '.my-app-dark',
           ripple: true,
-        }
+        },
       },
     }),
     {
       provide: APP_INITIALIZER,
       useFactory: initializeApp,
       deps: [AuthService],
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 };
