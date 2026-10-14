@@ -16,7 +16,7 @@ import {
   faHandHoldingDollar,
 } from '@fortawesome/free-solid-svg-icons';
 import { faCalendar } from '@fortawesome/free-regular-svg-icons';
-import { DATE_PIPE_DEFAULT_OPTIONS, DatePipe, DatePipeConfig } from '@angular/common';
+import { DatePipe, DatePipeConfig } from '@angular/common';
 
 @Component({
   selector: 'app-home-page',
@@ -28,7 +28,6 @@ export class HomePageComponent {
 
   messageService: MessageService = inject(MessageService);
   private localStorageService: LocalStorageService = inject(LocalStorageService);
-  dateFormat: DatePipeConfig = inject(DATE_PIPE_DEFAULT_OPTIONS);
 
   isLoading: boolean = true;
   liveInputValue!: string;

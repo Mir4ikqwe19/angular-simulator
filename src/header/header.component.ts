@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { INavigation } from '../interfaces/INavigation';
 import { ToggleSwitchChangeEvent, ToggleSwitchModule } from 'primeng/toggleswitch';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
-import { AsyncPipe, DATE_PIPE_DEFAULT_OPTIONS, DatePipe, NgClass } from '@angular/common';
+import { AsyncPipe, DatePipe, NgClass } from '@angular/common';
 import { LocalStorageService } from '../services/local-storage.service';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { usePreset } from '@primeuix/themes';
@@ -45,7 +45,6 @@ export class HeaderComponent {
   private loaderService: LoaderService = inject(LoaderService);
   private authService: AuthService = inject(AuthService);
   appConfig: IAppConfig = inject(APP_CONFIG);
-  dateFormat = inject(DATE_PIPE_DEFAULT_OPTIONS);
   authUser$: Observable<IAuthUser | null> = this.authService.authUser$;
 
   counter: number = 0;
