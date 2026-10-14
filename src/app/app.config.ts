@@ -19,10 +19,8 @@ import { authInterceptor } from '../features/auth/interceptors/auth.interceptor'
 import { AuthService } from '../features/auth/services/auth.service';
 import { IAuthUser } from '../features/auth/interfaces/IAuthUser';
 import { Observable } from 'rxjs';
-import { DATE_FORMAT } from '../tokens/date-format.token';
-import { AUTH_API_URL } from '../tokens/auth-api-url.token';
-import { USERS_API_URL } from '../tokens/user-api-url-token';
 import { APP_CONFIG } from '../tokens/app-config.token';
+import { DATE_PIPE_DEFAULT_OPTIONS } from '@angular/common';
 
 function getTheme(): Preset {
   const savedTheme: AppTheme | null = localStorage.getItem('app-theme') as AppTheme;
@@ -49,16 +47,10 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     { 
-      provide: DATE_FORMAT, 
-      useValue: 'dd.MM.yyyy HH:mm' 
-    },
-    {
-      provide: AUTH_API_URL,
-      useValue: 'https://dummyjson.com/auth/'
-    },
-    {
-      provide: USERS_API_URL,
-      useValue: 'https://jsonplaceholder.typicode.com/'
+      provide: DATE_PIPE_DEFAULT_OPTIONS, 
+      useValue: { 
+        dateFormat: 'dd.MM.yyyy HH:mm' 
+      } 
     },
     {
       provide: APP_CONFIG,

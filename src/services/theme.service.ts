@@ -9,13 +9,13 @@ import Aura from '@primeuix/themes/aura';
 import Lara from '@primeuix/themes/lara';
 import Nora from '@primeuix/themes/nora';
 import { ITheme } from '../interfaces/ITheme';
-import { IAppConfig } from '../interfaces/IApp-config';
+import { IAppConfig } from '../interfaces/IAppconfig';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ThemeService {
-
+  
   appConfig: IAppConfig = inject(APP_CONFIG);
   private localStorageService: LocalStorageService = inject(LocalStorageService);
 
@@ -59,8 +59,7 @@ export class ThemeService {
   }
 
   private initAppTheme(): AppTheme {
-    const savedTheme: AppTheme | null =
-      this.localStorageService.getValue<AppTheme>('app-theme');
+    const savedTheme: AppTheme | null = this.localStorageService.getValue<AppTheme>('app-theme');
 
     return savedTheme ?? AppTheme.LARA;
   }
@@ -77,7 +76,7 @@ export class ThemeService {
     if (!this.appConfig.enableTheming && theme !== AppTheme.LARA) {
       theme = AppTheme.LARA;
     }
-    
+
     switch (theme) {
       case AppTheme.LARA:
         usePreset(Lara);

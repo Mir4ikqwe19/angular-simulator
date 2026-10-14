@@ -5,7 +5,7 @@
         <img src="/images/mountains-logo.svg" width="137px" height="29px" alt="Румтибет иконка" />
         <span class="logo-name">{{ appConfig.companyName }}</span>
         @if (lastLogin) {
-          <p class="last-login">Последний вход: {{ lastLogin | date: dateFormat }}</p>
+          <p class="last-login">Последний вход: {{ lastLogin | date: dateFormat.dateFormat }}</p>
         }
       </div>
 
@@ -60,7 +60,7 @@
           }
 
           @if (currentWidget === 'timer') {
-            <p class="header-timer">{{ currentDateTime | date: dateFormat }}</p>
+            <p class="header-timer">{{ currentDateTime | date: dateFormat.dateFormat }}</p>
             <button id="show-counter-btn" (click)="switchWidgetMode('counter')">
               Показать счётчик
             </button>

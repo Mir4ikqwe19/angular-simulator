@@ -6,8 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { INavigation } from '../interfaces/INavigation';
 import { ToggleSwitchChangeEvent, ToggleSwitchModule } from 'primeng/toggleswitch';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
-import { AsyncPipe, DatePipe, NgClass } from '@angular/common';
-import { DATE_FORMAT } from '../tokens/date-format.token';
+import { AsyncPipe, DATE_PIPE_DEFAULT_OPTIONS, DatePipe, NgClass } from '@angular/common';
 import { LocalStorageService } from '../services/local-storage.service';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { usePreset } from '@primeuix/themes';
@@ -20,7 +19,7 @@ import { LoaderService } from '../services/loader.service';
 import { AuthService } from '../features/auth/services/auth.service';
 import { IAuthUser } from '../features/auth/interfaces/IAuthUser';
 import { APP_CONFIG } from '../tokens/app-config.token';
-import { IAppConfig } from '../interfaces/IApp-config';
+import { IAppConfig } from '../interfaces/IAppconfig';
 
 @Component({
   selector: 'app-header',
@@ -46,7 +45,7 @@ export class HeaderComponent {
   private loaderService: LoaderService = inject(LoaderService);
   private authService: AuthService = inject(AuthService);
   appConfig: IAppConfig = inject(APP_CONFIG);
-  dateFormat: string = inject(DATE_FORMAT);
+  dateFormat = inject(DATE_PIPE_DEFAULT_OPTIONS);
   authUser$: Observable<IAuthUser | null> = this.authService.authUser$;
 
   counter: number = 0;
@@ -108,5 +107,5 @@ export class HeaderComponent {
   toLogOut(): void {
     this.authService.logout();
   }
-
+  
 }
