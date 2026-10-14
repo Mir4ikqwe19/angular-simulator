@@ -18,13 +18,13 @@
   gap: 10px;
   border-top: 4px solid var(--secondary-color);
   background-color: var(--secondary-card-color);
-    box-shadow:
+  box-shadow:
     0 2px 6px rgba(0, 0, 0, 0.06),
-    0 10px 20px rgba(0, 0, 0, 0.10);
+    0 10px 20px rgba(0, 0, 0, 0.1);
 
   input {
     height: 30px;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     color: #000000;
     border-radius: 5px;
     padding: 8px;

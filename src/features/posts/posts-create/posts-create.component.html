@@ -5,43 +5,43 @@
   <form [formGroup]="createPostForm" class="form-container">
     <div class="input-wrapper">
       <label for="post-title">Post title:</label>
-      <input type="text" name="post-title" id="create-post-title" formControlName="title">
+      <input type="text" name="post-title" id="create-post-title" formControlName="title" />
     </div>
 
     <div class="input-wrapper">
       <label for="post-body">Post body:</label>
-      <input type="text" name="post-body" id="post-body" formControlName="body">
+      <input type="text" name="post-body" id="post-body" formControlName="body" />
     </div>
-  
+
     <div class="input-wrapper">
       <label for="post-tags">Post tags:</label>
-      <input type="text" name="post-tags" id="create-post-tags" formControlName="tags">
+      <input type="text" name="post-tags" id="create-post-tags" formControlName="tags" />
     </div>
 
     <div class="input-wrapper" formGroupName="reactions">
       <label for="post-likes">Post likes:</label>
-      <input type="text" name="post-likes" id="post-likes" formControlName="likes">
+      <input type="text" name="post-likes" id="post-likes" formControlName="likes" />
     </div>
 
     <div class="input-wrapper" formGroupName="reactions">
       <label for="post-dislikes">Post dislikes:</label>
-      <input type="text" name="post-dislikes" id="post-dislikes" formControlName="dislikes">
+      <input type="text" name="post-dislikes" id="post-dislikes" formControlName="dislikes" />
     </div>
-  
+
     <div class="input-wrapper">
       <label for="post-views">Post views:</label>
-      <input type="text" name="post-views" id="create-post-views" formControlName="views">
+      <input type="text" name="post-views" id="create-post-views" formControlName="views" />
     </div>
 
     <div class="input-wrapper">
       <label for="post-user-id">Post user id:</label>
-      <input type="text" name="post-user-id" id="post-user-id" formControlName="userId">
+      <input type="text" name="post-user-id" id="post-user-id" formControlName="userId" />
     </div>
 
-    <button 
+    <button
       id="create-post-btn"
-      type="button" 
-      class="create-post-btn fs-16 fw-600" 
+      type="button"
+      class="create-post-btn fs-16 fw-600"
       (click)="onSubmit()"
       [disabled]="createPostForm.invalid"
     >

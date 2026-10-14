@@ -5,8 +5,8 @@ import { usePreset, updatePreset, updatePrimaryPalette } from '@primeuix/themes'
 import { AppTheme } from '../enums/Theme';
 
 import Aura from '@primeuix/themes/aura';
-import Lara from '@primeuix/themes/lara'
-import Nora from '@primeuix/themes/nora'
+import Lara from '@primeuix/themes/lara';
+import Nora from '@primeuix/themes/nora';
 import { ITheme } from '../interfaces/ITheme';
 
 @Injectable({
@@ -16,27 +16,35 @@ export class ThemeService {
 
   private localStorageService: LocalStorageService = inject(LocalStorageService);
 
-  private isDarkModeSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.initDarkMode());
-  isDarkMode$: Observable<boolean> = this.isDarkModeSubject.asObservable()
-    .pipe(
-      tap((isDarkMode: boolean) => {
-        isDarkMode ? this.element!.classList.add('my-app-dark') : this.element!.classList.remove('my-app-dark');
-      })
-    );
+  private isDarkModeSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
+    this.initDarkMode(),
+  );
 
-  private themeSubject: BehaviorSubject<AppTheme> = new BehaviorSubject<AppTheme>(this.initAppTheme());
-  theme$: Observable<AppTheme>= this.themeSubject.asObservable()
-    .pipe(
-      tap((theme: AppTheme) => this.changeTheme(theme))
-    );
-  
+  isDarkMode$: Observable<boolean> = this.isDarkModeSubject.asObservable().pipe(
+    tap((isDarkMode: boolean) => {
+      if (isDarkMode) {
+        this.element!.classList.add('my-app-dark');
+      } else {
+        this.element!.classList.remove('my-app-dark');
+      }
+    }),
+  );
+
+  private themeSubject: BehaviorSubject<AppTheme> = new BehaviorSubject<AppTheme>(
+    this.initAppTheme(),
+  );
+
+  theme$: Observable<AppTheme> = this.themeSubject
+    .asObservable()
+    .pipe(tap((theme: AppTheme) => this.changeTheme(theme)));
+
   private APP_MODE_KEY: string = 'app-mode';
   private APP_THEME_KEY: string = 'app-theme';
   private element: HTMLElement | null = document.querySelector('html');
   themeOptions: ITheme[] = [
     { name: 'Lara', theme: AppTheme.LARA },
     { name: 'Aura', theme: AppTheme.AURA },
-    { name: 'Nora', theme: AppTheme.NORA }
+    { name: 'Nora', theme: AppTheme.NORA },
   ];
 
   private initDarkMode(): boolean {
@@ -54,7 +62,7 @@ export class ThemeService {
   }
 
   changeTheme(theme: AppTheme): void {
-    switch(theme) {
+    switch (theme) {
       case AppTheme.LARA:
         usePreset(Lara);
         break;
@@ -65,7 +73,7 @@ export class ThemeService {
         usePreset(Nora);
         break;
     }
-    
+
     this.localStorageService.setValue(this.APP_THEME_KEY, theme);
   }
 

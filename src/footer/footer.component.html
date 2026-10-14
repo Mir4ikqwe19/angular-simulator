@@ -9,34 +9,33 @@
       <span>Введите e-mail адрес</span>
       <div class="subscribe-form-shadow">
         <div class="subscribe-form">
-          <input type="text" class="subscribe-input" placeholder="name@domain.com">
+          <input type="text" class="subscribe-input" placeholder="name@domain.com" />
           <button class="subscribe-btn" id="subscribe-btn">Подписаться на новости</button>
         </div>
       </div>
       <div class="subscribe-form-description">
         <p class="subscribe-agreement">
-          Подписываясь на новости, вы автоматически соглашаетесь с 
+          Подписываясь на новости, вы автоматически соглашаетесь с
           <a href="#" class="subscribe-link" id="subscribe-link">
             условиями обработки персональных данных
           </a>
-            и
-          <a href="#" class="subscribe-link" id="ad-rules-link">
-            правилами рекламных рассылок
-          </a>
+          и
+          <a href="#" class="subscribe-link" id="ad-rules-link"> правилами рекламных рассылок </a>
         </p>
       </div>
     </div>
   </div>
 </div>
 
-
 <footer class="footer">
   <div class="container footer-wrapper">
-
     <div class="footer-left">
       <div class="footer-left-title">
         <h3 class="fs-20 fw-700 lh-24px">Компания «РумТибет»</h3>
-        <p class="fs-14 fw-400 lh-20px">Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney.</p>
+        <p class="fs-14 fw-400 lh-20px">
+          Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух
+          тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney.
+        </p>
       </div>
       <div class="footer-left-links">
         <div class="footer-left-contacts">
@@ -64,22 +63,18 @@
       <div class="footer-middle">
         <h3>Наши услуги</h3>
         <div class="footer-links-wrapper">
-
           @for (favor of favorBlock; track $index) {
             <a href="#" class="footer-link" [id]="'footer-link-' + $index">{{ favor }}</a>
           }
-
         </div>
       </div>
-      
+
       <div class="footer-right">
         <h3>Важно для путешествий</h3>
         <div class="footer-links-wrapper">
-
           @for (board of boardItems; track $index) {
             <a href="#" class="footer-link" [id]="'board-lonk-' + $index">{{ board }}</a>
           }
-
         </div>
       </div>
     </div>

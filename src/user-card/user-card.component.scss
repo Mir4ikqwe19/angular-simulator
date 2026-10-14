@@ -83,7 +83,7 @@ h4 {
   max-height: 640px;
   background-color: var(--secondary-card-color);
   padding: 30px;
-    box-shadow:
+  box-shadow:
     0 4px 10px rgba(0, 0, 0, 0.08),
     0 12px 24px rgba(0, 0, 0, 0.12),
     0 20px 40px rgba(0, 0, 0, 0.08);
@@ -131,7 +131,6 @@ h4 {
     .geo-wrapper {
       display: flex;
       gap: 4px;
-      
 
       .geo {
         border: 1px solid #e2e8f0;
@@ -162,4 +161,3 @@ h4 {
     }
   }
 }
-

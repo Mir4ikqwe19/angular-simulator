@@ -1,7 +1,7 @@
 import { Directive, ElementRef, HostBinding, HostListener, inject } from '@angular/core';
 
 @Directive({
-  selector: '[Hover]',
+  selector: '[appHover]',
 })
 export class HoverDirective {
 

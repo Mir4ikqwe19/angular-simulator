@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
-import { IPost} from '../interfaces/IPost';
+import { IPost } from '../interfaces/IPost';
 import { IPostResponse } from '../interfaces/IPostresponse';
 import { IPostEditForm } from '../interfaces/IPostEditForm';
 import { IEditPostRequest } from '../interfaces/IEditPostRequest';

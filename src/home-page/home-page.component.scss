@@ -14,7 +14,9 @@
     color: var(--secondary-color);
   }
 
-  .fa-people-group, .fa-shield, .fa-hand-holding-dollar {
+  .fa-people-group,
+  .fa-shield,
+  .fa-hand-holding-dollar {
     width: 100px;
     height: 35px;
   }
@@ -26,18 +28,18 @@
 }
 
 .icon-color-0 {
-  color: #45766A;
-  background-color: #E5EEEB;
+  color: #45766a;
+  background-color: #e5eeeb;
 }
 
 .icon-color-1 {
-  color: #6276AA;
-  background-color: #E3E6EE;
+  color: #6276aa;
+  background-color: #e3e6ee;
 }
 
 .icon-color-2 {
-  color: #F2BE22;
-  background-color: #F3F1E1;
+  color: #f2be22;
+  background-color: #f3f1e1;
 }
 
 .icon-container {
@@ -101,12 +103,12 @@
         gap: 8px;
         color: var(--secondary-text-color);
       }
-      
+
       .input-field input {
         background: transparent;
         width: 270px;
         height: 55px;
-        border: 1px solid #E1E3E4;
+        border: 1px solid #e1e3e4;
         border-radius: 10px;
         padding: 12px;
         color: var(--secondary-text-color);
@@ -123,7 +125,7 @@
         background: transparent;
         width: 270px;
         height: 55px;
-        border: 1px solid #E1E3E4;
+        border: 1px solid #e1e3e4;
         border-radius: 10px;
         padding: 12px;
         color: #fff;
@@ -137,7 +139,7 @@
         overflow-y: hidden;
         align-items: baseline;
       }
-      
+
       .input-field span {
         font-size: 14px;
         font-weight: 400;
@@ -186,14 +188,14 @@
       background: transparent;
       width: 270px;
       height: 55px;
-      border: 1px solid #E1E3E4;
+      border: 1px solid #e1e3e4;
       border-radius: 10px;
       padding: 12px;
       color: #fff;
       font-size: 16px;
       font-weight: 700;
     }
-    
+
     .live-input-wrapper {
       display: flex;
       gap: 15px;
@@ -238,7 +240,7 @@
           top: 175px;
           left: 150px;
           border-radius: 100px;
-          background-color: #FDFDFD99;
+          background-color: #fdfdfd99;
           border: none;
           cursor: pointer;
         }
@@ -258,7 +260,7 @@
       margin: 64px 0px;
       max-width: 580px;
       height: 398px;
-      color: var(--primary-text-color);;
+      color: var(--primary-text-color);
 
       .tour-info-subtitle {
         display: flex;
@@ -330,12 +332,12 @@
           box-shadow 0.3s ease;
         cursor: pointer;
 
-          &:hover {
-            transform: scale(1.05);
-            padding: 5px;
-            border-radius: 5px;
-            box-shadow: 0 10px 20px rgba(0,0,0,.15);
-          }
+        &:hover {
+          transform: scale(1.05);
+          padding: 5px;
+          border-radius: 5px;
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
 
         .propose-img-bg {
           display: flex;
@@ -414,7 +416,7 @@
           left: 83%;
           padding: 4px 8px;
           color: var(--deep-green-color);
-          background: #FDFDFD66;
+          background: #fdfdfd66;
           backdrop-filter: blur(4px);
           border-radius: 4px;
         }
@@ -427,7 +429,7 @@
           height: 90px;
           position: absolute;
           top: 82%;
-          background: #FFFFFF33;
+          background: #ffffff33;
           backdrop-filter: blur(6px);
           border-radius: 0px 0px 32px 32px;
 
@@ -451,7 +453,7 @@
             color: var(--secondary-text-color);
             width: 86px;
             height: 40px;
-            background: #FFFFFF4D;
+            background: #ffffff4d;
             border: none;
             border-radius: 4px;
             cursor: pointer;
@@ -529,7 +531,7 @@
         }
 
         .blog-description h3:hover {
-          text-decoration:underline;
+          text-decoration: underline;
           cursor: pointer;
         }
       }
@@ -575,7 +577,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    
+
     gap: 50px;
 
     .photo-report-title {

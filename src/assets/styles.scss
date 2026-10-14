@@ -1,6 +1,6 @@
 @use './fonts';
 @use './normalize';
-@import "primeicons/primeicons.css";
+@import 'primeicons/primeicons.css';
 
 * {
   font-family: 'Nunito Sans';
@@ -10,17 +10,17 @@
 }
 
 :root {
-  --primary-color: #FDFDFD;
-  --secondary-color: #F2BE22;
+  --primary-color: #fdfdfd;
+  --secondary-color: #f2be22;
 
-  --primary-card-color: #FDFDFD;
+  --primary-card-color: #fdfdfd;
   --secondary-card-color: #fff;
 
-  --primary-background-color: #F3F5F4;
-  --secondary-background-color: #1A3E3E;
+  --primary-background-color: #f3f5f4;
+  --secondary-background-color: #1a3e3e;
 
   --primary-text-color: #000000;
-  --secondary-text-color: #FFFFFF;
+  --secondary-text-color: #ffffff;
   --additional-text-color: #667c7c;
 
   --p-primary-50: var(--p-sky-50) !important;
@@ -32,21 +32,21 @@
   --p-primary-600: var(--p-sky-600) !important;
   --p-primary-700: var(--p-sky-700) !important;
   --p-primary-800: var(--p-sky-800) !important;
-  --p-primary-900: var(--p-sky-900) !important; 
+  --p-primary-900: var(--p-sky-900) !important;
   --p-primary-950: var(--p-sky-950) !important;
 }
 
 .my-app-dark {
   --primary-color: var(--p-sky-950);
 
-  --primary-card-color: #1D293D;
+  --primary-card-color: #1d293d;
   --secondary-card-color: var(--p-surface-900);
 
-  --primary-background-color: #0F172B;
+  --primary-background-color: #0f172b;
   --secondary-background-color: var(--p-rose-950);
 
-  --primary-text-color: #FFFFFF;
-  --additional-text-color: #FFFFFF;
+  --primary-text-color: #ffffff;
+  --additional-text-color: #ffffff;
 }
 
 p {
@@ -64,17 +64,16 @@ h3 {
   width: 1180px;
 }
 
-
 .bg-green {
-  background-color: #E5EEEB;
+  background-color: #e5eeeb;
 }
 
 .bg-blue {
-  background-color: #E3E6EE;
+  background-color: #e3e6ee;
 }
 
 .bg-yellow {
-  background-color: #F3F1E1;
+  background-color: #f3f1e1;
 }
 
 .fs-12 {
@@ -178,7 +177,7 @@ h3 {
 }
 
 .card-shadow {
-  box-shadow: 0px 0px 15px 0px #18121E1F;
+  box-shadow: 0px 0px 15px 0px #18121e1f;
 }
 
 .content-container {
@@ -193,23 +192,33 @@ h3 {
   position: relative;
   border: var(--border-width) solid transparent;
   background:
-    linear-gradient(#FFFFFF) padding-box,
+    linear-gradient(#ffffff) padding-box,
     linear-gradient(90deg, var(--gradient-colors)) border-box;
-  background-size: 100% 100%, 300% 300%;
-  background-position: 0 0, 0% 50%;
+  background-size:
+    100% 100%,
+    300% 300%;
+  background-position:
+    0 0,
+    0% 50%;
   animation: gradientBorder 4s infinite linear;
 }
 
 @keyframes gradientBorder {
   0% {
-    background-position: 0 0, 0% 50%;
+    background-position:
+      0 0,
+      0% 50%;
   }
 
   50% {
-    background-position: 0 0, 100% 50%;
+    background-position:
+      0 0,
+      100% 50%;
   }
 
   100% {
-    background-position: 0 0, 0% 50%;
+    background-position:
+      0 0,
+      0% 50%;
   }
 }

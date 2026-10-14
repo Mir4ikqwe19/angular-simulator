@@ -14,7 +14,7 @@ import { IEditPostRequest } from '../interfaces/IEditPostRequest';
   providedIn: 'root',
 })
 export class PostService {
-  
+
   private postApiService: PostApiService = inject(PostApiService);
   private loaderService: LoaderService = inject(LoaderService);
   private messageService: MessageService = inject(MessageService);
@@ -30,9 +30,9 @@ export class PostService {
   getPostById(postId: number): Observable<IPost> {
     this.loaderService.showLoader();
 
-    return this.postApiService.getPostsById(postId).pipe(
-      finalize(() => this.loaderService.hideLoader())
-    );
+    return this.postApiService
+      .getPostsById(postId)
+      .pipe(finalize(() => this.loaderService.hideLoader()));
   }
 
   setPosts(post: IPost[]): void {
@@ -42,60 +42,71 @@ export class PostService {
   editPost(post: IEditPostRequest): void {
     this.loaderService.showLoader();
 
-    this.postApiService.updatePost(post).pipe(
-      tap(() => {
-        const changedPosts: IPost[] = this.getPosts().map((currentPost: IPost) => {
-          return currentPost.id === post.id ? { ...currentPost, ...post } : currentPost;
-        });
+    this.postApiService
+      .updatePost(post)
+      .pipe(
+        tap(() => {
+          const changedPosts: IPost[] = this.getPosts().map((currentPost: IPost) => {
+            return currentPost.id === post.id ? { ...currentPost, ...post } : currentPost;
+          });
 
-        this.setPosts(changedPosts);
-        this.messageService.showSucces(`Пост под номером - ${ post.id } изменён`);
-      }),
-      catchError((err: unknown) => {
-        this.messageService.showError('Не удалось изменить!');
-        return throwError(() => err);
-      }),
-      finalize(() => this.loaderService.hideLoader())
-    ).subscribe();
+          this.setPosts(changedPosts);
+          this.messageService.showSucces(`Пост под номером - ${ post.id } изменён`);
+        }),
+        catchError((err: unknown) => {
+          this.messageService.showError('Не удалось изменить!');
+          return throwError(() => err);
+        }),
+        finalize(() => this.loaderService.hideLoader()),
+      )
+      .subscribe();
   }
 
   createPost(newPost: IPost): void {
     this.loaderService.showLoader();
 
-    this.postApiService.createPost(newPost).pipe(
-      tap((post: IPost) => {
-        const newPost: IPost[] = [...this.postsSubject.getValue(), post];
-        this.setPosts(newPost);
+    this.postApiService
+      .createPost(newPost)
+      .pipe(
+        tap((post: IPost) => {
+          const newPost: IPost[] = [...this.postsSubject.getValue(), post];
+          this.setPosts(newPost);
 
-        this.messageService.showSucces(`Пост Создан ${ post.title }`);
-      }),
-      catchError((err: unknown) => {
-        this.messageService.showError('Не удалось создать!');
-        return throwError(() => err);
-      }),
-      finalize(() => {
-        this.loaderService.hideLoader()
-        this.router.navigate([`posts`]);
-      })
-    ).subscribe();
+          this.messageService.showSucces(`Пост Создан ${ post.title }`);
+        }),
+        catchError((err: unknown) => {
+          this.messageService.showError('Не удалось создать!');
+          return throwError(() => err);
+        }),
+        finalize(() => {
+          this.loaderService.hideLoader();
+          this.router.navigate(['posts']);
+        }),
+      )
+      .subscribe();
   }
 
   deletePost(postId: number): void {
-    this.loaderService.showLoader()
-    
-    this.postApiService.deletePostById(postId).pipe(
-      tap(() => {
-        const deletedPost: IPost[] = this.getPosts().filter((currPost: IPost) => currPost.id !== postId);
-        this.setPosts(deletedPost);
-        
-        this.messageService.showInfo(`Пост под номером - ${ postId } удалён`);
-      }),
-      catchError((err: unknown) => {
-        this.messageService.showError('Не удалось удалить!');
-        return throwError(() => err);
-      }),
-      finalize(() => this.loaderService.hideLoader())
-    ).subscribe();
+    this.loaderService.showLoader();
+
+    this.postApiService
+      .deletePostById(postId)
+      .pipe(
+        tap(() => {
+          const deletedPost: IPost[] = this.getPosts().filter(
+            (currPost: IPost) => currPost.id !== postId,
+          );
+          this.setPosts(deletedPost);
+
+          this.messageService.showInfo(`Пост под номером - ${ postId } удалён`);
+        }),
+        catchError((err: unknown) => {
+          this.messageService.showError('Не удалось удалить!');
+          return throwError(() => err);
+        }),
+        finalize(() => this.loaderService.hideLoader()),
+      )
+      .subscribe();
   }
 
   postPageRedirect(post: IPost): void {
@@ -110,7 +121,7 @@ export class PostService {
         this.messageService.showError('Не удалось загрузить!');
         return throwError(() => err);
       }),
-      finalize(() => this.loaderService.hideLoader())
+      finalize(() => this.loaderService.hideLoader()),
     );
   }
 

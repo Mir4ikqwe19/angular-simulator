@@ -13,10 +13,10 @@ import { RouterLink } from '@angular/router';
   templateUrl: './posts-details.component.html',
   styleUrl: './posts-details.component.scss',
 })
-export class PostsDetailsComponent implements OnInit{
+export class PostsDetailsComponent implements OnInit {
 
   private route: ActivatedRoute = inject(ActivatedRoute);
-  
+
   post!: IPost;
 
   ngOnInit(): void {

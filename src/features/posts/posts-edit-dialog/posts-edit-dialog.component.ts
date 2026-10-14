@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { IPost } from '../interfaces/IPost';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators, } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-posts-edit-dialog',
@@ -20,11 +20,11 @@ export class PostsEditDialogComponent {
   editPostForm: FormGroup = this.fb.group({
     title: [this.post.title, [Validators.required, Validators.minLength(3)]],
     tags: [this.post.tags, [Validators.required, Validators.minLength(3)]],
-    views: [this.post.views, [Validators.required, Validators.minLength(3)]]
+    views: [this.post.views, [Validators.required, Validators.minLength(3)]],
   });
 
   onSubmit(): void {
-    const updatedPost: IPost = { ...this.editPostForm.getRawValue(), id: this.post.id }
+    const updatedPost: IPost = { ...this.editPostForm.getRawValue(), id: this.post.id };
     this.ref.close(updatedPost);
   }
 

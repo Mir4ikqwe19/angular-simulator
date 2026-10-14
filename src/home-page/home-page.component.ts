@@ -4,12 +4,18 @@ import { IDestinationItem } from '../interfaces/IDestinations';
 import { IBlogItem } from '../interfaces/IBlog';
 import { Color } from '../enums/Color';
 import { LocalStorageService } from '../services/local-storage.service';
-import { numberCollection, stringCollection } from '../app/collection';
 import { FormsModule } from '@angular/forms';
 import { MessageService } from '../services/message.service';
 import { FontAwesomeModule, IconDefinition } from '@fortawesome/angular-fontawesome';
-import { faCoffee, faPeopleGroup, faPlay, faStar, faShield, faHandHoldingDollar } from '@fortawesome/free-solid-svg-icons'
-import { faCalendar } from '@fortawesome/free-regular-svg-icons'
+import {
+  faCoffee,
+  faPeopleGroup,
+  faPlay,
+  faStar,
+  faShield,
+  faHandHoldingDollar,
+} from '@fortawesome/free-solid-svg-icons';
+import { faCalendar } from '@fortawesome/free-regular-svg-icons';
 
 @Component({
   selector: 'app-home-page',
@@ -36,20 +42,23 @@ export class HomePageComponent {
       id: 1,
       iconName: faPeopleGroup,
       title: 'Опытный гид',
-      definition: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.'
+      definition:
+        'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
     },
     {
       id: 2,
       iconName: faShield,
       title: 'Безопасный поход',
-      definition: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.'
+      definition:
+        'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
     },
     {
       id: 3,
       iconName: faHandHoldingDollar,
       title: 'Лояльные цены',
-      definition: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.'
-    }
+      definition:
+        'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
+    },
   ];
 
   destinationBlock: IDestinationItem[] = [
@@ -60,7 +69,7 @@ export class HomePageComponent {
       assessment: '4.9',
       title: 'Озеро возле гор',
       description: 'романтическое приключение',
-      price: 480
+      price: 480,
     },
     {
       id: 2,
@@ -69,7 +78,7 @@ export class HomePageComponent {
       assessment: '4.5',
       title: 'Ночь в горах',
       description: 'в компании друзей',
-      price: 500
+      price: 500,
     },
     {
       id: 3,
@@ -78,8 +87,8 @@ export class HomePageComponent {
       assessment: '5.0',
       title: 'Йога в горах',
       description: 'для тех, кто забоится о себе',
-      price: 230
-    }
+      price: 230,
+    },
   ];
 
   travelBlog: IBlogItem[] = [
@@ -87,30 +96,32 @@ export class HomePageComponent {
       id: 1,
       image: 'italy',
       title: 'Красивая Италия, какая она в реальности?',
-      description: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
-      date: '01/04/2023'
+      description:
+        'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
+      date: '01/04/2023',
     },
     {
       id: 2,
       image: 'aircraft-porthole',
       title: 'Долой сомнения! Весь мир открыт для вас!',
-      description: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации ...',
-      date: '01/04/2023'
+      description:
+        'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации ...',
+      date: '01/04/2023',
     },
     {
       id: 3,
       image: 'woman-in-alley',
       title: 'Как подготовиться к путешествию в одиночку?',
       description: 'Для современного мира базовый вектор развития предполагает.',
-      date: '01/04/2023'
+      date: '01/04/2023',
     },
     {
       id: 4,
       image: 'india',
       title: 'Индия ... летим?',
       description: 'Для современного мира базовый.',
-      date: '01/04/2023'
-    }
+      date: '01/04/2023',
+    },
   ];
 
   constructor() {
@@ -139,8 +150,3 @@ export class HomePageComponent {
   }
 
 }
-
-stringCollection.replaceItem(0, 1, 'Мандарин');
-stringCollection.deleteItem('Мандарин');
-stringCollection.getAllItems();
-numberCollection.deleteItem(1);

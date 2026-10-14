@@ -12,6 +12,6 @@ import { Observable, tap } from 'rxjs';
 export class LoaderComponent {
 
   loaderService: LoaderService = inject(LoaderService);
-  isLoading$: Observable<boolean> = this.loaderService.loader$
+  isLoading$: Observable<boolean> = this.loaderService.loader$;
 
 }

@@ -21,15 +21,15 @@ export class PostsCreateComponent {
     tags: ['', [Validators.required, Validators.maxLength(30)]],
     reactions: this.fb.group({
       likes: ['', Validators.required],
-      dislikes: ['', Validators.required]
+      dislikes: ['', Validators.required],
     }),
     views: ['', Validators.required],
-    userId: ['', [Validators.required, Validators.minLength(1)]]
+    userId: ['', [Validators.required, Validators.minLength(1)]],
   });
 
   onSubmit(): void {
     if (this.createPostForm.valid) {
-      const createFormValue: IPost = { ...this.createPostForm.getRawValue(), id: Date.now() }
+      const createFormValue: IPost = { ...this.createPostForm.getRawValue(), id: Date.now() };
 
       this.postService.createPost(createFormValue);
       this.createPostForm.reset();
