@@ -2,16 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { LocalStorageService } from '../../../services/local-storage.service';
 import { ILogin } from '../interfaces/ILogin';
 import { AuthApiService } from './auth-api.service';
-import {
-  BehaviorSubject,
-  catchError,
-  finalize,
-  Observable,
-  of,
-  switchMap,
-  tap,
-  throwError,
-} from 'rxjs';
+import { BehaviorSubject, catchError, finalize, Observable, of, switchMap, tap, throwError, } from 'rxjs';
 import { IToken } from '../interfaces/IToken';
 import { MessageService } from '../../../services/message.service';
 import { LoaderService } from '../../../services/loader.service';
@@ -30,9 +21,7 @@ export class AuthService {
   private loaderService: LoaderService = inject(LoaderService);
   private router: Router = inject(Router);
 
-  private authUserSubject: BehaviorSubject<IAuthUser | null> =
-    new BehaviorSubject<IAuthUser | null>(null);
-
+  private authUserSubject: BehaviorSubject<IAuthUser | null> = new BehaviorSubject<IAuthUser | null>(null);
   authUser$: Observable<IAuthUser | null> = this.authUserSubject.asObservable();
 
   private readonly TOKENS_KEY: string = 'tokens';
@@ -58,9 +47,10 @@ export class AuthService {
   }
 
   getCurrentUser(): Observable<IAuthUser> {
-    return this.authApiService
-      .getUser()
-      .pipe(tap((user: IAuthUser) => this.authUserSubject.next(user)));
+    return this.authApiService.getUser()
+      .pipe(
+        tap((user: IAuthUser) => this.authUserSubject.next(user))
+      );
   }
 
   login(user: ILogin): Observable<IAuthUser> {
@@ -97,11 +87,12 @@ export class AuthService {
     const tokens: IToken = this.localStorageService.getValue<IToken>(this.TOKENS_KEY)!;
     const refreshToken: string = tokens?.refreshToken;
 
-    return this.authApiService.refreshToken(refreshToken).pipe(
-      tap((res: IToken) => {
-        this.localStorageService.setValue(this.TOKENS_KEY, res);
-      }),
-    );
+    return this.authApiService.refreshToken(refreshToken)
+      .pipe(
+        tap((res: IToken) => {
+          this.localStorageService.setValue(this.TOKENS_KEY, res);
+        }),
+      );
   }
 
   clearSession(): void {

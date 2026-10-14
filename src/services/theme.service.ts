@@ -3,17 +3,20 @@ import { LocalStorageService } from './local-storage.service';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { usePreset, updatePreset, updatePrimaryPalette } from '@primeuix/themes';
 import { AppTheme } from '../enums/Theme';
+import { APP_CONFIG } from '../tokens/app-config.token';
 
 import Aura from '@primeuix/themes/aura';
 import Lara from '@primeuix/themes/lara';
 import Nora from '@primeuix/themes/nora';
 import { ITheme } from '../interfaces/ITheme';
+import { IAppConfig } from '../interfaces/IApp-config';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ThemeService {
 
+  appConfig: IAppConfig = inject(APP_CONFIG);
   private localStorageService: LocalStorageService = inject(LocalStorageService);
 
   private isDarkModeSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
@@ -48,20 +51,33 @@ export class ThemeService {
   ];
 
   private initDarkMode(): boolean {
+    if (!this.appConfig.enableTheming) {
+      return false;
+    }
+
     return this.localStorageService.getValue('app-mode') ?? false;
   }
 
   private initAppTheme(): AppTheme {
-    const savedTheme: AppTheme | null = this.localStorageService.getValue<AppTheme>('app-theme');
+    const savedTheme: AppTheme | null =
+      this.localStorageService.getValue<AppTheme>('app-theme');
+
     return savedTheme ?? AppTheme.LARA;
   }
 
   toggleDarkMode(isDarkMode: boolean): void {
+    if (!this.appConfig.enableTheming) {
+      return;
+    }
     this.isDarkModeSubject.next(isDarkMode);
     this.localStorageService.setValue(this.APP_MODE_KEY, isDarkMode);
   }
 
   changeTheme(theme: AppTheme): void {
+    if (!this.appConfig.enableTheming && theme !== AppTheme.LARA) {
+      theme = AppTheme.LARA;
+    }
+    
     switch (theme) {
       case AppTheme.LARA:
         usePreset(Lara);
@@ -74,7 +90,9 @@ export class ThemeService {
         break;
     }
 
-    this.localStorageService.setValue(this.APP_THEME_KEY, theme);
+    if (this.appConfig.enableTheming) {
+      this.localStorageService.setValue(this.APP_THEME_KEY, theme);
+    }
   }
 
 }

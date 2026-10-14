@@ -3,7 +3,10 @@
     <div class="container main-header">
       <div class="company-logo">
         <img src="/images/mountains-logo.svg" width="137px" height="29px" alt="Румтибет иконка" />
-        <span class="logo-name">{{ companyName }}</span>
+        <span class="logo-name">{{ appConfig.companyName }}</span>
+        @if (lastLogin) {
+          <p class="last-login">Последний вход: {{ lastLogin | date: dateFormat }}</p>
+        }
       </div>
 
       <div class="main-header-info-wrapper">
@@ -30,31 +33,34 @@
           <button class="login-btn" (click)="toLogOut()">Выйти</button>
         </div>
         <div class="header-date-info">
-          <div class="theme-toggle-wrapper">
-            <p-selectbutton
-              id="select-theme-btn"
-              optionLabel="name"
-              optionValue="theme"
-              [options]="themeService.themeOptions"
-              [ngModel]="themeService.theme$ | async"
-              (onChange)="onButtonClick($event.value)"
-            />
-          </div>
-
-          <div class="toggle-wrapper">
-            <p-toggle-switch
-              id="dark-mode-swithcer"
-              [ngModel]="themeService.isDarkMode$ | async"
-              (onChange)="toggleDarkMode($event)"
-            >
-              <ng-template #handle>
-                <fa-icon [icon]="(themeService.isDarkMode$ | async) ? faMoon : faSun" />
-              </ng-template>
-            </p-toggle-switch>
-          </div>
+          
+          @if (appConfig.enableTheming) {
+            <div class="theme-toggle-wrapper">
+              <p-selectbutton
+                id="select-theme-btn"
+                optionLabel="name"
+                optionValue="theme"
+                [options]="themeService.themeOptions"
+                [ngModel]="themeService.theme$ | async"
+                (onChange)="onButtonClick($event.value)"
+              />
+            </div>
+  
+            <div class="toggle-wrapper">
+              <p-toggle-switch
+                id="dark-mode-swithcer"
+                [ngModel]="themeService.isDarkMode$ | async"
+                (onChange)="toggleDarkMode($event)"
+              >
+                <ng-template #handle>
+                  <fa-icon [icon]="(themeService.isDarkMode$ | async) ? faMoon : faSun" />
+                </ng-template>
+              </p-toggle-switch>
+            </div>
+          }
 
           @if (currentWidget === 'timer') {
-            <p class="header-timer">{{ currentDateTime }}</p>
+            <p class="header-timer">{{ currentDateTime | date: dateFormat }}</p>
             <button id="show-counter-btn" (click)="switchWidgetMode('counter')">
               Показать счётчик
             </button>

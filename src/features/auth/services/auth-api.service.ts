@@ -4,6 +4,7 @@ import { IToken } from '../interfaces/IToken';
 import { ILogin } from '../interfaces/ILogin';
 import { Observable } from 'rxjs';
 import { IAuthUser } from '../interfaces/IAuthUser';
+import { AUTH_API_URL } from '../../../tokens/auth-api-url.token';
 
 @Injectable({
   providedIn: 'root',
@@ -11,8 +12,7 @@ import { IAuthUser } from '../interfaces/IAuthUser';
 export class AuthApiService {
 
   private http: HttpClient = inject(HttpClient);
-
-  private readonly URL: string = 'https://dummyjson.com/auth/';
+  private readonly URL: string = inject(AUTH_API_URL);
 
   login(formValue: ILogin): Observable<IToken> {
     return this.http.post<IToken>(`${ this.URL }login`, formValue);
