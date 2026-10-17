@@ -10,7 +10,7 @@ import { PhoneMode } from '../enums/Phone';
 
 @Component({
   selector: 'app-user-card',
-  imports: [UpperCasePipe, PhonePipe, HoverDirective],
+  imports: [UpperCasePipe, PhonePipe],
   templateUrl: './user-card.component.html',
   styleUrl: './user-card.component.scss',
 })

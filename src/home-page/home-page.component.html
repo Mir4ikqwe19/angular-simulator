@@ -216,7 +216,7 @@
               <p class="fs-14 fw-400 lh-20px">{{ blog.description }}</p>
             </div>
             <div class="blog-date">
-              <span class="fs-14 fw-700 lh-20px">{{ blog.date }}</span>
+              <span class="fs-14 fw-700 lh-20px">{{ blog.date | date }}</span>
               <a [id]="'state-' + blog.id" class="fs-14 fw-700 lh-20px" href="#">читать статью</a>
             </div>
           </div>

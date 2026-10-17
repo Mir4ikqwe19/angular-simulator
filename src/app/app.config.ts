@@ -19,6 +19,8 @@ import { authInterceptor } from '../features/auth/interceptors/auth.interceptor'
 import { AuthService } from '../features/auth/services/auth.service';
 import { IAuthUser } from '../features/auth/interfaces/IAuthUser';
 import { Observable } from 'rxjs';
+import { APP_CONFIG } from '../tokens/app-config.token';
+import { DATE_PIPE_DEFAULT_OPTIONS } from '@angular/common';
 
 function getTheme(): Preset {
   const savedTheme: AppTheme | null = localStorage.getItem('app-theme') as AppTheme;
@@ -44,6 +46,22 @@ export function initializeApp(authService: AuthService): () => Observable<IAuthU
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
+    { 
+      provide: DATE_PIPE_DEFAULT_OPTIONS, 
+      useValue: { 
+        dateFormat: 'dd.MM.yyyy HH:mm' 
+      } 
+    },
+    {
+      provide: APP_CONFIG,
+      useValue: {
+        companyName: 'румтибет',
+        enableLogs: true,
+        enableNotifications: true,
+        enableTheming: true,
+        sessionTimeout: 3600
+      }
+    },
     provideRouter(routes),
     provideZoneChangeDetection(),
     provideHttpClient(

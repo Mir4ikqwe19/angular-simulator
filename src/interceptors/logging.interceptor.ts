@@ -5,18 +5,24 @@ import {
   HttpRequest,
   HttpResponse,
 } from '@angular/common/http';
-import { tap } from 'rxjs';
+import { inject } from '@angular/core';
+import { filter, tap } from 'rxjs';
+import { APP_CONFIG } from '../tokens/app-config.token';
+import { IAppConfig } from '../interfaces/IAppconfig';
 
 export const loggingInterceptor: HttpInterceptorFn = (
   req: HttpRequest<unknown>,
   next: HttpHandlerFn,
 ) => {
   const start: number = performance.now();
+  const appConfig: IAppConfig = inject(APP_CONFIG);
 
   return next(req).pipe(
-    tap((event: HttpEvent<unknown>) => {
-      if (event instanceof HttpResponse) {
-        const duration: number = performance.now() - start;
+    filter((event: HttpEvent<unknown>) => event instanceof HttpResponse),
+    tap((event: HttpResponse<unknown>) => {
+      const duration = performance.now() - start;
+
+      if (appConfig.enableLogs) {
         console.log('request:', {
           httpMethod: req.method,
           url: req.url,

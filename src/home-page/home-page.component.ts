@@ -16,10 +16,11 @@ import {
   faHandHoldingDollar,
 } from '@fortawesome/free-solid-svg-icons';
 import { faCalendar } from '@fortawesome/free-regular-svg-icons';
+import { DatePipe, DatePipeConfig } from '@angular/common';
 
 @Component({
   selector: 'app-home-page',
-  imports: [FormsModule, FontAwesomeModule],
+  imports: [FormsModule, FontAwesomeModule, DatePipe],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss',
 })
@@ -98,7 +99,7 @@ export class HomePageComponent {
       title: 'Красивая Италия, какая она в реальности?',
       description:
         'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
-      date: '01/04/2023',
+      date: '2023-04-01T00:00:00',
     },
     {
       id: 2,
@@ -106,34 +107,27 @@ export class HomePageComponent {
       title: 'Долой сомнения! Весь мир открыт для вас!',
       description:
         'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации ...',
-      date: '01/04/2023',
+      date: '2023-04-01T00:00:00',
     },
     {
       id: 3,
       image: 'woman-in-alley',
       title: 'Как подготовиться к путешествию в одиночку?',
       description: 'Для современного мира базовый вектор развития предполагает.',
-      date: '01/04/2023',
+      date: '2023-04-01T00:00:00',
     },
     {
       id: 4,
       image: 'india',
       title: 'Индия ... летим?',
       description: 'Для современного мира базовый.',
-      date: '01/04/2023',
+      date: '2023-04-01T00:00:00',
     },
   ];
 
   constructor() {
-    this.saveLastLogin();
     this.setVisitCount();
     this.isPrimaryColor(Color.ORANGE);
-  }
-
-  private saveLastLogin(): void {
-    const LAST_LOGIN_KEY: string = 'last-login';
-    const lastLog: string = new Date().toString();
-    this.localStorageService.setValue(LAST_LOGIN_KEY, lastLog);
   }
 
   private setVisitCount(): void {

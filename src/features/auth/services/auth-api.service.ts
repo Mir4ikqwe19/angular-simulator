@@ -11,7 +11,6 @@ import { IAuthUser } from '../interfaces/IAuthUser';
 export class AuthApiService {
 
   private http: HttpClient = inject(HttpClient);
-
   private readonly URL: string = 'https://dummyjson.com/auth/';
 
   login(formValue: ILogin): Observable<IToken> {

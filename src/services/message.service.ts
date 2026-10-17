@@ -1,10 +1,14 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { IMessage } from '../interfaces/IMessage';
 import { MessageType } from '../enums/Message';
 import { BehaviorSubject, filter, map, Observable } from 'rxjs';
+import { IAppConfig } from '../interfaces/IAppconfig';
+import { APP_CONFIG } from '../tokens/app-config.token';
 
 @Injectable({ providedIn: 'root' })
 export class MessageService {
+
+  appConfig: IAppConfig = inject(APP_CONFIG);
 
   messageList: IMessage[] = [];
 
@@ -13,11 +17,14 @@ export class MessageService {
 
   private addMessage(type: MessageType, text: string): void {
     const newMessage: IMessage = { type, text };
-    this.messagesSubject.next([newMessage, ...this.messagesSubject.getValue()]);
 
-    setTimeout(() => {
-      this.closeMessage(newMessage);
-    }, 5000);
+    if (this.appConfig.enableNotifications) {
+      this.messagesSubject.next([newMessage, ...this.messagesSubject.getValue()]);
+
+      setTimeout(() => {
+        this.closeMessage(newMessage);
+      }, 5000);
+    }
   }
 
   showWarn(text: string): void {
@@ -40,7 +47,8 @@ export class MessageService {
     const filteredMessages: IMessage[] = this.messagesSubject
       .getValue()
       .filter((message: IMessage) => message !== currentMessage);
+
     this.messagesSubject.next(filteredMessages);
   }
-
+  
 }
